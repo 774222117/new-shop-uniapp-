@@ -1,0 +1,126 @@
+<!--标题位置所搜框-->
+<searchbar bgColor="#fff">
+</searchbar>
+<!-- <scroll-view class="scrollContainer" scroll-x="true" scroll-into-view = "{{scrollIntoItem}}" scroll-with-animation="{{true}}"> -->
+  <view class="cateContent">
+    <view class="headCategory">
+    <view class="headItem" wx:for="{{categoryHeadFive}}" id="scrollIntoViewId{{index}}" data-id="{{index}}" catchtap="tabHeadSelect" >
+      <image src="{{item.icon!=''?item.icon:'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2212379987,3998331451&fm=26&gp=0.jpg'}}">
+      </image>
+      <view class="headItemName {{index==curHeadCategoryIndex?' curheadItem':''}}">{{item.name}}</view>
+    </view>
+  </view>
+  <view class="cateMore">全部
+      <view class="cateMoreBtn" catchtap="showModal">
+        <image src="{{showMoreGory?'../../image/categoryUp.png':'../../image/categoryDown.png'}}"></image>
+      </view>
+    </view>
+  </view>
+  <!-- scroll剩余的选项 -->
+  <view class="headCategoryMore" wx:if="{{showMoreGory}}">
+    <view class="headItem padd" wx:for="{{categoryHeadFoot}}" id="scrollIntoViewId{{index}}" data-id="{{index}}" catchtap="tabHeadSelect2" >
+      <image src="{{item.icon!=''?item.icon:'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2212379987,3998331451&fm=26&gp=0.jpg'}}">
+      </image>
+      <view class="headItemName {{index==curHeadCategoryIndex?' curheadItem':''}}">{{item.name}}</view>
+    </view>
+  </view>
+  <view class="allBlack" wx:if="{{showMoreGory}}"></view>
+<!-- </scroll-view> -->
+<!-- 商品列表盒子 -->
+<view class="shopListBox">
+  <view class="VerticalBox">
+    <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation="{{true}}" scroll-into-view="main-{{MainCur}}"
+      style="height:calc(100vh - 600rpx)">
+      <view class="cu-item bg-gray {{index==curCategoryIndex?' cur':''}} leftListSty" wx:for="{{categoryList}}"
+        wx:key="shopCategoryGoodsKey" bindtap='tabSelect' id="main-{{index}}" data-id="{{index}}" style="padding:0;">
+        <view class="leftListIcon" wx:if="{{item.icon}}">
+          <image src="{{item.icon}}"></image>
+        </view>
+        <text>{{item.name}}</text>
+      </view>
+    </scroll-view>
+    <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh - 460rpx);padding-bottom:140rpx;" bindscroll="VerticalMain"
+      bindscrolltolower="lower">
+      <!-- <view wx:for="{{categoryGoodsList}}" wx:key="categoryGoodsListKey" id="main-{{index}}"> -->
+      <!-- 商品内容 -->
+      <block wx:for="{{goodsInfoList}}" wx:key="index">
+        <view class="flex justify-between shopItemList" data-goodsinfo="{{item}}">
+          <view class="leftImg" data-target="shopCarInfo" data-goodsinfo="{{item}}" bindtap="jumpToDetail">
+            <view class="mainImg">
+              <image src="{{item.thumb}}"></image>
+            </view>
+            <view class="leftTopImg" wx:if="{{item.marketType == 1}}">
+              <image src="/image/yushou.png"></image>
+            </view>
+          </view>
+          <view class="rightBox">
+            <view class="topTitle" data-goodsinfo="{{item}}" bindtap="jumpToDetail">{{item.title}}</view>
+            <view class="rightBoxBtmBox flex justify-between">
+              <view class="priceBox">
+                <view class="limitBox" wx:if="{{item.marketType == 1 && item.userMaxBuy > 0}}" data-goodsinfo="{{item}}" bindtap="jumpToDetail">限购{{item.userMaxBuy}}份
+                </view>
+                <view class="limitBox1" wx:elif="{{item.marketType == 0 || item.marketType == 2}}" data-goodsinfo="{{item}}" bindtap="jumpToDetail">
+                  <!-- 库存:{{item.total}} -->
+                  <block wx:if="{{item.total > 0 && item.total < 20}}">仅剩{{item.total}}件</block>
+                  <block wx:elif="{{item.total > 200}}">库存充足</block>
+                  <block wx:else>库存：{{item.total}}</block>
+                  <!-- 已售:{{item.salesReal}} -->
+                </view>
+              </view>
+            </view>
+            <!-- <view  class="flex" wx:if="{{item.middleGoodsPromotion.promotionType=='o'}}">
+              <text class="promotionInfo">满{{item.middleGoodsPromotion.x}}减{{item.middleGoodsPromotion.y}}</text>
+            </view> -->
+            <view  class="flex" wx:if="{{item.topic!= null||item.couponDtoList.length>0}}" data-goodsinfo="{{item}}" bindtap="jumpToDetail">
+              <block wx:if="{{item.topic!= null}}">
+                <view class="promotionInfo" >{{item.topic}}</view>
+                <view class="couponsInfo" wx:for="{{item.couponDtoList}}" wx:for-item="couponitem" wx:if="{{index<2}}">
+                  <view class="yuan"></view>
+                  <view class="yuan2"></view>
+                  <text class="coupon">{{couponitem.productByMoney}}元券</text>
+                </view>
+                <!-- <view class="nocoupon" wx:if="{{item.couponDtoList.length<=0}}">不可用券</view> -->
+              </block>
+              <block wx:else>
+                <view class="couponsInfo" wx:for="{{item.couponDtoList}}" wx:for-item="couponitem" wx:if="{{index<3}}" data-goodsinfo="{{item}}" bindtap="jumpToDetail">
+                  <view class="yuan"></view>
+                  <view class="yuan2"></view>
+                  <text class="coupon">{{couponitem.productByMoney}}元券</text>
+                </view>
+                <!-- <view class="nocoupon" wx:if="{{item.couponDtoList.length<=0}}">不可用券</view> -->
+              </block>
+              
+            </view>
+            <view class="countBox flex">
+              <view data-goodsinfo="{{item}}" bindtap="jumpToDetail">
+                <text class="text-money1">￥{{item.marketPrice}}</text>
+                <text class="text-money2" hidden="{{!item.showProductPrice}}">￥{{item.productPrice}}</text>
+              </view>
+              <view class="buyBtn" catchtap="jumpToDetail" data-goodsinfo="{{item}}" wx:if="{{item.marketType == 1}}">
+                立即购买</view>
+              <view class="buyBtn1 flex justify-between" wx:if="{{item.marketType == 0 || item.marketType == 2}}">
+                <image class="shopCar-image" bindtap="delCart" data-goodsinfo="{{item}}" src="/image/delCart.svg">
+                </image>
+                <view class="goosNum" style="width:44rpx;">{{item.buyCount}}</view>
+                <image class="shopCar-image" bindtap="addCart" data-goodsinfo="{{item}}" src="/image/addCart.svg">
+                </image>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+      <view class='bottomLoadConpleteCUR' wx:if="{{bottomIsShow&&categoryList.length > curCategoryIndex+1}}" catchtap="loadNextCategoryGoods">
+        点击继续浏览下一个分类
+      </view>
+      <view wx:else style="height:238rpx;">
+      </view>
+      <!-- </view> -->
+    </scroll-view>
+  </view>
+</view>
+<bottom-action cartTypeName="OTO" sumPrice="{{cartShopTotal.sumPrice}}"
+  sumProductPrice="{{cartShopTotal.sumProductPrice}}" roomId="{{roomId}}" buyCount="{{cartShopTotal.buyCount}}"
+  goodsInfoList="{{goodsInfoList}}" shopCart="{{shopCart}}" deliveryWay="{{deliveryWay}}"
+  bindcartmodyfiy="carModifyEvent"></bottom-action>
+<!--自定义底部导航-->
+<bottom-tabbar currentIdx='1' cartNum='{{cartNum}}' class="tabbar {{isIpx?'pb20':''}}"></bottom-tabbar>

@@ -1,0 +1,404 @@
+<!-- <searchbar bgColor="#E72E24" bindsanup="getScancode">
+</searchbar> -->
+<!-- 第一次进入引导 -->
+<view class='firstIn' wx:if="{{firstIn}}" style="top:{{navHeight}}px" bindtap='firstInClick'>
+  <image mode="aspectFit" src='https://sourced.sgsugou.com/new-shop/image/firstIn.png'></image>
+</view>
+<my-address bgColor="#E72E24" id="myAddress" shopInfo="{{shopInfo}}" bgImg="{{allDataObj.newcouponupbg?allDataObj.newcouponupbg[0].bannerImg:allDataObj.indextitlebg[0].bannerImg}}"></my-address>
+<!--标题位置所搜框-->
+<view class="headBarBg" style="background-image: url({{allDataObj.newcoupondownbg?allDataObj.newcoupondownbg[0].bannerImg:allDataObj.indexsearchbg[0]!=null?allDataObj.indexsearchbg[0].bannerImg:'https://sourced.sgsugou.com/new-shop/image/topBannerBg.png'}});background-repeat: no-repeat;background-size: 100% 100%;">
+  <view class="headbar">
+    <view class="search-form">
+      <view style="display:flex;align-items:center;flex:1" bindtap="gotoSearch"><text class="cuIcon-search" style="margin-right: 27rpx"></text>
+        <input type="text" placeholder="搜索商品/品牌" confirm-type="search" disabled></input>
+      </view>
+      <text class="iconsaoyisao iconfont" style="font-size: 50rpx;color:#858585" bindtap="getScancode"></text>
+      <button class="btn" bindtap="gotoSearch">点击搜索</button>
+    </view>
+  </view>
+  <!-- 新人板块 -->
+  <view class="newUserBox" wx:if="{{allDataObj.newcouponupbg}}">
+    <!-- <view class="newUser_couponBox" wx:for="{{allDataObj.newpeoplecoupon}}">
+      <view class="newUser_couponLeft">
+        <text class="newUser_couponUnit">¥</text>
+        <text class="newUser_couponPrice">{{item.coupon.productByMoney}}</text>
+      </view>
+      <view class="dottomLine"></view>
+      <view class="newUser_couponRight">
+        <view class="newUser_couponContent">
+          <text>{{item.coupon.intro}}</text>
+          <text>满{{item.coupon.costMoney}}元立减</text>
+        </view>
+        <view class="newUser_couponBtn" data-id="{{item.coupon.id}}" catchtap="getCoupon">立即领取</view>
+      </view>
+    </view> -->
+    <image src="{{allDataObj.newpeoplecoupon[0].bannerImg}}" class="newUser_couponImg"  data-item='{{allDataObj.newpeoplecoupon[0]}}' bindtap="popIsShow">
+    </image>
+    <view class="newUser_textBox"  wx:if="{{allDataObj.newcoupongoods}}">
+      <view class="newUser_textLeft">
+        <text class="newUser_text1">新人专享低价</text>
+        <text class="newUser_text2">限量供应 抢完即止</text>
+      </view>
+      <view class="newUser_textRight" catchtap="toPromotion" data-navigateid="{{allDataObj.newcoupongoods[0].navigateId}}">更多好物 ></view>
+    </view>
+    <view class="newUser_goodsList" wx:if="{{allDataObj.newcoupongoods}}">
+      <scroll-view scroll-x="true">
+        <view style="display: flex;">
+          <view class="newUser_goodsBox" wx:for="{{allDataObj.newcoupongoods[0].shopGoodsListDtoList}}" catchtap="toPromotion" data-navigateid="{{allDataObj.newcoupongoods[0].navigateId}}">
+            <image src="{{item.thumb}}" class="newUser_goodsImg"></image>
+            <view class="newUser_goodsBottom">
+              <view class="newUser_goodsPriceBox">
+                <text class="newUser_goodsPrice"><text style="font-size: 20rpx;margin-right: 4rpx;">¥</text>{{item.marketPrice}}</text>
+                <text class="newUser_goodsPrice2" wx:if="{{item.productPrice>item.marketPrice}}">¥{{item.productPrice}}</text>
+              </view>
+              <view class="newUser_goodsBtn">抢</view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  <!--标题图片-->
+  <block wx:if="{{titlePictures.length>0&&!allDataObj.newcouponupbg}}">
+    <swiper indicator-dots indicator-color="rgba(255,255,255,.5)" indicator-active-color="#fff" class="zhanshiSwiper">
+      <swiper-item class="zhanshi" wx:for="{{titlePictures}}" wx:key="titlePictures">
+        <image class="zhanshiImage" src="{{item.bannerImg}}" data-item='{{item}}' bindtap="popIsShow">
+        </image>
+      </swiper-item>
+    </swiper>
+  </block>
+</view>
+<block wx:if="{{titlePictures.length>0 &&allDataObj.newcouponupbg}}">
+  <swiper indicator-dots indicator-color="rgba(255,255,255,.5)" indicator-active-color="#fff" class="zhanshiSwiper" style="margin-top:0">
+    <swiper-item class="zhanshi" wx:for="{{titlePictures}}" wx:key="titlePictures">
+      <image class="zhanshiImage" src="{{item.bannerImg}}" data-item='{{item}}' bindtap="popIsShow">
+      </image>
+    </swiper-item>
+  </swiper>
+</block>
+<swiper indicator-dots indicator-color="#e5e5e5" indicator-active-color="#FC6E7B" class="headCategorySWiper" wx:if="{{middleCategoryList.length>0}}">
+  <swiper-item class="headCategory" wx:for="{{middleCategoryList.length/10}}" wx:for-index="ind" wx:key="headCategory">
+    <view class="headItem" wx:for="{{middleCategoryList}}" catchtap="tabHeadSelect" catchtap="toCategory" wx:key="middleCategoryList" wx:if="{{ind*10 <= index && index < (ind+1)*10}}" data-navigateid="{{item.navigateId}}">
+      <image src="{{item.bannerImg}}">
+      </image>
+      <view class="headItemName {{index==curHeadCategoryIndex?' curheadItem':''}}">{{item.bannerTitle}}</view>
+    </view>
+  </swiper-item>
+</swiper>
+<!-- <scroll-view class="scrollContainer" scroll-x="true" scroll-with-animation="{{true}}"
+>
+  <view class="headCategory">
+
+  </view>
+</scroll-view> -->
+<view class="serviceDescription" wx:if="{{textDescriptions.length>0}}">
+  <view class="textDes" wx:for="{{textDescriptions}}" wx:if="{{index<3}}" wx:key="textDescriptions">
+    <image src="{{item.bannerImg}}" style="margin-right:10rpx;"></image>
+    <text>{{item.bannerTitle}}</text>
+  </view>
+</view>
+<!--领取优惠券-->
+<swiper wx:if="{{allDataObj.goodsconpon.length > 0}}" autoplay interval="5000" circular indicator-dots indicator-color="#fff" indicator-active-color="rgba(255,255,255,.7)" class="linquanSwiper">
+  <swiper-item wx:for="{{allDataObj.goodsconpon}}" wx:key="goodsconpon">
+    <view class="linquan" data-item='{{item}}' bindtap="popIsShow">
+      <image src="{{item.bannerImg}}"></image>
+    </view>
+  </swiper-item>
+</swiper>
+<view class="advertisement" wx:if="{{allDataObj.arrondi.length>0}}">
+  <view class="adCard" data-item='{{allDataObj.arrondi[0]}}' bindtap="popIsShow">
+    <view class="adCard-L">
+      <view class="adCard-font1">{{allDataObj.arrondi[0].bannerTitle}}</view>
+      <view class="adCard-font2">{{allDataObj.arrondi[0].bannerText}}</view>
+      <button class="adCard-font3">去抢购<text class="iconfont iconarrow-right" style="margin-left:6rpx;color:#fff"></text></button>
+    </view>
+    <view class="adCard-R">
+      <image src="{{allDataObj.arrondi[0].bannerImg}}"></image>
+    </view>
+  </view>
+  <view class="adCard" data-item='{{allDataObj.arrondi[1]}}' bindtap="popIsShow" wx:if="{{allDataObj.arrondi.length>1}}">
+    <view class="adCard-L">
+      <view class="adCard-font1">{{allDataObj.arrondi[1].bannerTitle}}</view>
+      <view class="adCard-font2">{{allDataObj.arrondi[1].bannerText}}</view>
+      <button class="adCard-font3">进入<text class="iconfont iconarrow-right" style="margin-left:6rpx;color:#fff"></text></button>
+    </view>
+    <view class="adCard-R">
+      <image src="{{allDataObj.arrondi[1].bannerImg}}"></image>
+    </view>
+  </view>
+</view>
+<view class="advertisement" wx:if="{{allDataObj.arrondi.length>2}}">
+  <view class="adCard" data-item='{{allDataObj.arrondi[2]}}' bindtap="popIsShow"
+    wx:if="{{allDataObj.arrondi.length>2}}">
+    <view class="adCard-L">
+      <view class="adCard-font1">{{allDataObj.arrondi[2].bannerTitle}}</view>
+      <view class="adCard-font2">{{allDataObj.arrondi[2].bannerText}}</view>
+      <button class="adCard-font3">进入<text class="iconfont iconarrow-right"
+          style="margin-left:6rpx;color:#fff"></text></button>
+    </view>
+    <view class="adCard-R">
+      <image src="{{allDataObj.arrondi[2].bannerImg}}"></image>
+    </view>
+  </view>
+  <view class="adCard" data-item='{{allDataObj.arrondi[3]}}' bindtap="popIsShow"
+    wx:if="{{allDataObj.arrondi.length>3}}">
+    <view class="adCard-L">
+      <view class="adCard-font1">{{allDataObj.arrondi[3].bannerTitle}}</view>
+      <view class="adCard-font2">{{allDataObj.arrondi[3].bannerText}}</view>
+      <button class="adCard-font3">进入<text class="iconfont iconarrow-right"
+          style="margin-left:6rpx;color:#fff"></text></button>
+    </view>
+    <view class="adCard-R">
+      <image src="{{allDataObj.arrondi[3].bannerImg}}"></image>
+    </view>
+  </view>
+</view>
+<block wx:if="{{allDataObj.reminder.length>0}}">
+  <view class="reminder">
+    <view class="reminder-L">
+      <image src="{{allDataObj.reminder[0].bannerImg}}"></image>
+      <view>温馨提示：</view>
+    </view>
+    <view class="reminder-R">
+      {{allDataObj.reminder[0].bannerTitle}}
+    </view>
+  </view>
+</block>
+<!--店长推荐-->
+<view class="dztjmodular" wx:if="{{managerRecommend.length>0}}">
+  <image class="dztjbg" src="{{managerRecommend[0].bannerImg}}"></image>
+  <scroll-view class="scrollContainer" scroll-x="true">
+    <view class="dztj-body">
+      <view class="djtjcard" wx:for="{{managerRecommend[0].shopGoodsListDtoList}}" catchtap="toDptjPromotion" data-navigateid="{{managerRecommend[0].navigateId}}">
+        <image src="{{item.thumb}}"></image>
+        <view class="dztjprice">
+          <view class="productPrice">
+            <text>￥</text>{{item.marketPrice}}
+          </view>
+          <view class="marketingprice" hidden="{{!item.showProductPrice}}">
+            <text>￥</text>{{item.productPrice}}
+          </view>
+        </view>
+        <view class="qiang" catchtap="toDptjPromotion" data-navigateid="{{managerRecommend[0].navigateId}}">
+          抢
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="dztjloadmore" catchtap="toDptjPromotion" data-navigateid="{{managerRecommend[0].navigateId}}">
+    查看更多<text class="iconfont icongengduo"></text></view>
+</view>
+<!--拼团-->
+<block wx:if="{{community.length > 0}}">
+  <view class="pintuanmodular" wx:for="{{community}}" wx:key="community" wx:for-index="idx" wx:for-item="community">
+    <image class="pintuanbg" src="{{community.bannerImg}}"></image>
+    <view class="pintuancard">
+      <view class="ptgoods" data-activityId="{{community.activityInfoDto.id}}" catchtap="jumpToDetail" wx:for="{{community.activityInfoDto.goodsList}}" wx:key="communityActivityInfoDto" wx:for-item="goodsinfo" wx:for-index="idxptitem" bindjump="jumpToGoodsDetail" wx:if="{{idxptitem<3}}">
+        <image src="{{goodsinfo.thumb}}"></image>
+        <view class="ptgoodsName">{{goodsinfo.title}}</view>
+        <view class="ptprice">
+          <view class="ptproductPrice">
+            <text>￥</text>{{goodsinfo.marketPrice}}
+          </view>
+          <view class="marketingprice" hidden="{{!goodsinfo.showProductPrice}}">
+            <text>￥</text>{{goodsinfo.productPrice}}
+          </view>
+        </view>
+        <view class="leftTopImg" wx:if="{{goodsinfo.marketType == 1}}">
+          <image src="/image/yushou.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="pintuanloadmore">
+      <view class="count-down-new">
+        <text>{{community.end_time.hh}}：</text>
+        <text>{{community.end_time.mm}}：</text>
+        <text>{{community.end_time.ss}}</text>
+      </view>
+    </view>
+    <view class="cantuaninfo">
+      <view class="cantuanren">
+        <image style="position: absolute; left: 60rpx;z-index: -4;" src="/image/pintuanmore.png"></image>
+        <image wx:for="{{community.activityInfoDto.supplierPeopleOrderDtoList}}" wx:for-index="iconIdx" wx:key="supplierPeopleOrderDtoList" wx:for-item="iconitem" style="position: absolute; left: {{(2-iconIdx)*20}}rpx;z-index: -{{2-iconIdx}};" src="{{iconitem.icon}}"></image>
+        <!-- <image style="position: absolute; left: 20rpx;z-index: -2;" src="https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eq2jLfWlgYOuH27QibgYhvrXsmFclIL6srfkic25waKlsym0cYzCTN4CHiaL5lPRjK5PBx0mdXfGDuiag/132"></image>
+        <image style="" src="https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eq2jLfWlgYOuH27QibgYhvrXsmFclIL6srfkic25waKlsym0cYzCTN4CHiaL5lPRjK5PBx0mdXfGDuiag/132"></image> -->
+      </view>
+
+      <!-- <view>
+        <image style=""  src="https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eq2jLfWlgYOuH27QibgYhvrXsmFclIL6srfkic25waKlsym0cYzCTN4CHiaL5lPRjK5PBx0mdXfGDuiag/132"></image>
+        <image style="margin-left:-14rpx;z-index:-1；" src="https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eq2jLfWlgYOuH27QibgYhvrXsmFclIL6srfkic25waKlsym0cYzCTN4CHiaL5lPRjK5PBx0mdXfGDuiag/132"></image>
+        <image style="margin-left:-14rpx;z-index:-2；" src="https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eq2jLfWlgYOuH27QibgYhvrXsmFclIL6srfkic25waKlsym0cYzCTN4CHiaL5lPRjK5PBx0mdXfGDuiag/132"></image>
+        <image style="margin-left:-14rpx;z-index:-3；" src="https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eq2jLfWlgYOuH27QibgYhvrXsmFclIL6srfkic25waKlsym0cYzCTN4CHiaL5lPRjK5PBx0mdXfGDuiag/132"></image>
+      </view> -->
+      <view>{{community.activityInfoDto.buyOrderCount}}人正在拼团</view>
+    </view>
+  </view>
+</block>
+<block wx:if="{{allDataObj.shopshuf.length>0}}">
+  <view class="banner" wx:for="{{allDataObj.shopshuf}}" wx:for-item="item" data-item='{{item}}' wx:key="shopshuf" bindtap="popIsShow">
+    <!-- 轮播组件 -->
+    <image src='{{item.bannerImg}}'></image>
+    <!-- <my-banner-component imgUrls="{{allDataObj.shopshuf}}"></my-banner-component> -->
+  </view>
+</block>
+<!--秒杀新-->
+<view class="miaosha" wx:if="{{promotionDisplayList.length>0}}">
+  <view class="msheader">
+    <view class="mstitle">{{promotionDisplayList[0].bannerTitle}}</view>
+    <view class="msdescription">{{promotionDisplayList[0].bannerText}}<text class="iconfont iconarrow-right"></text>
+    </view>
+    <image class="msleftImg" src="{{promotionDisplayList[0].bannerImg}}"></image>
+  </view>
+  <view class="miaosha-body" catchtap="toPromotion" data-navigateid="{{promotionDisplayList[0].navigateId}}">
+    <view class="miaosha-item" wx:for="{{promotionDisplayList[0].shopGoodsListDtoList}}" wx:key="shopGoodsListDtoList">
+      <image src="{{item.thumb}}"></image>
+      <view class="miaosha-Price">
+        <text>￥</text>{{item.marketPrice}}
+      </view>
+    </view>
+  </view>
+</view>
+<!--品牌满减 快递到家-->
+<view class="pinpaiandkuaidi" wx:if="{{promotionDisplayList.length>1}}">
+  <view class="pinpai" wx:for="{{promotionDisplayList}}" wx:for-index="idx" wx:key="promotionDisplayList" wx:if="{{idx<2&&promotionDisplayList[idx+1].shopGoodsListDtoList.length>0}}" catchtap="toPromotion" data-navigateid="{{promotionDisplayList[idx+1].navigateId}}">
+    <view class="pinpai-header">
+      <view>{{promotionDisplayList[idx+1].bannerTitle}}</view>
+      <view class="pinpai-label" wx:if="{{promotionDisplayList[idx+1].bannerText!=undefind}}">
+        {{promotionDisplayList[idx+1].bannerText}}<text class="iconfont iconarrow-right"></text></view>
+    </view>
+    <view class="pinpai-body">
+      <image wx:for="{{promotionDisplayList[idx+1].shopGoodsListDtoList}}" wx:key="shopGoodsListDtoList" wx:for-index="idxsub" wx:if="{{idxsub<2}}" src="{{item.thumb}}"></image>
+    </view>
+  </view>
+  <!-- <view class="pinpai"  wx:if="{{promotionDisplayList.length>2}}">
+    <view class="pinpai-header">
+      <view>快递到家</view>
+      <view class="pinpai-label">方便快捷<text class="iconfont iconarrow-right"></text></view>
+    </view>
+    <view class="pinpai-body">
+      <image src="http://static.crv.com.cn/images/bc381b5980d1461145d7a0c8278647e7.jpg"></image>
+      <image src="http://static.crv.com.cn/images/55cb4c2a351fade5db1b9e0a681fba51.jpg"></image>
+    </view>
+  </view> -->
+</view>
+<view class="page-body">
+  <!--限时秒杀团 -->
+  <!-- <block wx:if="{{allDataObj.seckill.length > 0}}">
+    <view class="timeLimitSeckill" wx:for="{{seckill}}">
+      <seckill item="{{item}}"></seckill>
+    </view>
+  </block> -->
+
+
+
+  <!--接龙团-->
+  <!-- <block wx:if="{{community.length > 0}}">
+    <view class="jielong" wx:for="{{community}}" wx:for-index="idx" wx:for-item="community"
+      style="margin-top:{{idx != 0?'30rpx':0}};">
+      <view class="index-card bg-gradient-main">
+        <view class="card-head">
+          <view class="card-head-left">
+            <text>{{community.bannerTitle}}</text>
+            <image src="/image/more.svg" class="moreImg" data-activityId="{{community.activityInfoDto.id}}"
+              catchtap="jumpToDetail"></image>
+          </view>
+          <view class="card-head-right">
+            距离结束：
+            <view class="count-down">
+              <text>{{community.end_time.hh}}</text>
+              <text>{{community.end_time.mm}}</text>
+              <text>{{community.end_time.ss}}</text>
+            </view>
+          </view>
+        </view>
+        <scroll-view class="scrollContainer" scroll-x="true">
+          <view class="card-body">
+            <index-goods-card wx:for="{{community.activityInfoDto.goodsList}}" bindjump="jumpToGoodsDetail"
+              activityId="{{community.activityInfoDto.id}}" goodsPlatform="2" goodsinfo="{{item}}"></index-goods-card>
+          </view>
+        </scroll-view>
+        <view class="jielong-bottom">
+          <view class="bottom-left">已有{{community.activityInfoDto.buyOrderCount}}人参加</view>
+          <view class="bottom-right" data-activityId="{{community.activityInfoDto.id}}" catchtap="jumpToDetail">
+            <button>立即参团</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block> -->
+
+
+  <!--分类板块-->
+  <!-- <block wx:if="{{allDataObj.goodscategory.length > 0}}">
+    <view class="category" wx:for="{{allDataObj.goodscategory}}" wx:for-index="idx" wx:for-item="category">
+      <view class="index-card {{idx%2==0?'bg-gradient-single':'bg-gradient-double'}}">
+        <view class="card-head flex-direction-column">
+          <view class="card-head-left">
+            <text>{{category.bannerTitle}}</text>
+          </view>
+          <view class="flex-direction-row flex card-head-discription">
+            <text>{{category.bannerText}}</text>
+            <image src="/image/more.svg" class="moreImg" bindtap="jumpToCategory"
+              data-navigateId="{{category.navigateId}}"></image>
+          </view>
+        </view>
+        <scroll-view class="scrollContainer" scroll-x="true">
+          <view class="card-body">
+            <index-goods-card wx:for="{{category.shopGoodsListDtoList}}" bindjump="jumpToGoodsDetail"
+              wx:for-item="cateGoods" goodsPlatform="1" goodsinfo="{{cateGoods}}" bindclick="addnum"></index-goods-card>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+  </block> -->
+
+  <block wx:if="{{shopGoods.length>0}}">
+    <view class="more-goods">
+      <view class="more-goods-head">
+        <!-- <view class="line">
+          <view class="red-line"></view>
+        </view> -->
+        <text>更多超值精选</text>
+        <!-- <view class="line">
+          <view class="red-line"></view>
+        </view> -->
+      </view>
+      <view class="more-goods-body">
+        <view class="more-goods-card">
+          <view class="more-goods-card-list">
+            <index-goods-card-two class="trigger_sku_component_list" data-index="{{idx}}" data-item="{{goods}}" bindclick="addnum" bindjump="jumpToGoodsDetail" wx:for="{{shopGoods}}" wx:for-item="goods" wx:key="shopGoods1" wx:for-index="idx" wx:if="{{idx%2==0}}" isSingle="{{true}}" goodsinfo="{{goods}}">
+            </index-goods-card-two>
+          </view>
+          <view class="more-goods-card-list">
+            <index-goods-card-two class="trigger_sku_component_list" data-index="{{idx}}" data-item="{{goods}}" bindclick="addnum" bindjump="jumpToGoodsDetail" wx:for="{{shopGoods}}" wx:for-item="goods" wx:key="shopGoods2" wx:for-index="idx" wx:if="{{idx%2!=0}}" isSingle="{{false}}" goodsinfo="{{goods}}">
+            </index-goods-card-two>
+          </view>
+        </view>
+        <!-- <view class="more-goods-card">
+          <index-goods-card-two bindclick="addnum" bindjump="jumpToGoodsDetail" wx:for="{{shopGoods}}"
+            wx:for-item="goods" wx:for-index="idx" isSingle="{{idx%2==0}}" goodsinfo="{{goods}}"></index-goods-card-two>
+        </view> -->
+      </view>
+    </view>
+  </block>
+</view>
+<!--首页弹框-->
+<view class='popModel' wx:if="{{popModelIsShow}}">
+  <!--  catchtouchmove="true" -->
+  <view id="pop" class='popImgBox' data-item='{{pop[0]}}' bindtap="popIsShow">
+    <image src='{{pop[0].bannerImg}}'></image>
+  </view>
+  <view class='popClose' bindtap='popCloseBtn'>
+    <image src='{{imgUrl}}pop-close.png'></image>
+  </view>
+</view>
+<!-- 首页右下角浮窗 暂时注释-->
+<view id="floating" data-item='{{floating[0]}}' bindtap="popIsShow" wx:if="{{isShowFloating}}" style='width:180rpx;height:180rpx;position:fixed;right:10px;bottom:15%;background:url({{floatingImgurl}}) no-repeat center;background-size:cover;'>
+</view>
+<!--购物车图标-->
+<!-- <view class="shoppingcart" catchtap="gotoShoppingCart">
+  <image src="/image/shoppingCart.png"></image>
+  <view class="cart-num" wx:if="{{cartNum}}">{{cartNum}}</view>
+</view> -->
+<!--自定义底部导航-->
+<bottom-tabbar currentIdx='0' cartNum='{{cartNum}}' class="tabbar {{isIpx?'pb20':''}}"></bottom-tabbar>

@@ -1,0 +1,33 @@
+<view>
+  <!-- <video class="videoMain" id="myVideo" object-fit="cover" autoplay="{{true}}" src="{{videInfo.mediaUrl}}" bindended="switchVideo" show-fullscreen-btn="{{false}}"></video> -->
+  <video class="videoMain" id="myVideo" object-fit="cover" src="{{src}}" autoplay="{{true}}" bindended="switchVideo" show-fullscreen-btn="{{false}}"></video>
+  <view class="gouwu" bindtap="showModal" data-target="bottomModal">
+    <text class="iconfont icongouwudai"></text>
+  </view>
+</view>
+<view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+    <view class="cu-dialog videoGoodsBox">
+      <view class="cu-bar bg-white videoGoodsTitle">
+        <view class="titleLeft">
+          <text>直播商品列表</text>
+        </view>
+        <view class="action cuIcon-close" style="font-size:20px;" data-target="bottomModal" bindtap="hideModal"></view>
+      </view>
+      <view class="padding-sm bg-videoMain">
+        <view style="height:800rpx;">
+          <scroll-view scroll-y scroll-with-animation style="height:100%" bindscrolltolower="videoGoodsBtmFun">
+            <!-- 商品列表 -->
+            <view class="goods-card" wx:for="{{goodsList}}">
+              <view class="goods-img" catchtap="goGoodsPage" data-url="{{item.url}}">
+                <image src="{{item.coverImg}}"></image>
+              </view>
+              <view class="goods-info">
+                <text class="text-ellipsis text-title" catchtap="goGoodsPage" data-url="{{item.url}}">{{item.name}}</text>
+                <text class="text-price" catchtap="goGoodsPage" data-url="{{item.url}}">{{item.price}}</text>
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+    </view>
+  </view>

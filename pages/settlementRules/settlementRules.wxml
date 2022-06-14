@@ -1,0 +1,25 @@
+<!--pages/settlementRules/settlementRules.wxml-->
+<view class="box">
+  <view class="list">
+    <text class="title">结算规则</text>
+    <text class="title2">1、佣金如何计算？</text>
+    <text class="text">客户在团长的提货点下单成功后，按该笔订单中商品净额的实时佣金比例或者固定佣金计算。</text>
+    <text class="title2">2、佣金何时到账？</text>
+    <text class="text">客户在团长的提货点下单成功、但未交易完成时，佣金体现在待到账金额中。订单交易完成计算为可支付佣金，体现在当月佣金里。</text>
+    <text class="title2"> 3、佣金如何支付？</text>
+    <text class="text"> 每月初，核算上个自然月团长佣金金额，公司财务操作与工资一起发放。</text>
+    <text class="title2">4、什么情况会减扣佣金？</text>
+    <text class="text">若用户订单产生退款，会扣除该笔订单相应退款商品的佣金。</text>
+  </view>
+  <view class="list">
+    <text class="title"> 名词解释</text>
+    <text class="title2"> 一、今日数据</text>
+    <text class="title3">预计佣金：</text> <text class="text">今日团长销售订单所产生的佣金（不包含退款单）</text>
+    <text class="title3">销售额：</text> <text class="text">今日团长销售订单的销售额（不包含退款单）</text>
+    <text class="title3">订单数：</text> <text class="text">今日团长销售订单的订单数量（不包含退款单）</text>
+    <text class="title2">二、我的账户</text>
+    <text class="title3">总佣金：</text>  <text class="text">团长所有销售订单所产生的佣金（交易成功的订单）</text>
+    <text class="title3">当月佣金：</text> <text class="text">当前自然月内团长销售订单所产生的佣金-当月内退款订单的佣金（交易成功的订单）</text>
+    <text class="title3">待到账佣金：</text> <text class="text">未交易成功的订单所产生的佣金</text>
+  </view>
+</view>

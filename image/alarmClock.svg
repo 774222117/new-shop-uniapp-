@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="19px" viewBox="0 0 18 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 4</title>
+    <defs>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="11.1871502%" id="linearGradient-1">
+            <stop stop-color="#F43927" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FF8B7F" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.958728609">
+        <g id="首页长备份" transform="translate(-253.000000, -295.000000)">
+            <g id="编组-4" transform="translate(253.000000, 295.000000)">
+                <path d="M15.5,0 C16.8807119,0 18,1.11928813 18,2.5 C18,3.57301037 17.3240048,4.4881336 16.3746584,4.84272571 C17.3992661,6.30187189 18,8.08078149 18,10 C18,14.9705627 13.9705627,19 9,19 C4.02943725,19 0,14.9705627 0,10 C0,8.08078149 0.600733877,6.30187189 1.62442375,4.84104909 C0.675995206,4.4881336 0,3.57301037 0,2.5 C0,1.11928813 1.11928813,0 2.5,0 C3.69721081,0 4.6978684,0.841544406 4.94270298,1.96536345 C6.16051457,1.34781959 7.53963848,1 9,1 C10.4603615,1 11.8394854,1.34781959 13.0590494,1.96513644 C13.3021316,0.841544406 14.3027892,0 15.5,0 Z" id="形状结合" fill="#FFFAFA"></path>
+                <circle id="椭圆形" fill="url(#linearGradient-1)" cx="9" cy="10" r="7"></circle>
+                <rect id="矩形" fill="#FFFFFF" x="8" y="6" width="1" height="4"></rect>
+                <rect id="矩形备份-13" fill="#FFFFFF" transform="translate(10.500000, 10.500000) rotate(-270.000000) translate(-10.500000, -10.500000) " x="10" y="8" width="1" height="5"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

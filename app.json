@@ -1,0 +1,105 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/jielong/jielong",
+    "pages/category/category",
+    "pages/groupCenter/groupCenter",
+    "pages/myIndex/myIndex",
+    "pages/mycoupon/mycoupon",
+    "pages/login/login",
+    "pages/shoporder/shoporder",
+    "pages/shoporderinfo/shoporderinfo",
+    "pages/advancegoods/advancegoods",
+    "pages/poster/poster",
+    "pages/goods/goods",
+    "pages/searchpage/searchpage",
+    "pages/shoppay/shoppay",
+    "pages/shoppingCar/shoppingCar",
+    "pages/groupMemberOrder/groupMemberOrder",
+    "pages/cashOutCenter/cashOutCenter",
+    "pages/groupCenter/applyLeader",
+    "pages/machine/index",
+    "pages/packetRain/index",
+    "pages/mycardbag/mycardbag",
+    "pages/live/live",
+    "pages/liveReview/liveReview",
+    "pages/promotion/promotion",
+    "pages/livegoods/livegoods",
+    "pages/coupondetail/coupondetail",
+    "pages/express/express",
+    "pages/couponmany/couponmany",
+    "pages/supplierActivitys/supplierActivitys",
+    "pages/shopInfo/shopInfo",
+    "pages/paycard/paycard",
+    "pages/paymentSuccess/paymentSuccess",
+    "pages/groupPickupOrder/groupPickupOrder",
+    "pages/afterorder/afterorder",
+    "pages/couponList/couponList",
+    "pages/secondpage/secondpage",
+    "pages/groupbuy/groupbuy",
+    "pages/groupActivityManage/groupActivityManage", 
+    "pages/choosehead/choosehead",
+    "pages/settlementRules/settlementRules",
+    "pages/userAgreement/userAgreement",
+    "pages/privacyAgreement/privacyAgreement"
+  ],
+  "plugins": {
+    "live-player-plugin": {
+      "version": "1.3.2",
+      "provider": "wx2b03c6e691cd7370"
+    },
+    "chooseLocation": {
+      "version": "1.0.5",
+      "provider": "wx76a9a06e5b4e693e"
+    }
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置将显示附近的苏果门店"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "苏果优选",
+    "navigationBarTextStyle": "black"
+  },
+  "servicemarket": true,
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "image/indexIconDefault.png",
+        "selectedIconPath": "image/indexIconSelect.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "分类",
+        "iconPath": "image/categoryDefault.png",
+        "selectedIconPath": "image/categorySelect.png"
+      },
+      {
+        "pagePath": "pages/shoppingCar/shoppingCar",
+        "text": "购物车",
+        "iconPath": "image/shopDefault.png",
+        "selectedIconPath": "image/shopSelect.png"
+      },
+      {
+        "pagePath": "pages/live/live",
+        "text": "直播",
+        "iconPath": "image/liveDefault.png",
+        "selectedIconPath": "image/liveSelect.png"
+      },
+      {
+        "pagePath": "pages/myIndex/myIndex",
+        "text": "我的",
+        "iconPath": "image/myIconDefault.png",
+        "selectedIconPath": "image/myIconSelect.png"
+      }
+    ],
+    "color": "#666666",
+    "selectedColor": "#FF3B30"
+  },
+  "sitemapLocation": "sitemap.json"
+}

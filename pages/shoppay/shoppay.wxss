@@ -1,0 +1,429 @@
+page{
+  padding-bottom: 120rpx;
+}
+.pubsty{
+  width: 688rpx;
+  background-color: white;
+  margin-top:44rpx;
+  margin: 44rpx auto 0 auto;
+}
+.pay-head{
+  padding: 24rpx 26rpx;
+  display: flex;
+  align-items: center;
+  font-size:26rpx;
+  font-family:PingFangSC-Semibold,PingFang SC;
+  font-weight:600;
+  color:rgba(32,32,32,1);
+  line-height:36rpx;
+}
+/* 头部地址选择 */
+.addressInfo{
+  height: 150rpx;
+  display: flex;
+  justify-content: start;
+}
+.addressInfo>view{
+  min-width:100rpx;
+  height: 100%; 
+}
+.leftIcon{
+  font-size: 26rpx;
+  color: #FF3B30;
+  text-align: center;
+}
+.rightIcon{
+  font-size: 24rpx;
+  color: #888888;
+  text-align: left;
+  line-height: 140rpx;
+}
+/* 地址弹出层 */
+.cu-dialog.addressBox{
+  border-radius:25px !important;
+}
+/* 收货方式弹出层 */
+.cu-dialog.pickTypeBox{
+  border-radius:25px !important;
+}
+.addressTitle{
+  height: 138rpx;
+}
+.addressItem{
+  width: 100%;
+  min-height:120rpx;
+  align-items: center;
+  border-bottom: 1px solid rgba(0,0,0,0.1)
+}
+.addressItem .addressItemLeftImg{
+  width: 80rpx;
+  height: 80rpx;
+}
+.addressItem .addressItemLeftImg image{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.addressItem .addressItemMiddleBox{
+  width: 600rpx;
+  text-align: left;
+  font-weight: bold;
+  font-size:14px;
+  margin-left: 10rpx;
+}
+.addressItem .addressItemMiddleBox .text-sty2{
+  font-size:12px;
+  color:rgba(136,136,136,1);
+  margin-top: 10rpx;
+  font-weight: normal;
+}
+
+/* 用户信息 */
+/* .userInfo{} */
+.userInfo>.cu-form-group{
+  min-height: 90rpx;
+}
+.userInfo>.cu-form-group>.title{
+  width: 180rpx;
+}
+/* 商品清单 */
+.commoditiesList{
+  /* width: 100%; */
+  /* height: 670rpx; */
+  margin-top: 10rpx;
+  /* margin-bottom: 120rpx; */
+}
+.commoditiesList .commoditiesListTitle{
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size:26rpx;
+  font-weight:bold;
+  color:rgba(57,57,57,1);
+  padding:0 30rpx;
+}
+.commoditiesList .commoditiesListItem{
+  width: 100%;
+  height: 140rpx;
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30rpx;
+}
+
+.leftImg{
+  width: 120rpx;
+  height: 120rpx;
+}
+.leftImg>image{display: block;width: 100%;height: 100%}
+.middeText{
+  width: 380rpx;
+  height: 120rpx;
+}
+.rightNum{
+  width: 150rpx;
+  height: 120rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  font-size:16px;
+  font-weight:bold;
+  color:rgba(57,57,57,1);
+}
+.numTextSty{
+  font-size:12px;
+  color:rgba(54,54,54,1);
+  padding-top: 10rpx;
+}
+/* 底部按钮 */
+.shopadvancebtmBar{
+  width: 100%;
+  height: 100rpx;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40rpx;
+}
+.leftShare{
+  font-size:14px;
+  font-weight:600;
+  color:rgba(155,155,155,1);
+}
+.leftShare>text{
+  font-size:18px;
+  font-weight:bold;
+  color:rgba(255,59,48,1);
+  margin-left: 20rpx;
+}
+.rightImmediatePurchase{
+  width:340rpx;
+  height:90rpx;
+  background:rgba(255,59,48,1);
+  /* border-radius:27px; */
+  text-align: center;
+  line-height: 90rpx;
+  font-size:32rpx;
+  font-weight:800;
+  color:rgba(255,255,255,1);
+}
+
+.leftTopIcon{
+  width: 40rpx;
+  font-size: 18px;
+  margin-left: 5rpx;
+  color: #FF3B30;
+  text-align: left;
+  line-height: 70rpx;
+}
+.picktype{
+  display: flex;
+  flex-direction: row;
+}
+.picktype>.title{
+  width: 180rpx;
+}
+.picktype>.content{
+  font-size:26rpx;
+  font-family:PingFangSC-Semibold,PingFang SC;
+  font-weight:600;
+  color:rgba(32,32,32,1);
+  line-height:36rpx;
+  display: flex;
+  align-items: center;
+}
+.pickTypeInfo{
+  display: flex;
+  flex-direction: column;
+  font-size:28rpx;
+  font-family:PingFang-SC-Bold,PingFang-SC;
+  font-weight:bold;
+  color:rgba(32,32,32,1);
+  line-height:40rpx;
+}
+.pickTypeInfo-desc{
+  font-size:24rpx;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color:#B6B6B6;
+  line-height:34rpx;
+}
+
+/* 弹出框 */
+.popModel{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,0.5)
+}
+.popModel .popImgBox{
+  width: 712rpx;
+  height: 712rpx;
+  position: absolute;
+  top: 212rpx;
+  left: 19rpx;
+}
+
+.popModel .popImgBox image{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.popModel .popClose{
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  left: 335rpx;
+  top: 924rpx;
+}
+.popModel .popClose image {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.tabContainer{
+  width: 688rpx;
+  /* position: fixed;
+  top: 54rpx;
+  left: 32rpx;
+  z-index: 9999;
+  overflow: hidden; */
+  display: flex;
+  flex-wrap: nowrap;
+  align-items:center;
+  justify-content:space-around;
+  height: 100rpx;
+  background-color: #FFF
+}
+
+.tab-item{
+    color: #363636;
+    height: 100%;
+    /* flex-grow: 1; */
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    font-size: 28rpx;
+    box-sizing:border-box;
+    width: 344rpx;
+    position:relative;
+  }
+  .tab-item.active{
+    color: #ffffff;
+    font-size: 28rpx;
+    font-weight:bold;
+    background-color: #ff3b30;
+  }
+  /* .tab-item.active::after {
+    content: " ";
+    width:76rpx;
+    height: 8rpx;
+    border-radius: 6rpx;
+    position: absolute;
+    left:10;
+    bottom:0;
+    background-color:#FF3B30;
+    z-index:10;
+  } */
+  .takeChoose{
+    display: flex;
+    flex-direction: row;
+  }
+  .takeLeft{
+    display: flex;
+    flex-direction: column;
+    width: 220rpx;
+    align-items: flex-end;
+  }
+  .takeLeft>view{
+    width: 118rpx;
+    height: 88rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26rpx;
+    font-family: PingFang SC, PingFang SC-Medium;
+    font-weight: 600;
+  }
+  .takeRight{
+    display: flex;
+    flex-direction: column;
+    max-height: 700rpx;
+    flex:1;
+  }
+  .selected{
+    color: #ff3b30;
+  }
+  .takeTimeInfo{   
+    padding-left: 32rpx; 
+    height: 88rpx;
+    display: flex;
+    align-items: center;
+    font-size: 26rpx;
+    font-family: PingFang SC, PingFang SC-Medium;
+    font-weight: 500;
+    flex: 1;
+  }
+  .takeRight image{
+    height: 40rpx;
+    width: 40rpx;
+  }
+  /* 收货方式弹出层 */
+.cu-dialog.takeTimeBox{
+  border-top-left-radius: 25px !important;
+  border-top-right-radius: 25px !important;
+}
+.showallcart{
+  color: #555;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5rpx;
+}
+.colorline{
+  height: 2rpx;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.commoditiesList .exchangeListTitle{
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  font-size:26rpx;
+  font-weight:bold;
+  color:rgba(57,57,57,1);
+  padding:0 30rpx;
+}
+.exchangeDesc{
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #666666; 
+  margin-left: 20rpx;
+}
+.productPrice{
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  text-decoration: line-through;
+  color: #999999;
+  line-height: 38rpx;
+}
+.commoditiesList .exchangeListItem{
+  width: 100%;
+  height: 140rpx;
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+}
+.right-item{
+  display: flex;
+  flex-direction: column;
+}
+.right-item-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.exchange_middeText{
+  width: 300rpx;
+  display: flex;
+  flex-direction: row;
+}
+.exchage_price{
+  background-image: url("https://sourced.sgsugou.com/new-shop/image/qiqiu.png"); 
+  background-size: 100% 100%;
+  width: 192rpx;
+  height: 63rpx;
+  display: flex;
+  justify-content: center;
+  padding-top: 8rpx;
+  font-size: 26rpx;
+  font-family: Source Han Sans CN;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+.right-item-bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.right-item-bottom image {
+  height: 40rpx;
+  width: 40rpx;
+}
+.tipsFont{
+  vertical-align: bottom;
+  font-size: 26rpx;
+  color: #999;
+}

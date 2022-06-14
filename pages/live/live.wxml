@@ -1,0 +1,40 @@
+<wxs module="getDate" src="../../utils/dataParse.wxs"></wxs>
+<view class="live_main">
+  <view class="tab-nav">
+    <view bindtap="tabSwitch" data-carttype="{{item.cartTyp}}" wx:for="{{tabList}}" wx:key="id" class="tab-nav-item {{tabIdx==item.id?'active':''}}" data-idx="{{item.id}}">
+      <span>{{item.name}}</span>
+    </view>
+  </view>
+  <view class="liveing_list" wx:if="{{roomStatus==1}}">
+    <view class="live_info" wx:for="{{liveingList}}">
+      <view class="liev_info_img" data-roomid="{{item.roomId}}" catchtap="navcatToLive">
+        <image src="{{item.shareImg}}"></image>
+      </view>
+      <view class="live_right_info">
+        <text class="live_info_title text-ellipsis" data-roomid="{{item.roomId}}" catchtap="navcatToLive">{{item.name}}</text>
+        <view class="live_info_bottom" data-roomid="{{item.roomId}}" catchtap="navcatToLive">
+          <!-- <text class="live_info_desc text-ellipsis_1">{{item.anchorName}}</text> -->
+          <text class="live_info_startTime">开播日期：{{getDate.getDate_New(item.startTime,'-')}}</text>
+          <text class="live_info_startTime">开播时间：{{getDate.getDateH_New(item.startTime,'-')}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="liveing_list" wx:if="{{roomStatus==2}}">
+    <view class="live_info" wx:for="{{liveOverList}}" data-videoid="{{item.id}}" catchtap="navcatToReview">
+      <view class="liev_info_img">
+        <image src="{{item.shareImg}}"></image>
+      </view>
+      <view class="live_right_info">
+        <text class="live_info_title text-ellipsis">{{item.name}}</text>
+        <view class="live_info_bottom">
+          <!-- <text class="live_info_desc text-ellipsis_1">{{item.anchorName}}</text> -->
+          <text class="live_info_startTime">视频：{{item.startTime}}</text>
+          <text class="live_info_startTime">{{item.watchNum}}人次观看</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!--自定义底部导航-->
+<bottom-tabbar currentIdx='3' cartNum='{{cartNum}}' class="tabbar {{isIpx?'pb20':''}}"></bottom-tabbar>

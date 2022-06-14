@@ -1,0 +1,27 @@
+.swiper{
+   height: 240rpx;
+   /* margin-top: 30rpx; */
+}
+
+.back{
+  width: 706rpx;
+  height: 240rpx;
+  border-radius: 25rpx;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shopClass{
+   height: 250rpx;
+   margin-top: 20rpx;
+}
+
+.shopClass .back{
+  width: 706rpx;
+  height: 250rpx;
+  border-radius: 10rpx;
+}

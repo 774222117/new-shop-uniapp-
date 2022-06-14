@@ -1,0 +1,141 @@
+<view class="groupCenter">
+  <view class="basicInform">
+    <view class="user-avatar">
+      <image class="userAvatarUrl" src="{{userInfoIconUrl}}"></image>
+    </view>
+    <view class="userInfo">
+      <view class="user-name">
+        {{userInfoName}}
+      </view>
+      <view class="address" bindtap="changeMycommunion" style="width:400rpx;">
+        <!-- <view class="leftIcon cuIcon-locationfill"></view> -->
+        <image src="../../image/carrier-white.png "style="width:24rpx;height:22rpx;min-width:24rpx;margin-right:15rpx"></image>
+        提货点：{{shareInfo.carrierName}}
+      </view>
+    </view>
+    <view class="switchStatus {{status?'switchStatus-T':'switchStatus-R'}}" bindtap="switchChange">
+      <view class="round {{status?'round-T':'round-R'}}"></view>
+      <view hidden="{{!status}}" class="status-text">营业</view>
+      <view hidden="{{status}}" class="status-text">休息</view>
+    </view>
+  </view>
+  <view class="group-body">
+    <view class="card ">
+      <view class="card-head">
+        <image src="../../image/data.png" class="headImg"></image>
+        <text>今日数据</text>
+      </view>
+      <view class="card-middle">
+        <view class="item-txt">预计收入（元）</view>
+        <view class="item-number">{{shareInfo.todayCommission}}</view>
+      </view>
+      <view class="card-bottom">
+
+        <view class="card-item">
+          <view class="item-txt">销售额（元）</view>
+          <view class="item-number" style="font-size:36rpx;">{{shareInfo.todaySaleMoney}}</view>
+        </view>
+        <!-- <view class="card-item">
+          <view class="item-number">￥{{shareInfo.todayPickUpCharge}}</view>
+          <view class="item-txt">提货费</view>
+        </view> -->
+        <view class="vertical"></view>
+        <view class="card-item">
+          <view class="item-txt">成交订单数</view>
+          <view class="item-number" style="font-size:36rpx;">{{shareInfo.todayOrderCount}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="card card-marggin">
+      <view class="card-head">
+        <image src="../../image/account.png" class="headImg"></image>
+        <text>我的账户</text>
+      </view>
+      <view class="card-body">
+        <!-- <view class="card-item">
+          <view class="item-number">{{shareInfo.isOutMoney}}</view>
+          <view class="item-txt">可提现</view>
+        </view>
+        <view class="card-item">
+          <view class="item-number">{{shareInfo.commission}}</view>
+          <view class="item-txt">总收入</view>
+        </view> -->
+        <!-- <view class="card-item">
+          <view class="item-number">{{shareInfo.pickUpCharge}}</view>
+          <view class="item-txt">提货费</view>
+        </view> -->
+        <view class="card-item2" style="width: 670rpx;margin:0 18rpx;border-bottom:2rpx solid #E5E5E5">
+          <view class="item-txt">总佣金（元）</view>
+          <view class="item-number" style="font-size:30rpx;">{{shareInfo.commission}}</view>
+        </view>
+        <view class="card-item2" style="padding-left: 34rpx">
+          <view class="item-txt">当月佣金</view>
+          <view class="item-number" style="font-size:30rpx;">{{shareInfo.curMonthSaleCommisson}}</view>
+        </view>
+        <view class="vertical"></view>
+        <view class="card-item2" style="padding-left: 34rpx">
+          <view class="item-txt">待到账佣金（元）</view>
+          <view class="item-number" style="font-size:30rpx;">{{shareInfo.waitFinishCommission}}</view>
+        </view>
+      </view>
+    </view>
+    <!--跳转导航-->
+    <view class="nav_item" catchtap="toNavicata" data-url="../groupActivityManage/groupActivityManage">
+      <view class="nav-item-left">
+        <image src="../../image/manage.png" class="headImg"></image>
+        <text>团管理</text>
+      </view>
+      <text class="iconfont iconarrow-right font12"></text>
+    </view>
+
+    <view class="nav_item" catchtap="toNavicata" data-url="../settlementRules/settlementRules">
+      <view class="nav-item-left">
+        <image src="../../image/rules.png" class="headImg"></image>
+        <text>结算规则</text>
+      </view>
+      <text class="iconfont iconarrow-right font12"></text>
+    </view>
+
+    <!-- <view class="nav_item" catchtap="tabApplyCarrier">
+        <view class="nav-item-left">
+          <image class="icon" src="https://sourced.sgsugou.com/new-shop/image/tzdd-icon.png"></image>
+          <text>申请自提点</text>
+        </view>
+      </view> -->
+    <!-- <view class='line'></view>
+      <view class="nav_item" catchtap="toNavicata" data-url="../cashOutCenter/cashOutCenter">
+        <view class="nav-item-left">
+          <image class="icon" src="https://sourced.sgsugou.com/new-shop/image/txzx-icon.png"></image>
+          <text>提现中心</text>
+        </view>
+        <text class="iconfont iconarrow-right font12"></text>
+      </view> -->
+
+  </view>
+</view>
+<view class="cu-modal bottom-modal {{modalName=='RadioModal'?'show':''}}">
+  <view class="cu-dialog carrierBox">
+    <view class="cu-bar bg-white addressTitle">
+      <view style="font-size:28rpx;color:rgba(57,57,57,1);margin-left:30rpx;font-weight:600;">
+        可申请的自提点
+      </view>
+      <view class="action cuIcon-close" style="font-size:40rpx;" data-target="hideRadioModal" bindtap="hideRadioModal">
+      </view>
+    </view>
+    <radio-group class="block">
+      <view class="cu-list menu text-left">
+        <view class="cu-item" wx:for="{{carriers}}" wx:key="disIndex">
+          <label class="flex justify-between align-center flex-sub" data-value="{{item}}" bindtap="radiotap">
+            <view class="flex-sub pickTypeInfo">
+              <text>{{item.address}}</text>
+            </view>
+            <radio class="round"></radio>
+          </label>
+        </view>
+        <view class="cu-item">
+        </view>
+      </view>
+    </radio-group>
+  </view>
+</view>

@@ -1,0 +1,198 @@
+.head{
+  background-color: #FFF;
+  padding-left: 25rpx;
+  padding-bottom: 27rpx;
+  padding-top: 11rpx;
+  padding-right: 25rpx;
+}
+.head .curtext{
+  color:#999999;
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  line-height: 39rpx;
+}
+.head .address{
+  margin-top:19rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.head .address .address-detail{
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #666666;
+  line-height: 39rpx;
+}
+.head .address .address-detail-modify{
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #999999;
+  line-height: 39rpx;
+  width: 100rpx;
+}
+.body{
+  padding-left: 29rpx;
+  padding-top:17rpx;
+  padding-right:28rpx;
+}
+.body .cur-head{
+  height: 30rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333333;
+  line-height: 39rpx;
+  margin-left:10rpx;
+}
+.body .cur-body{
+  width:auto;
+  height:180rpx;
+  margin-top:18rpx;
+  background-color:#FFF;
+  border-radius: 20rpx;
+  display:flex;
+}
+.body .cur-body .profile-image{
+  width:142rpx;
+  height:100%;
+  padding: 30rpx 11rpx;
+
+}
+.body .cur-body .profile-image .head-avatar{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background-color: #999999;
+}
+
+.body .cur-body .group-detail{
+  padding-top: 20rpx;
+}
+.body .cur-body .group-detail .head-name{
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #292424;
+}
+.body .cur-body .group-detail .position-distance{
+  display: flex;
+
+}
+.body .cur-body .position-distance .position{
+  height:36rpx;
+  background-color: #FF7344;
+  border-radius: 18rpx;
+  margin-top:12rpx;
+  text-align: center;
+  color:#FFF;
+  padding:0 10rpx;
+}
+.body .cur-body .position-distance .distance{
+  color:#FF7344;
+  margin-top:12rpx;
+  margin-left:17rpx;
+  height:36rpx;
+  text-align: center;
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+}
+
+.body .cur-body .group-detail .pick-point{
+  width: 508rpx;
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #999999;
+  margin-top:10rpx;
+}
+.body .nearby-group{
+  margin-top:15rpx;
+}
+.body .nearby-head{
+  height: 30rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333333;
+  line-height: 39rpx;
+  margin-left:10rpx;
+}
+.body .nearby-body{
+  height:180rpx;
+  margin-top:18rpx;
+  background-color:#FFF;
+  border-radius: 20rpx;
+  display:flex;
+  position:relative;
+}
+.body .nearby-body .profile-image{
+  width:142rpx;
+  height:100%;
+  padding: 30rpx 11rpx;
+
+}
+.body .nearby-body .profile-image .head-avatar{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background-color: #999999;
+}
+
+.body .nearby-body .group-detail{
+  padding-top: 20rpx;
+}
+.body .nearby-body .group-detail .head-name{
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #292424;
+}
+.body .nearby-body .group-detail .position-distance{
+  display: flex;
+
+}
+.body .nearby-body .position-distance .position{
+  height:36rpx;
+  background-color: #FF7344;
+  border-radius: 18rpx;
+  margin-top:12rpx;
+  text-align: center;
+  color:#FFF;
+  padding:0 10rpx;
+}
+.body .nearby-body .position-distance .distance{
+  color:#FF7344;
+  margin-top:12rpx;
+  margin-left:17rpx;
+  height:36rpx;
+  text-align: center;
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+}
+
+.body .nearby-body .group-detail .pick-point{
+  width: 508rpx;
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #999999;
+  margin-top:10rpx;
+}
+.body .nearby-body .choose-head{
+  position: absolute;
+  top:20rpx;
+  right:17rpx;
+  padding:5rpx 28rpx;
+  height:50rpx;
+  background-color: #FF7344;
+  color:#FFF;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  border-radius: 25rpx;
+}

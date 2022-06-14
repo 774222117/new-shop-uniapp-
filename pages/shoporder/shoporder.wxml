@@ -1,0 +1,76 @@
+<!--pages/shoporder/shoporder.wxml-->
+<!-- <view>
+  <button bindtap="toPay" data-order="{{orderList[0]}}">{{orderList[0].status}}</button>
+</view> -->
+<wxs module="getDate" src="../../utils/dataParse.wxs"></wxs>
+<!-- 抬头切换区域 -->
+<view class="orderStatus">
+  <view class="tabContainer">
+    <block wx:for="{{tabsList}}" wx:item="item" wx:key="index" wx:key="shopOrdertabsList">
+      <view class="tab-item {{currentTab == index? 'active':''}}" bindtap="changeTab" data-item="{{item}}" data-index="{{index}}">
+        <text>{{ item.title }}</text>
+      </view>
+    </block>
+  </view>
+</view>
+<view class="orderlist">
+  <!-- 订单卡牌 height:calc(100% - 100rpx)-->
+  <scroll-view scroll-y scroll-with-animation lower-threshold="200" style="height:100%">
+    <view class="cardItmeBox" wx:for="{{orderList}}" wx:key="shopOrderList">
+      <view class="topTitle">
+        <view class="leftAddressName">苏果超市</view>
+        <view class="rightState">{{item.statusExplain}}</view>
+      </view>
+      <view class="topTime">
+        {{getDate.getDate(item.createTime,'.')}} 
+        {{getDate.getDateH(item.createTime,':')}}
+      </view>
+      
+      <view class="cardItemInfo" wx:if="{{item.goodsList.length > 1}}">
+        <view class="leftImg" wx:for="{{item.goodsList}}" wx:key="shopOrderGoods" >
+          <image src="{{item.goodsThumb}}"></image>
+        </view>      
+        <!-- 这个地方不要删除了 可能会改
+        <view class="middeText">苏果超市苏果超市超市苏果超市苏果超市苏果超市苏果超市苏果超市苏果超市</view>
+        <view class="rightNum">
+          <view>123</view>
+          <view class="numTextSty">x1</view>
+        </view> -->
+      </view>
+      <view class="cardItemInfo" wx:else>
+        <view class="leftImg" data-id="{{item.id}}" data-shopId="{{item.shopId}}" bindtap="toOrderInfo">
+          <image src="{{item.goodsList[0].goodsThumb}}"></image>          
+        </view>
+        <view class="middeText" data-id="{{item.id}}" data-shopId="{{item.shopId}}" bindtap="toOrderInfo">{{item.goodsList[0].title}}
+          <view class="numTextSty">x{{item.goodsList[0].total}}</view>
+        </view>
+        <view class="rightNum">
+          <view>￥{{item.goodsList[0].realPrice}}</view>
+        </view>
+      </view>
+      <view class="carItemBtm">
+        <view class="allMoney"> 总金额: ￥{{item.price}}</view>
+        <view class="cancelOrder" wx:if="{{item.status == 0}}" data-id="{{item.id}}" data-shopId="{{item.shopId}}" bindtap="cancelOrder"> 取消 </view>
+        <view class="payOrder" wx:if="{{item.status == 0}}" data-id="{{item.id}}" data-shopId="{{item.shopId}}" bindtap="toOrderInfo"> 去支付 </view>
+        <view class="lookOrder" wx:else data-id="{{item.id}}" data-shopId="{{item.shopId}}" bindtap="toOrderInfo"> 查看订单 </view>
+        <view class="payOrder" wx:if="{{item.status == 2 && item.dispatchType == 2 && item.isSend == 0 && item.isDelivery == 1}}" 
+        data-id="{{item.id}}" data-shopId="{{item.shopId}}" bindtap="confirmGoods"> 确认收货 </view>
+      </view>
+    </view>
+  </scroll-view>
+  
+  <!-- 订单卡牌结束 -->
+  <view class='bottomLoadConplete' wx:if="{{bottomIsShow}}">
+    到底啦，没有其他订单啦~~
+  </view>
+  
+  <!-- 弹窗 -->
+  <view class='popModel' wx:if="{{popModelIsShow}}">
+    <view id="pop" class='popImgBox' data-item='{{couponSetInfo}}' bindtap="toCouponSet">
+      <image src='{{couponSetInfo.displayImg}}'></image>
+    </view>
+    <view class='popClose' bindtap='popCloseBtn'>
+      <image src='{{imgUrl}}pop-close.png'></image>
+    </view>
+  </view>
+</view>

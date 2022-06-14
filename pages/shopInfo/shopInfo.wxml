@@ -1,0 +1,22 @@
+<view class="shop_info">
+  <view class="shop_name">
+    {{shopInfo.name}}
+  </view>
+  <view class="shop_address">
+  {{shopInfo.detailAddress}}
+  </view>
+  <view class="shop_open_time">
+    营业时间：{{shopInfo.businessHours}}
+  </view>
+  <view class="shop_business_head">
+    商家从业资质
+  </view>
+  <view class="line"></view>
+  <view class="shop_business_image">
+    <view class="business_image_area" wx:for="{{shopInfo.pictures}}">
+      <view class="business_image" catchtap="showpreview" data-url="{{item}}">
+        <image mode="aspectFit" src="{{item}}"></image>
+      </view>
+    </view>
+  </view>
+</view>

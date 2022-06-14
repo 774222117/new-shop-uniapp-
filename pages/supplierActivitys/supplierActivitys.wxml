@@ -1,0 +1,18 @@
+<wxs module="getDate" src="../../utils/dataParse.wxs"></wxs>
+<view class="activity_main">
+  <view class="activity_list" >
+    <view class="activity_info" wx:for="{{activityList}}">
+      <view class="activity_info_img" data-activitid="{{item.id}}" catchtap="navcatToactivity">
+        <image src="{{item.imgUrl}}"></image>
+      </view>
+      <view class="activity_right_info">
+        <text class="activity_info_title text-ellipsis_1" data-activitid="{{item.id}}" catchtap="navcatToactivity">{{item.title}}</text>
+        <view class="activity_info_bottom" data-activitid="{{item.id}}" catchtap="navcatToactivity">
+          <text class="activity_info_desc text-ellipsis">{{item.description}}</text>
+          <text class="activity_info_startTime">开始日期：{{getDate.getDate_New(item.startTime,'-')}}</text>
+          <text class="activity_info_startTime">结束日期：{{getDate.getDate_New(item.endTime,'-')}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

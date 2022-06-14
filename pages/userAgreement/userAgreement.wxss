@@ -1,0 +1,28 @@
+/* pages/userAgreement/userAgreement.wxss */
+page {
+  padding: 0 28rpx env(safe-area-inset-bottom);
+  box-sizing: border-box;
+}
+
+.title {
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 700;
+  margin: 30rpx 0;
+}
+
+.subTitle {
+  font-size: 30rpx;
+  font-weight: 700;
+  margin: 56rpx 0 15rpx;
+}
+.tertiaryTitle{
+  font-weight: 700;
+  margin-right: 10rpx;
+}
+.paragraph {
+  text-indent: 56rpx;
+}
+.text{
+  margin-bottom: 10rpx;
+}

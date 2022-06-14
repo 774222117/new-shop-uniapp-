@@ -1,0 +1,71 @@
+page{
+  background: white;
+  margin-bottom: 146rpx;
+}
+.search-form{
+  margin: 24rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F5F5F5;
+  height:70rpx;
+  border-radius:38px;
+  flex: 1;
+}
+/* .goodslist{
+  margin-bottom: 146rpx;
+} */
+.headbar{
+  display: flex;
+  align-items: center;
+  padding-right: 20rpx;
+}
+.saoyisao{
+  width: 70rpx;
+  height: 70rpx;
+  margin-left: 4rpx;
+}
+
+.containerBox-noresult {
+	width: 100%;
+	/* height: 1360rpx; */
+	background: #ffffff;
+	/* display: flex; */
+	/* flex-direction: column; */
+}
+/* 历史搜索 */
+.history {
+	width: 128rpx;
+	height: 48rpx;
+	font-size: 32rpx;
+	font-family: PingFang SC, PingFang SC-Semibold;
+	font-weight: 600;
+	text-align: left;
+	color: rgba(0,0,0,0.85);
+	line-height: 48rpx;
+	margin-left:28rpx;
+}
+/* 历史搜索结果 */
+.historyResult {
+	width: 690rpx;
+	min-height: 48rpx;
+	margin: 28rpx 0 0 28rpx;
+	display: flex;
+	flex-wrap: wrap;
+}
+.historyResult .historyItem {
+	/* width: 104rpx; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 48rpx;
+	background-color: rgba(60,60,67,0.06);
+	border-radius: 24rpx;
+	font-size: 24rpx;
+	font-family: PingFang SC, PingFang SC-Regular;
+	font-weight: 400;
+	color: rgba(60,60,67,0.65);
+	margin: 0 16rpx 16rpx 0;
+	padding: 0 30rpx;
+	box-sizing: border-box;
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "goods-card": "/component/goods-card/index",
+    "bottom-action": "/component/bottomAction/index"
+  }
+}

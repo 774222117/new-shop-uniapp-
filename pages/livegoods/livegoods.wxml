@@ -1,0 +1,61 @@
+
+<my-address id = 'myAddress' bgColor="#fff" fontColor="black" iconColor="red" isIndex="{{false}}" useShopCategory="{{useShopCategory}}" chooseShop="{{chooseShop}}" bind:chooseEvent="chooseShopEvent" shopInfo="{{shopInfo}}"></my-address>
+<!-- 商品列表盒子 -->
+  <view class="shopListBox">
+    <view class="VerticalBox">
+      <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}" style="height:calc(100vh - 156rpx)">
+        <view class="cu-item bg-gray {{index==curCategoryIndex?' cur':''}} leftListSty" wx:for="{{categoryList}}" wx:key="shopCategoryGoodsKey" bindtap='tabSelect' data-id="{{index}}"  style="padding:0;">
+        <view class="leftListIcon" wx:if="{{item.iconUrl}}">
+          <image src="{{item.iconUrl}}"></image>
+        </view>
+        <text>{{item.title}}</text>
+        </view>
+      </scroll-view>
+      <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh - 286rpx)" scroll-into-view="main-{{MainCur}}" bindscroll="VerticalMain"
+      bindscrolltoupper="upper"
+      bindscrolltolower="lower"
+      >
+        <!-- <view wx:for="{{categoryGoodsList}}" wx:key="categoryGoodsListKey" id="main-{{index}}"> -->
+          <!-- 商品内容 -->
+          <block wx:for="{{goodsInfoList}}" wx:key="index">
+            <view class="flex justify-between shopItemList" data-goodsinfo="{{item}}" bindtap="jumpToDetail">
+              <view class="leftImg" data-target="shopCarInfo" data-goodsinfo="{{item}}">
+                <view class="mainImg">
+                  <image src="{{item.thumb}}"></image>
+                </view>
+                <view class="leftTopImg" wx:if="{{item.marketType == 1}}">
+                  <image src="/image/yushou.png"></image>
+                </view>
+              </view>
+              <view class="rightBox">
+                <view class="topTitle">{{item.title}}</view>
+                <view class="rightBoxBtmBox flex justify-between">
+                  <view class="priceBox">
+                  <view class="limitBox" wx:if="{{item.marketType == 1 && item.userMaxBuy > 0}}">限购{{item.userMaxBuy}}份</view>
+                  <view class="limitBox1" wx:elif="{{item.marketType == 0 || item.marketType == 2}}">库存:{{item.total}} 已售:{{item.salesReal}}</view>
+                  </view>
+                </view>
+                
+                <view class="countBox flex">
+                  <view>
+                    <text class="text-money1">￥{{item.marketPrice}}</text>
+                    <text class="text-money2">￥{{item.productPrice}}</text>
+                  </view>
+                  <view  class="buyBtn1 flex justify-between"  w>
+                    <view class="minusBtn" catchtap="delCart" data-goodsinfo="{{item}}">-</view>
+                    <view class="goosNum" style="width:44rpx;">{{item.buyCount}}</view>
+                    <view class="plusBtn" catchtap="addCart" data-goodsinfo="{{item}}">+</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </block>
+          <view class='bottomLoadConplete' wx:if="{{bottomIsShow}}">
+            ~~~~已经到底了~~~
+          </view>
+        <!-- </view> -->
+      </scroll-view>
+    </view>
+  </view>
+  <bottom-action cartTypeName = "GroupBuy" sumPrice="{{cartShopTotal.sumPrice}}" bottomVal="bt20" sumProductPrice="{{cartShopTotal.sumProductPrice}}"
+  buyCount="{{cartShopTotal.buyCount}}" goodsInfoList="{{goodsInfoList}}" shopCart="{{shopCart}}"   bindcartmodyfiy="carModifyEvent" roomId="{{roomId}}"></bottom-action>

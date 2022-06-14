@@ -1,0 +1,24 @@
+<view class="goods">
+  <view class="goods-item">
+    <view class="goods-mainImg" data-goodsinfo="{{goodsinfo}}" bindtap="jumpToDetail">
+      <image mode="aspectFill" src="{{goodsinfo.thumb}}"></image>
+    </view>
+    <view class="leftTopImg" wx:if="{{goodsinfo.marketType == 1}}">
+      <image wx:if="{{goodsinfo.deliveryWay==2}}" src="/image/kuaidi.png"></image>
+      <image wx:else src="/image/yushou.png"></image>
+    </view>
+    <view class="goods-desc">
+      <view class="title" data-goodsinfo="{{goodsinfo}}" bindtap="jumpToDetail">
+        {{goodsinfo.title}}
+      </view> 
+      <view class="price-info">
+        <view class="productprice" data-goodsinfo="{{goodsinfo}}" bindtap="jumpToDetail"><view hidden="{{!goodsinfo.showProductPrice}}"><text>￥</text>{{goodsinfo.productPrice}}</view></view>
+        <view class="marketPrice">
+          <view class="price" data-goodsinfo="{{goodsinfo}}" bindtap="jumpToDetail"><text>￥</text>{{goodsinfo.marketPrice}}</view>
+          <!-- <view class="plusBtn" data-goodsinfo="{{goodsinfo}}" wx:if="{{goodsPlatform!=2&&goodsinfo.marketType != 1}}" catchtap="addnum">+</view> -->
+          <image class="shopCar-image" data-goodsinfo="{{goodsinfo}}" wx:if="{{goodsPlatform!=2&&goodsinfo.marketType != 1}}" catchtap="addnum" src="/image/addCart.svg"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

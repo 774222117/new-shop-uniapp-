@@ -1,0 +1,436 @@
+page{
+  padding-bottom: 160rpx;
+}
+.jielong-head{
+  display: flex;
+  width:750rpx;
+  height:500rpx;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0.7) 100%);
+  position: relative;
+}
+.jielong-head image{
+  width:750rpx;
+  height:500rpx;
+}
+.activity-date{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height:64rpx;
+  background:rgba(0,0,0,1);
+  border-radius:32rpx;
+  opacity:0.6;
+  font-size:26rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  line-height:36rpx;
+  display: flex;
+  align-items: center;
+  padding: 14rpx 20rpx;
+}
+.head-description{
+  position: absolute;
+  top: 280rpx;
+  /* left: 32rpx; */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  bottom: 50rpx;
+  padding: 15rpx;
+  z-index: 2;
+  /* border-radius:16rpx; */
+}
+.head-mask{
+  /* background-image: url(https://sourced.sgsugou.com/new-shop/image/activitybg.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%; */
+  background:linear-gradient(180deg,rgba(0, 0, 0, 0) 0%,rgb(0, 0, 0,0.7) 100%);
+  position: absolute;
+  top:0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.description-title{
+  font-size:36rpx;
+  height:52rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  line-height:52rpx;
+}
+.description-cantuaninfo{
+  height:36rpx;
+  font-size:26rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  line-height:36rpx;
+}
+.description-content{
+  /* margin-top: 16rpx; */
+  height:36rpx;
+  font-size:26rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  line-height:36rpx;
+}
+.page-body{
+  margin-top: -50rpx;
+  position: relative;
+}
+.jielong-goodslist{
+  background:rgba(255,255,255,1);
+  border-radius:20px 20px 0px 0px;
+}
+.jielong-buylist{
+  background:rgba(255,255,255,1);
+  margin-top:16rpx;
+  position: relative;
+  padding: 32rpx;
+}
+.jielong-buylist-title{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.red-span{
+  width:10rpx;
+  height:24rpx;
+  background:rgba(255,59,48,1);
+}
+.jielong-buylist-title text{
+  margin-left: 8rpx;
+  font-size:32rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:600;
+  color:rgba(32,32,32,1);
+  line-height:44rpx;
+  height: 44rpx;
+}
+.cantuan-info{
+  height: 160rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #F2F2F2;
+}
+.cantua-num-radiu{
+  width:48rpx;
+  height:48rpx;
+  line-height: 48rpx;
+  background:rgba(255,59,48,1);
+  border-radius:50%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  font-size:26rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+}
+.cantuan-info image{
+  width:112rpx;
+  height:112rpx;
+  border-radius:50%;
+  margin-left:26rpx;
+}
+.cantuan-right{
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.userinfo{
+  display: flex;
+  flex-direction: column;
+  margin-left: 16rpx;
+}
+.userinfo-nick{
+  font-size:26rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:600;
+  color:rgba(32,32,32,1);
+  line-height:36rpx;
+}
+userinfo-buyinfo{
+  font-size:26rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(32,32,32,1);
+  line-height:36rpx;
+  margin-top: 8rpx;
+}
+.cantuan-date{
+  font-size:26rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(32,32,32,1);
+  line-height:36px;
+}
+.nomore{
+  display: flex;
+  height: 154rpx;
+  justify-content: center;
+  font-size:26rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color: black;
+  line-height:36px;
+  background-color: white;
+}
+.showMore{
+  display: flex;
+  height: 154rpx;
+  justify-content: center;
+  font-size:26rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(255,59,48,1);
+  line-height:36px;
+  background-color: white;
+}
+.fixed-aside{
+  position: fixed;
+  right: 30rpx;
+  top: 65%;
+  z-index: 100;
+  width: 80rpx;
+}
+.fixed-service {
+  display: inline-block;
+  width: 80rpx;
+  height: 80rpx;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  text-align: center;
+  color: #fff;
+  box-sizing: border-box;
+  font-size: 20rpx;
+  padding: 10rpx;
+  line-height: 1.2;
+  margin-bottom: 10rpx;
+}
+.fixed-service .iconfont {
+  font-size: 30rpx;
+}
+/*分享begin*/
+
+.ui-mask {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.model-services {
+  width: 100%;
+  position: fixed;
+  background-color: #fff;
+  bottom: 0;
+  z-index: 1000;
+  color: #333;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transform: translate(0, 100%);
+  transform: translate(0, 100%);
+}
+
+.model-services.show {
+  -webkit-transform: translate(0);
+  transform: translate(0);
+}
+
+.model-services .model-services-title {
+  font-size: 36rpx;
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 1px solid #f2f5f8;
+}
+
+.model-services .model-services-content {
+  padding: 40rpx;
+}
+
+.model-services .model-services-content .service-item {
+  margin-bottom: 20rpx;
+  width: 50%;
+  float: left;
+  text-align: center;
+}
+
+.model-services .model-services-content .service-icon {
+  font-size: 80rpx;
+  color: #50b674;
+}
+
+.service-name {
+  padding-left: 10rpx;
+}
+
+.cube-text {
+  position: relative;
+  width: 100%;
+  height: 32rpx;
+  line-height: 32rpx;
+  color: #777;
+  margin-top: 5rpx;
+  font-size: 24rpx;
+}
+
+.none_btn {
+  border: none;
+  line-height: 1.1;
+  padding: 0px;
+}
+
+button[plain] {
+  border: none;
+}
+
+.share-modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 101;
+  transition: all 400ms ease-in;
+}
+
+.share-modal-content {
+  position: relative;
+  width: 70%;
+  top: 50%;
+  left: 15%;
+  transform: translateY(-50%);
+  z-index: 110;
+}
+
+.share-modal-img {
+  width: 100%;
+  height: 956rpx;
+  background: #f7f7f7;
+}
+
+.share-modal-img image {
+  width: 100%;
+}
+
+.share-modal-btn-list {
+  display: flex;
+  margin-top: 30rpx;
+}
+
+.share-modal-btn-item {
+  text-align: center;
+  flex: 1;
+}
+
+.share-modal .btn-icon {
+  width: 70rpx;
+  margin: 0 auto;
+}
+
+.share-modal .btn-text {
+  position: relative;
+  width: 100%;
+  height: 32rpx;
+  line-height: 32rpx;
+  color: #fff;
+  margin-top: 5rpx;
+  font-size: 24rpx;
+}
+
+/*分享end*/
+
+
+/* yb 是否弹窗领取优惠券  start*/
+ .isShowReceiveCouponModel{
+  width: 622rpx;
+  height: 626rpx;
+  position: absolute;
+  top: 200rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: url('https://source.ckldzsw.com/coupon/share/open.png') no-repeat center;
+  background-size: cover;
+}
+.isShowReceiveCouponModel .titles{
+  height: 50rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #FFFFFF;
+  line-height: 50rpx;
+  text-align: center;
+  margin-top: 140rpx;
+}
+.isShowReceiveCouponModel .prices{
+  width: 548rpx;
+  height: 144rpx;
+  margin: 50rpx auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.isShowReceiveCouponModel .prices .left{
+  width: 208rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.prices .left .textTop{
+  color: rgba(255, 74, 40, 1);
+  font-weight: bold;
+}
+.prices .left .textTop .textTop1{
+  font-size: 40rpx;
+}
+.prices .left .textTop .textTop2{
+  font-size: 68rpx;
+}
+.prices .left .textBtm{
+  width: fit-content;
+  font-size: 20rpx;
+  color: rgba(255, 74, 40, 1);
+  border-radius: 2px;
+  border: 1px solid #FF4A28;
+  padding: 2rpx 6rpx;
+  margin: 0 auto;
+
+}
+.isShowReceiveCouponModel .prices .right{
+  width: 340rpx;
+  height: 100%;
+  padding-left: 60rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.prices .right .topTitle{
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+  text-align: left;
+}
+.prices .right .btmTimes{
+  font-size: 20rpx;
+  font-weight: 400;
+  color: #666666;
+  text-align: left;
+  margin-top: 10rpx;
+}
+
+/* 是否弹窗领取优惠券  end */

@@ -1,0 +1,7 @@
+<!--pages/packetRain/index.wxml-->
+<view style="background: url('{{_activeInfo.imgUrl}}') no-repeat center;background-size:cover;" class="container" hidden='{{visible}}'>
+  <view class='playBtn' bindtap='playBtnClick'></view>
+</view>
+<!-- 新的  红包雨组件 -->
+<sol-packet-rain visible="{{visible}}" createSpeed="{{createSpeed}}" time="{{time}}" readyTime="{{readyTime}}" min="{{min}}" max="{{max}}" bind:finish="success" activeId="{{activeId}}"
+id="packetrain"></sol-packet-rain>

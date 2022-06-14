@@ -1,0 +1,35 @@
+<!-- 我的卡包 -->
+<wxs module="filter" src="../../utils/dataParse.wxs"></wxs>
+<view class="my-card-container">
+  <image src="{{imgUrl}}mycardbagbg.png" class="top-image"></image>
+  <view class="card-contianer">
+    <block wx:for="{{cardDataList}}" wx:key="cardDataListKey">
+      <view class="card-box {{isCardShow == item.couponId?'active':''}}" data-id="{{item.couponId}}" bindtap="cardClick" data-cid="{{item.couponCode}}">
+      <view class="show-box">
+        <image src="{{item.picture}}" class="show-box-bg"></image>
+        <text class="show-text-t1 lt" wx:if='{{item.shopName==""}}'>优享卡</text>
+        <text class="show-text-t1 lt" wx:else>{{item.shopName}}</text>
+        <image src="{{imgUrl}}qrcode.png" class="qrCode rt"></image>
+        <image src="{{imgUrl}}cardopen.png" class="closeBtn rt" wx:if='{{isCardShow == item.couponId}}'></image>
+        <image src="{{imgUrl}}cardclose.png" class="closeBtn rt" wx:else></image>
+        <!-- <text class="show-text-name">{{item.name}}</text> -->
+        <text class="show-text-t2">{{item.name}}-{{item.intro}}</text>
+        <text class="show-text-t3">剩余 <text class="show-text-t4">{{item.remainingCount}}</text>次</text>
+        <!-- <text class="show-text-t5">有效时间：{{filter.getDate(item.couponStartTime)}}~{{filter.getDate(item.couponEndTime)}}</text>-->
+        <text class="show-text-t5">失效描述：{{item.invalidDescription}}</text> 
+        <text class="show-text-t6">{{item.returnCash}}</text>
+      </view>
+      <image src="{{imgUrl}}cardlogo.png" class="cardlogo"></image>
+      <text class="hidden-title">优享卡</text>
+      <view class="hidden-code">
+        <block wx:if="{{item.couponCode == showqrcode}}">
+          <canvas canvas-id="{{item.couponCode}}" class="qrcodebox"></canvas>
+          <view class="barCodeNumBox">{{item.couponCode}}</view>
+        </block>
+        <text class="hidden-text-t1">请出示一维码付款</text>
+        <!-- <view class="hidden-text-t1" bindtap='lookDetails' data-couponid='{{item.couponId}}'>查询详情</view> -->
+      </view>
+    </view>
+    </block>
+  </view>
+</view>

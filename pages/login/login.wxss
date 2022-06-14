@@ -1,0 +1,71 @@
+/**index.wxss**/
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 360rpx 0;
+  box-sizing: border-box;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+}
+
+.notice {
+  color: #363636;
+  font-size: 28rpx;
+  margin-top: 36rpx;
+}
+
+/* 用户协议 */
+.contractBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60rpx;
+}
+
+.checkImg {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 11rpx;
+}
+
+.textColor {
+  color: rgba(214, 145, 45, 1);
+}
+
+.btn {
+  width: 60%;
+  margin-top: 60rpx;
+}
+
+.btn button {
+  background-color: #FF3B30;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.refuseBtn {
+  width: 60%;
+  margin-top: 60rpx;
+  background-color: #ddd;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+}

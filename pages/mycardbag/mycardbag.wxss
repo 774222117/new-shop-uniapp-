@@ -1,0 +1,183 @@
+/*我的卡包*/
+page{
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+.my-card-container{
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background: #F0F0F0;
+  overflow-y: hidden;
+  position: relative;
+}
+.lt{
+  float: left;
+}
+.rt{
+  float: right;
+}
+.my-card-container .top-image{
+  width: 100%;
+  height: 230rpx;
+  display: block;
+}
+.card-contianer{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+  padding-top: 32rpx;
+  box-sizing: border-box;
+}
+.card-box{
+  width: 694rpx;
+  height:330rpx;
+  margin: 0 auto 32rpx;
+  border-radius: 22rpx;
+  transition: height 0.3s ease;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+}
+.card-box.active{
+  height: 724rpx;
+  overflow: hidden;
+}
+.card-box .show-box{
+  width: 100%;
+  height:330rpx;
+  border-radius: 16rpx;
+  position: relative;
+  overflow: hidden;
+}
+.show-box .show-box-bg{
+  width: 100%;
+  height: 100%;
+}
+.show-box .show-text-t1{
+  font-size: 24rpx;
+  color: #fff;
+  position: absolute;
+  left: 80rpx;
+  top: 22rpx;
+}
+.show-box .qrCode{
+  width: 42rpx;
+  height: 42rpx;
+  position: absolute;
+  right: 28rpx;
+  top: 28rpx;
+}
+.show-box .closeBtn{
+  width: 28rpx;
+  height: 20rpx;
+  position: absolute;
+  top: 40rpx;
+  right: 90rpx;
+}
+
+.show-text-name{
+  font-size:32rpx;
+  position: absolute;
+  left: 28rpx;
+  top:102rpx;
+  width: 660rpx;
+  color: #fff;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.show-text-t2{
+  font-size:32rpx;
+  position: absolute;
+  width: 660rpx;
+  left: 28rpx;
+  top:146rpx;
+  color: #fff;
+}
+.show-text-t3{
+  font-size: 24rpx;
+  position: absolute;
+  right: 28rpx;
+  top:142rpx;
+  color: #fff;
+}
+.show-text-t4{
+  font-size: 32rpx;
+}
+.show-text-t5{
+  font-size: 24rpx;
+  color: #fff;
+  position: absolute;
+  left: 28rpx;
+  bottom: 28rpx;
+}
+.show-text-t6{
+  font-size: 24rpx;
+  color: #fff;
+  position: absolute;
+  right: 28rpx;
+  bottom: 28rpx;
+}
+.card-box .hidden-code{
+  width: 100%;
+  height: 270rpx;
+  background: #fff;
+  position: absolute;
+  left: 0;
+  top: 420rpx;
+  overflow: hidden;
+}
+.hidden-title{
+  font-size: 28rpx;
+  color: #D19A7D;
+  position: absolute;
+  left: 80rpx;
+  top:351rpx;
+}
+.cardlogo{
+  width: 42rpx;
+  height: 28rpx;
+  position: absolute;
+  left: 28rpx;
+  top:356rpx;
+}
+.hidden-code .qrcodebox{
+  width: 100%;
+  background: #fff;
+  height: 100%;
+  overflow: hidden;
+}
+.hidden-code .hidden-text-t1{
+  font-size: 28rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: rgba(0,0,0,0.4);
+  text-align: center;
+  font-weight: bold;
+}
+.isHidden{
+  display: none
+}
+.barCodeNumBox{
+  position: absolute;
+  bottom: 64rpx;
+  width:100%;
+  font-size: 38rpx;
+  line-height:42rpx;
+  text-align: center;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

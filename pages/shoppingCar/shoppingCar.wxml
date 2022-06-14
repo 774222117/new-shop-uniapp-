@@ -1,0 +1,50 @@
+<wxs module="m1">
+  var numberToFix= function (value) {
+  return value.toFixed(2)
+  }
+  module.exports.numberToFix=numberToFix;
+</wxs>
+<view class="car_main">
+  <view class="car_goods" wx:for="{{shopCart}}">
+    <view class="goods-img" data-goodsinfo="{{item}}" bindtap="jumpToDetail">
+      <image src="{{item.goodsThumb}}"></image>
+    </view>
+    <view class="goods-rightBox">
+      <text class="goods-title text-ellipsis" data-goodsinfo="{{item}}" bindtap="jumpToDetail">{{item.title}}</text>
+      <view class="goods-price-info">
+        <view class="price-info-left" data-goodsinfo="{{item}}" bindtap="jumpToDetail">
+          <text class="sale-price">￥{{m1.numberToFix(item.realPrice)}}</text>
+          <text class="market-price"
+            hidden="{{!item.showProductPrice}}">￥{{m1.numberToFix(item.realProductPrice)}}</text>
+        </view>
+        <view class="numEditView">
+          <!-- <view class="minusBtn" bindtap="cartDel" data-goodsinfo="{{item}}">-</view> -->
+          <image class="shopCar-image" bindtap="cartDel" data-goodsinfo="{{item}}" src="/image/delCart.png"></image>
+          <view class="goosNum" style="width:44rpx;">{{item.total}}</view>
+          <image class="shopCar-image" bindtap="cartAdd" data-goodsinfo="{{item}}" src="/image/addCart.png"></image>
+          <!-- <view class="plusBtn" bindtap="cartAdd" data-goodsinfo="{{item}}">+</view>     -->
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="car_none" wx:if="{{shopCart.length<=0}}">
+    <image src="https://sourced.sgsugou.com/new-shop/image/cartNone.png"></image>
+    <text class="car_none_title">购物车空空如野</text>
+    <text class="car_none_desc">没有商品在购物车，快去选购吧</text>
+  </view>
+</view>
+<!--底部合计-->
+<view class="cart-btmBox" wx:if="{{shopCart.length>0}}">
+  <view class="tipsFont">{{freightTips}}</view>
+  <view class="flex">
+    <view class="priceInfo">
+      <view class="action cuIcon-deletefill" bindtap="clearShopCart" style="margin-left:20rpx;">清空</view>
+      <text class="text-heji">合计：</text>
+      <text class="text-black text-bold text-summoney">￥{{m1.numberToFix(sumPrice)}}</text>
+    </view>
+    <view class="placeBtn">
+      <button class="placeAnOrder" bindtap="toPayPage">去结算</button>
+    </view>
+  </view>
+</view>
+<bottom-tabbar currentIdx='2' cartNum='{{cartNum}}' class="tabbar {{isIpx?'pb20':''}}"></bottom-tabbar>

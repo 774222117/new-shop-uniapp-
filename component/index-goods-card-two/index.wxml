@@ -1,0 +1,60 @@
+<view class="goods {{isSingle?'Margin-single':''}}">
+  <view class="goods-item">
+    <view class="goods-mainImg" data-goodsinfo="{{goodsinfo}}" bindtap="jumpToDetail">
+      <image mode="aspectFill" src="{{goodsinfo.thumb}}"></image>
+    </view>
+    <view class="leftTopImg" wx:if="{{goodsinfo.marketType == 1}}">
+      <image wx:if="{{goodsinfo.deliveryWay==2}}" src="/image/kuaidi.png"></image>
+      <image wx:else src="/image/yushou.png"></image>
+    </view>
+    <view class="goods-desc">
+      <view class="title" data-goodsinfo="{{goodsinfo}}" bindtap="jumpToDetail">
+       {{goodsinfo.title}}
+      </view>
+      <view class="topiclist" data-goodsinfo="{{goodsinfo}}" bindtap="jumpToDetail">
+        <block wx:if="{{goodsinfo.topic!= undifinde}}">
+          <view class="topic">{{goodsinfo.topic}}</view>
+          <view class="couponsInfo" wx:for="{{goodsinfo.couponDtoList}}" wx:key="couponsInfo1" wx:if="{{index<1}}">
+            <view class="yuan"></view>
+            <view class="yuan2"></view>
+            <text class="coupon">{{item.productByMoney}}元券</text>
+          </view>
+          <!-- <view class="nocoupon" wx:if="{{goodsinfo.couponDtoList.length<=0}}">不可用券</view> -->
+        </block>
+        <block wx:else>
+          <view class="couponsInfo" wx:for="{{goodsinfo.couponDtoList}}" wx:key="couponsInfo2" wx:if="{{index<2}}">
+            <view class="yuan"></view>
+            <view class="yuan2"></view>
+            <text class="coupon">{{item.productByMoney}}元券</text>
+          </view>
+          <!-- <view class="nocoupon" wx:if="{{goodsinfo.couponDtoList.length<=0}}">不可用券</view> -->
+        </block>
+      </view>
+      <block wx:if="{{isAlwaysShowAdd}}">
+        <view class="price-info">
+          <view class="price" data-goodsinfo="{{goodsinfo}}" bindtap="jumpToDetail">
+            <view class="marketprice"><text>￥</text>{{goodsinfo.marketPrice}}</view>
+            <view class="productprice" decode="{{true}}">
+              <block wx:if="{{goodsinfo.showProductPrice}}"><text>￥</text>{{goodsinfo.productPrice}}</block>
+              <block wx:else><text></text></block>
+            </view></view>
+          <!-- <view class="plusBtn" data-goodsinfo="{{goodsinfo}}" wx:if="{{goodsinfo.marketType != 1}}" catchtap="addnum">+</view> -->
+          <image class="shopCar-image" data-goodsinfo="{{goodsinfo}}" catchtap="addnum" src="/image/addcartnew.png"></image>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="price-info">
+          <view class="price" data-goodsinfo="{{goodsinfo}}" bindtap="jumpToDetail">
+            <view class="marketprice"><text>￥</text>{{goodsinfo.marketPrice}}</view>
+            <view class="productprice" decode="{{true}}">
+              <block wx:if="{{goodsinfo.showProductPrice}}"><text>￥</text>{{goodsinfo.productPrice}}</block>
+              <block wx:else><text></text></block>
+            </view></view>
+          <view class="buyBtn" data-goodsinfo="{{goodsinfo}}" catchtap="jumpToDetail" wx:if="{{goodsinfo.marketType == 1}}">立即购买</view>
+          <!-- <view class="plusBtn" data-goodsinfo="{{goodsinfo}}" wx:if="{{goodsinfo.marketType != 1}}" catchtap="addnum">+</view> -->
+          <image class="shopCar-image" data-goodsinfo="{{goodsinfo}}" wx:if="{{goodsinfo.marketType != 1}}" catchtap="addnum" src="/image/addcartnew.png"></image>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

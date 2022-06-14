@@ -1,0 +1,60 @@
+<view class="detail-box">
+<view class="topImg">
+  <image src="{{activityInfo.imgUrl}}"></image>
+</view>
+<!-- 内容盒子 -->
+
+<view class="detail-content {{windowHeightKey?'active':''}}" style="height:{{contentHeight}}px;">
+<scroll-view scroll-y style="height:{{contentHeight}}px;" bindscrolltolower="lower">
+  <block wx:for="{{activityCoupons}}" wx:key="activityCouponsKey">
+    <view class='categoryItemInfoBox' data-id='{{item.id}}' bindtap='categoryDefaultItemsClick' >
+      
+      <view class='categoryItemInfoBoxImgBox'>
+        <image src='{{item.pictures[0].url}}'></image>
+      </view>
+
+      <view class='categoryItemInfoBoxFoot'>
+        {{item.name}}
+      </view>
+
+      <view class='categoryItemInfoBoxTitle'>
+        <view class='categoryItemInfoBoxTitleLeft'>
+          <view class='categoryItemInfoBoxTitleLeftSty'>
+          <view class='categoryItemInfoBoxTitleLeftStyTop'>
+            <text style='font-size:10px;'>￥</text> 
+            <text style='font-size:18px;'> {{item.productByMoney}}</text> 
+          </view>
+          <view class='categoryItemInfoBoxTitleLeftStyBtm'>
+            <text class="todaySpikeItemInfoExplainNum">{{item.intro}}</text> 
+          </view>
+        </view>
+        </view>
+        <view class='categoryItemInfoBoxTitleRight' >
+          <view class='categoryItemInfoBoxTitleRightBtn'>
+            查看详情
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</scroll-view>
+</view>
+  
+  <!-- 底部 -->
+  <view class="detail-footer clearFix {{windowHeightKey?'active':''}}">
+    <view class="footer-btn lt clearFix footer-index" bindtap="toIndexPage">
+      <image class="footer-img lt s" src="{{imgUrl}}detail-footer-detail.png"></image>
+      <text class="footer-text lt">首页</text>
+    </view>
+    <label class="footer-btn lt clearFix footer-share">
+      <image class="footer-img lt s" src="{{imgUrl}}detail-footer-share.png"></image>
+      <text class="footer-text lt">分享</text>
+      <button open-type="share" id="btnShare" data-intro="{{couponContent.intro}}" data-title="{{indexTitle}}" data-cid="{{couponId}}" data-url="{{bannerList[0].url}}"></button>
+    </label>
+    <!-- <view class="footer-btn lt clearFix footer-code" bindtap="toScanCode">
+      <image class="footer-img lt s" src="{{imgUrl}}detail-footer-code.png"></image>
+      <text class="footer-text lt">扫码</text>
+    </view> -->
+    <view class="footer-getCode lt" bindtap="submitActivity">{{btnText}}</view>
+  </view>
+</view>

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "searchbar": "/component/searchBar/index",
+    "bottom-action": "/component/bottomAction/index",
+    "bottom-tabbar": "/component/bottomTabbar/index",
+    "my-address": "/component/addressModel/addressModel"
+  }
+}

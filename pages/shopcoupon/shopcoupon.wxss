@@ -1,0 +1,104 @@
+/* pages/shopcoupon/shopcoupon.wxss */
+/* 外层包裹的大盒子 */
+.shopcouponMainBox{
+  width: 100%;
+  height: 100%;
+  padding-bottom:140rpx;
+  box-sizing: content-box;
+}
+.radio-group {
+  width: 100%;
+}
+/*list的item 元素大盒子 */
+.shopcouponItem{
+  width: calc(100% - 60rpx);
+  height: 214rpx;
+  padding: 0 30rpx;
+  margin: 24rpx auto;
+  background-color: rgba(255,255,255,1);
+  border-radius: 8rpx;
+  border: 1px solid rgba(237,237,237,1);
+  box-shadow: 0px 0px 8px 0px rgba(237,237,237,1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.shopcouponItem .leftPriceBox{
+  width: 140rpx;
+  height: 160rpx;
+}
+.shopcouponItem .leftPriceBox .priceImg{
+  width: 100%;
+  height:120rpx;
+}
+.shopcouponItem .leftPriceBox .priceImg image{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.shopcouponItem .middleTextBox{
+  width: 400rpx;
+  height: 120rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.shopcouponItem .rightBtnBox{
+  width: 60rpx;
+  height: 120rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ft12{ font-size: 12px;}
+.ft14{ font-size: 14px;}
+.ft16{ font-size: 16px;}
+.ft20{ font-size: 20px;}
+
+.ftWeight{ font-weight: bold}
+
+.line20{line-height: 40rpx}
+.textCen {text-align: center}
+
+.text_red{ color: red}
+
+.isUseColor0{ color: rgba(228,228,228,1)}
+.isUseColor1{ color: rgba(0,0,0,1)}
+
+
+/* 自定义 radio 样式 */
+.listRadio{
+    width: 38rpx;
+    height: 38rpx;
+    background-color: rgba(237,237,237,1);
+    border-radius: 50%;
+    border:1px solid rgba(237,237,237,1);
+}
+.listRadio.listRadioActive{
+  background-color: red;
+}
+.footer {
+  position: fixed;
+  width: 100%;
+  line-height: 140rpx;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  z-index: 20;
+  background-color:white;
+  padding: 0 40rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btnOkSty{
+  width: 260rpx;
+  height: 108rpx;
+  color: rgba(255,255,255,1);
+  text-align: center;
+  line-height: 108rpx;
+  background-color: red;
+  border-radius: 8rpx;
+}

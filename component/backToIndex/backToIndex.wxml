@@ -1,0 +1,3 @@
+<view class="backIndex">
+  <image bindtap="gobackIndex" src="/image/backIndex.png"></image>
+</view>

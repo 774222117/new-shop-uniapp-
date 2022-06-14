@@ -1,0 +1,364 @@
+@import '../../component/wxParse/wxParse.wxss';
+/*优惠券详情*/
+.detail-box,page{
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  box-sizing: border-box;
+  background:#F1F1F1;
+  font-family: "Miscrosoft YaHei","微软雅黑"
+}
+.singleText{
+  overflow: hidden;/*超出部分隐藏*/
+  text-overflow:ellipsis;/* 超出部分显示省略号 */
+  white-space: nowrap;/*规定段落中的文本不进行换行 */
+}
+.lt{
+  float: left;
+}
+.rt{
+  float:right;
+}
+.clearFix::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+/*隐藏滚动条*/
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}  
+/*主体*/
+.detail-content{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding-bottom: 120rpx;
+  background:#F1F1F1;
+  z-index: 1;
+}
+.detail-content.active{
+  padding-bottom: 176rpx;
+}
+.content-bannerBox{
+  width: 750rpx;
+  height: 600rpx;
+}
+.content-imgShow{
+  width: 750rpx;
+  height: 600rpx;
+  display: block;
+}
+.content-title{
+  width: 100%;
+  height: 210rpx;
+  background: #fff;
+  margin-bottom: 40rpx;
+  color:#fff;
+  overflow: hidden;
+}
+.title-content{
+  color:#000;
+  font-size: 28rpx;
+  width: 100%;
+  text-align: start;
+  line-height: 68rpx;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0 35rpx;
+  box-sizing: border-box;
+}
+.title-coupon{
+  width: 680rpx;
+  height: 100rpx;
+  background:-webkit-linear-gradient(right,#F26D07,#FE3C2F);
+  border-radius:8rpx;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+}
+.title-f1{
+  font-size: 28rpx;
+  display: inline-block;
+  margin-top: 44rpx;
+  margin-left: 32rpx;
+  font-weight: bold;
+}
+.title-f2{
+  font-size: 60rpx;
+  margin-top: 10rpx;
+  display: inline-block;
+  margin-left: 4rpx;
+  font-weight: bold;
+  padding: 0;
+}
+.title-f3{
+  font-size: 28rpx;
+  position: absolute;
+  right:100rpx;
+  top:10rpx;
+  font-weight: bold;
+  color:rgba(255,255,255,0.9);
+  width: 250rpx;
+  text-align: center
+}
+.title-f4{
+  font-size: 24rpx;
+  color:rgba(255,255,255,0.9);
+  position: absolute;
+  right: 100rpx;
+  top:50rpx;
+  width: 250rpx;
+  text-align: center
+}
+.title-coupon::after{
+  content: '';
+  height: 100%;
+  border-left:1rpx dashed #fff;
+  position: absolute;
+  top: 0;
+  right:400rpx;
+}
+.title-coupon-border{
+  content: '';
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 100%;
+  background: #fff;
+  position: absolute;
+  right: 394rpx;
+}
+.title-coupon-border.border1{
+  top: -10rpx;
+}
+.title-coupon-border.border2{
+  bottom: -10rpx;
+}
+.coupon-area{
+  width: 100%;
+  background: #fff;
+  margin-bottom: 40rpx;
+}
+.coupon-area>.area-item:not(:last-child){
+  padding-left: 28rpx;
+  border-bottom:1rpx solid rgba(0,0,0, 0.1);
+}
+.coupon-area>.area-item:last-child{
+  padding-left: 28rpx;
+}
+.area-text{
+  font-size: 24rpx;
+  line-height:68rpx;
+  float: left;
+}
+.area-text.t1{
+  color:rgba(0,0,0,0.5);
+}
+.area-text.t2{
+  color:rgba(0,0,0,0.6);
+  margin-left: 30rpx;
+  font-weight: bold;
+}
+.area-image{
+  height:32rpx;
+  width: 21.4rpx;
+  padding: 18rpx 24rpx 0;
+}
+.couponDetails{
+  width:100%;
+  position: relative;
+}
+.couponDetals-title{
+  background: #fff;
+  width: 100%;
+  display: inline-block;
+  font-size: 24rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: #000; 
+}
+.coupon-use-title{
+  display: inline-block;
+  color:#393939;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  padding-left: 50rpx;
+  position: relative;
+  margin-bottom: 20rpx;
+  font-weight: bold;
+}
+.coupon-use-title::after{
+  content: '';
+  height: 28rpx;
+  width: 8rpx;
+  background: rgb(255,59,48);
+  box-sizing: border-box;
+  position: absolute;
+  left: 36rpx;
+  bottom: 0;
+  top:0;
+  margin: auto;
+}
+.detail-useMethod{
+  width: 690rpx;
+  height: 100rpx;
+  position: relative;
+  margin-left: 36rpx;
+  margin-bottom: 8rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+.detail-useMethod>image{
+  width: 100%;
+  height: 100%;
+}
+.use-t1{
+  line-height: 100rpx;
+  font-size: 20rpx;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  left: 28rpx;
+  color: #fff;
+}
+.use-t2{
+  height: 100rpx;
+  font-size: 20rpx;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  left: 84rpx;
+  color:rgba(0,0,0,0.8);
+  vertical-align: middle;
+}
+.t3{
+  line-height: 100rpx;
+}
+.t4{
+  line-height: 50rpx;
+}
+.coupon-use-content{
+  width: 690rpx;
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 20rpx 0;
+  margin-left: 36rpx;
+  margin-bottom: 28rpx;
+}
+/*底部*/
+.detail-footer{
+  width: 100%;
+  height: 120rpx;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+  z-index: 2;
+}
+.detail-footer.active{
+  height: 176rpx;
+}
+.footer-btn{
+  width: 44rpx;
+  margin-top:20rpx;
+}
+.footer-img{
+  width: 44rpx;
+  height: 44rpx;
+}
+.footer-img.s{
+  margin-bottom: 4rpx;
+}
+.footer-text{
+  font-size: 22rpx;
+  color: #5D5D5D;
+}
+.footer-index{
+  margin-left: 44rpx;
+}
+.footer-share{
+  margin-left: 80rpx;
+}
+.footer-code{
+  margin-left: 80rpx;
+}
+.footer-getCode{
+  width: 340rpx;
+  height: 90rpx;
+  border-radius: 45rpx;
+  background: #FD3333;
+  margin-top: 10rpx;
+  margin-left: 44rpx;
+  display: inline-block;
+  font-size: 32rpx;
+  line-height: 90rpx;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
+/*弹框盒子*/
+.detailContentBox{
+  width: 100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  position: absolute;
+  bottom:0;
+  left: 0;
+  z-index: 3;
+}
+.alertBoxContainer{
+  width: 100%;
+  height:730rpx;
+  background:#fff;
+  border-radius:16rpx;
+  position: absolute;
+  bottom:0;
+  left: 0;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding-top: 80rpx;
+}
+.alertBoxContainer>image{
+  width: 56rpx;
+  height: 56rpx;
+  padding: 0,0,10rpx,10rpx;
+  position: absolute;
+  right: 8rpx;
+  top:8rpx;
+}
+.alertBoxContainer>text{
+  font-size: 28rpx;
+  color: #393939;
+  position: absolute;
+  left: 16rpx;
+  top:16rpx;
+  font-weight: bold;
+}
+.alertBoxContainer .alert-content-container{
+  width: 100%;
+  float: left;
+  overflow-y: auto;
+  border-bottom: 1px solid rgba(0,0,0, 0.1);
+  vertical-align: middle;
+}
+.alert-content-container>image{
+  width: 80rpx;
+  height: 80rpx;
+  margin-left: 16rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+.alert-content-container>text{
+  font-size: 28rpx;
+  margin-left: 16rpx;
+  display: inline-block;
+  color: #363636;
+  font-weight: bold;
+}

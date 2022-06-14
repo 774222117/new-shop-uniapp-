@@ -1,0 +1,5 @@
+<!--index.wxml-->
+<view class="container">
+<!-- <button class="cu-btn bg-green shadow" bindtap="showModal" data-target="Modal">Modal</button> -->
+  <canvas canvas-id='canvasid' class="canvas {{debug ? 'debug' : 'pro'}}" style='width: {{pxWidth}}px; height: {{pxHeight}}px;'></canvas>
+</view>

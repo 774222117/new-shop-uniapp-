@@ -1,0 +1,52 @@
+<wxs module="getDate" src="../../utils/dataParse.wxs"></wxs>
+<!-- 限时秒杀团 -->
+  <view class="timeLimitSeckill">
+      <view class="bgImgs">
+        <image class="imgBlock" src="/image/timeLimitSeckill.png"></image>
+      </view>
+      <!-- 内容 -->
+      <view class="contents">
+        <!-- 头部 -->
+        <view class="timeLimit_head">
+          <!-- 左边文案 -->
+          <view class="left">
+            <view class="text">{{item.bannerTitle || '限时秒杀团'}}</view>
+            <view class="icon"><image class="imgBlock" src="/image/seckill.svg"></image></view>
+          </view>
+          <!-- 右边倒计时 -->
+          <view class="right">
+            <view class="alarmClock"> <image class="imgBlock" src="/image/alarmClock.svg"></image></view>
+            <view class="times">{{seckillCountObj.hh}}</view>
+            <view class="times times1">: {{seckillCountObj.mm}} :</view>
+            <view class="times">{{seckillCountObj.ss}}</view>
+          </view>
+        </view>
+        <!-- 商品内容 -->
+        <view class="timeLimit_contents">
+          <view class="left" data-activityId = "{{item.shopGoodsListDto.id}}" catchtap="jumpToDetail">
+            <image class="imgBlock" src="{{item.bannerImg}}"></image>
+          </view>
+          <view class="right">
+            <view class="text1">{{item.navigateName}}</view>
+            <view class="text2">已卖{{item.shopGoodsListDto.salesReal}}份</view>
+            <view class="text3">
+              <view class="priceTextBackground">
+                <image class="imgBlock" src="/image/seckillBg.png"></image>
+              </view>
+              <view class="lishengbeijin">
+                <text class="lishenText">立省{{ 
+                 getDate.toFix((item.shopGoodsListDto.productPrice - item.shopGoodsListDto.marketPrice)) }}元</text>
+                <image class="imgBlock" src="/image/seckillTopBg.png"></image>
+              </view>
+              <view class="priceText" data-activityId = "{{item.shopGoodsListDto.id}}" catchtap="jumpToDetail">
+                <view class="priceText1">￥</view>
+                <view class="priceText2">{{item.shopGoodsListDto.marketPrice}}</view>
+                <view class="priceText3">￥{{item.shopGoodsListDto.productPrice}}</view>
+                <view class="priceText4"></view>
+                <view class="priceText5">立即抢</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>

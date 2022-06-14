@@ -1,0 +1,132 @@
+function add0(m) { return m < 10 ? '0' + m : m }
+var DateFr = {  
+  getDate: function (time, splitStr) {
+    
+    if (!time) return '';
+    
+    if(time == typeof string){
+      var reg = getRegExp("-", "g"); // 获取正则表达式，全局替换
+      time = time.replace(reg,'/')
+    }    
+    var date = getDate(time)    
+    var M = date.getMonth() + 1;
+    var y = date.getFullYear();
+    var d = date.getDate();
+
+    if (M < 10) M = "0" + M;
+    if (d < 10) d = "0" + d;
+
+    if (splitStr)
+      return y + splitStr + M + splitStr + d;
+    else
+      return y+'.'+M+'.'+d
+  },
+
+  getDateM: function (time, splitStr) {
+
+    if (!time) return '';
+    if(time == typeof string){
+      var reg = getRegExp("-", "g"); // 获取正则表达式，全局替换
+      time = time.replace(reg,'/')
+    }
+    var date = getDate(time);
+    var M = date.getMonth() + 1;
+    var y = date.getFullYear();
+    var d = date.getDate();
+
+    if (M < 10) M = "0" + M;
+    if (d < 10) d = "0" + d;
+
+    if (splitStr)
+      return M + splitStr + d;
+    else
+      return M + '.' + d
+  },
+  getDate_New: function (time, splitStr) {
+    if (!time) return '';
+    var reg = getRegExp("-", "g"); // 获取正则表达式，全局替换
+    time = time.replace(reg, '/')
+    var date = getDate(time)
+    var M = date.getMonth() + 1;
+    var y = date.getFullYear();
+    var d = date.getDate();
+
+    if (M < 10) M = "0" + M;
+    if (d < 10) d = "0" + d;
+
+    if (splitStr)
+      return y + splitStr + M + splitStr + d;
+    else
+      return y + '.' + M + '.' + d
+  },
+  getDateM_New: function (time, splitStr) {
+    if (!time) return '';
+    var reg = getRegExp("-", "g"); // 获取正则表达式，全局替换
+    time = time.replace(reg, '/')
+    var date = getDate(time);
+    var M = date.getMonth() + 1;
+    var y = date.getFullYear();
+    var d = date.getDate();
+
+    if (M < 10) M = "0" + M;
+    if (d < 10) d = "0" + d;
+
+    if (splitStr)
+      return M + splitStr + d;
+    else
+      return M + '.' + d
+  },
+
+  getDateH: function (time, splitStr) {
+    if (!time) return '';
+    if(time == typeof string){
+      var reg = getRegExp("-", "g"); // 获取正则表达式，全局替换
+      time = time.replace(reg,'/')
+    }
+    var date = getDate(time);
+    var h = date.getHours();
+    var mm = date.getMinutes();
+    var s = date.getSeconds();    
+    return add0(h) + ':' + add0(mm) + ':' + add0(s);
+  },
+  getDateH_New: function (time, splitStr) {
+    if (!time) return '';
+    var reg = getRegExp("-", "g"); // 获取正则表达式，全局替换
+    time = time.replace(reg, '/')
+    var date = getDate(time);
+    var h = date.getHours();
+    var mm = date.getMinutes();
+    var s = date.getSeconds();
+    return add0(h) + ':' + add0(mm) + ':' + add0(s);
+  },
+
+  getProgress:function(first,second){
+    return Math.floor(first / second*100)
+  },
+  toFix: function (value) {
+    return value.toFixed(2) // 此处2为保留两位小数，保留几位小数，这里写几
+  }
+}
+
+function plusXing(text, frontLen, endLen, cha) {
+  var str = text.toString()
+  var len = str.length - frontLen - endLen;
+  var xing = "";
+  for (var i = 0; i < len; i++) {
+    xing += cha;
+  }
+  return (
+    str.substring(0, frontLen) + xing + str.substring(str.length - endLen)
+  );
+}
+module.exports = {
+  getDate: DateFr.getDate,
+  getDate_New: DateFr.getDate_New,
+  getDateM: DateFr.getDateM,
+  getDateM_New: DateFr.getDateM_New,
+  getDateH: DateFr.getDateH,
+  getDateH_New: DateFr.getDateH_New,
+  getProgress: DateFr.getProgress,
+  toFix: DateFr.toFix,
+  plusXing: plusXing,
+}

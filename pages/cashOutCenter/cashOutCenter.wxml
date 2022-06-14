@@ -1,0 +1,59 @@
+<view class="cashout-top">
+  <text>提现金额</text>
+  <input type="number" bindinput="changeCashOutMoney" value="{{applyCashOutMoney}}" placeholder="请输入提现金额"></input>
+</view>
+<view class="can_cashout">
+  <text class="can_cashout-info">最多可提现{{canCashOutMoney}}元，最少提现100元</text>
+  <text class="cashout-all" catchtap="cashAll">全部提现</text>
+</view>
+<view class="cashout-userinfo">
+  <view>
+    <image src="https://sourced.sgsugou.com/new-shop/image/wxpay_icon.png"></image>
+    <text>微信零钱认证</text>
+  </view>
+  <view class="realname">
+    <text>请填写微信真实姓名：</text>
+    <input type="text" bindinput="changeRealName" value="{{realName}}" placeholder="请输入真实姓名"></input>
+  </view>
+</view>
+<view class="cashout-btn">
+  <button bindtap="toCashOut">确认申请提现</button>
+  <view class="cash-rules">
+    <text>提现规则</text>
+    <text>1.单次提现须大于100元</text>
+    <text>2.审核时间为工作日的上班时间，请关注此时间段时间内的入账信息。</text>
+    <text>否则可能导致无法到账</text>
+  </view>
+</view>
+<view class="cashout-records">
+  <view class="records-head">申请记录</view>
+  <view class="line"></view>
+  <view  wx:for="{{applyRecords}}">
+    <view class="records-card">
+      <view class="cashout-record">
+        <view class="record-top">
+          <text>申请金额：{{item.commissionPay}}元</text>
+          <view class="status-fail">
+            <text wx:if="{{item.status==1}}">待审核</text>
+            <text wx:elif="{{item.status==0}}">未知</text>
+            <text wx:elif="{{item.status==2}}">审核通过</text>
+            <text wx:elif="{{item.status==3}}">已打款</text>
+            <text wx:elif="{{item.status==-1}}">无效</text>
+            <text wx:elif="{{item.status==-2}}">拒绝</text>
+            <text hidden="{{true}}" class='iconfont iconiconfontgantanhao3'></text>
+          </view>
+        </view>
+        <text class="record-date">{{item.applyTime}}</text>
+      </view>
+    </view>
+    <view class="line"></view>
+  </view>
+</view>
+<view class="bottomLoadConplete" wx:if="{{bottomIsShow}}">到底啦~~</view>
+<view class="cashout_success" hidden="{{hiddenSuccess}}" catchtap="successClick">
+  <view class="success-card">
+    <image src="https://sourced.sgsugou.com/new-shop/image/cashout-success.png"></image>
+    <text>提现成功</text>
+  </view>
+</view>
+

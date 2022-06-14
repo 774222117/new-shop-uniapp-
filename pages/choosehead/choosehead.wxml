@@ -1,0 +1,54 @@
+<view class="head">
+  <view class="curtext">当前位置</view>
+  <view class="address">
+    <view class="address-detail">
+      <text class="cuIcon-locationfill" style="width:27rpx;height:32rpx;"/>
+      {{curAddress}}</view>
+    <view catchtap="toChooseAddress" class="address-detail-modify">修改></view>
+  </view>
+</view>
+<view class="body">
+  <view class="cur-group" wx:if="{{curCarrierInfo!=null}}">
+    <view class="cur-head">当前加入</view>
+    <view class="cur-body">
+      <view class="profile-image">
+        <image class="head-avatar" src="{{curCarrierInfo.userInfoIconUrl}}"></image>
+      </view>
+      <view class="group-detail">
+        <view class="head-name">{{curCarrierInfo.commanderName}}</view>
+        <view class="position-distance">
+          <view class="position">
+            {{curCarrierInfo.pointType==1?'门店':'小区'}}
+          </view>
+          <view class="distance">距您{{curCarrierInfo.distance}}km</view>
+        </view>
+        <view class="pick-point">
+          自提点：{{curCarrierInfo.address}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="nearby-group">
+    <view class="nearby-head">附近的团</view>
+    <view class="nearby-body" wx:for="{{nearbyCarrierInfos}}"wx:for-item="carrierInfo">
+      <view class="profile-image">
+        <image class="head-avatar" src="{{carrierInfo.userInfoIconUrl}}"></image>
+      </view>
+      <view class="group-detail">
+        <view class="head-name">{{carrierInfo.commanderName}}</view>
+        <view class="position-distance">
+          <view class="position">
+            {{carrierInfo.pointType==1?'门店':'小区'}}
+          </view>
+          <view class="distance">距您{{carrierInfo.distance}}km</view>
+        </view>
+        <view class="pick-point">
+          自提点：{{carrierInfo.address}}
+        </view>
+      </view>
+      <view class="choose-head" data-id="{{carrierInfo.id}}" catchtap="choseCarrierOne">
+        选TA
+      </view>
+    </view>
+  </view>
+</view>

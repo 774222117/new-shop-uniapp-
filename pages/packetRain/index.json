@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "红包雨",
+  "navigationBarBackgroundColor": "#DB3027",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "sol-packet-rain": "/component/packet-rain/index"
+  }
+}

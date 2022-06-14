@@ -1,0 +1,420 @@
+<scroll-view scroll-y="{{true}}" scroll-into-view="{{scrollIntoItem}}" scroll-with-animation="{{true}}" bindscroll="onViewScroll1" style="height:{{screenHeight*2}}rpx;overflow-anchor:none;" bindscrolltolower="onLower">
+  <my-address bgColor="#E72E24" useShopCategory="{{secondPageinfo.useShopCategory}}" id="myAddress" shopInfo="{{shopInfo}}"></my-address>
+  <!--顶部图片-->
+  <image class="topimg" mode="widthFix" src="{{secondPageinfo.topImg}}" />
+  <view style="background-color: {{secondPageinfo.bgcolor}};padding-bottom: 120rpx;">
+    <view class="main">
+      <!--优惠券列表-->
+      <view class="couponModular" wx:if="{{secondPageinfo.secondModuleCoupon.couponDtoList.length>0}}">
+        <view class="coupon-top">
+          <view class="coupon-title">{{secondPageinfo.secondModuleCoupon.moduleTitle}}</view>
+          <view class="coupon-des">{{secondPageinfo.secondModuleCoupon.moduleText}}</view>
+        </view>
+        <scroll-view scroll-x="true">
+          <view class="couponList">
+            <view class="coupon-card" wx:for="{{secondPageinfo.secondModuleCoupon.couponDtoList}}" wx:for-item="coupon">
+              <view class="coupon-left">
+                <view class="coupon-amount">
+                  <text class="coupon-price">{{coupon.productByMoney}}</text>
+                  <text wx:if="{{coupon.receiveRule==1}}" class="coupon-type">新人券</text>
+                  <text wx:else class="coupon-type">店铺券</text>
+                </view>
+                <view class="coupon-option">满{{coupon.costMoney}}元使用</view>
+              </view>
+              <view class="coupon-linquan" data-id="{{coupon.couponId}}" catchtap="getCoupon">
+                <text>点击领取</text>
+              </view>
+              <view class="coupon-no" wx:if="{{(coupon.createNum>0&&coupon.createNum==coupon.receiveCount)||(coupon.couponEndTime<currentTime)}}">
+                已抢光
+              </view>
+              <view class="coupon-no" wx:if="{{coupon.couponStartTime>currentTime}}">
+                未开始
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+      <!--中间图片-->
+      <view class="centerImg" wx:if="{{secondPageinfo.secondModuleCenterImg!=null}}">
+        <image src="{{secondPageinfo.secondModuleCenterImg.moduleImg}}" />
+      </view>
+      <!--中间商品列表-->
+      <view class="centerGoodsList" wx:if="{{secondPageinfo.secondModuleGoodsDtoList.length>0}}">
+        <view class="centerGoods" wx:for="{{secondPageinfo.secondModuleGoodsDtoList}}" wx:for-item="centerGoods">
+          <view class="centerGoodsImg" data-goodsinfo="{{centerGoods}}" catchtap="jumpToDetail">
+            <image src="{{centerGoods.thumb}}"></image>
+            <image wx:if="{{centerGoods.total<=0}}" class="yishouqing" src="/image/yishouqing.png"></image>
+            <view class="leftTopImg" wx:if="{{centerGoods.marketType == 1}}">
+              <image wx:if="{{centerGoods.deliveryWay==2}}" src="/image/kuaidi.png"></image>
+              <image wx:else src="/image/yushou.png"></image>
+            </view>
+          </view>
+          <view class="rightBox">
+            <view class="onetitle" data-goodsinfo="{{centerGoods}}" catchtap="jumpToDetail">{{centerGoods.title}}</view>
+            <view class="topiclist" data-goodsinfo="{{centerGoods}}" catchtap="jumpToDetail">
+              <block wx:if="{{centerGoods.topic!= undifinde}}">
+                <view class="topic">{{centerGoods.topic}}</view>
+              </block>
+            </view>
+            <view class="right-bottom">
+              <view class="oneprice" data-goodsinfo="{{centerGoods}}" catchtap="jumpToDetail">
+                <view><text>￥</text>{{centerGoods.marketPrice}}</view>
+                <view class="productprice" decode="{{true}}" hidden="{{!centerGoods.showProductPrice}}">
+                  <text>￥</text>{{centerGoods.productPrice}}
+                </view>
+              </view>
+              <block wx:if="{{centerGoods.total>0}}">
+                <block wx:if="{{centerGoods.marketType == 1}}">
+                  <view class="one-addcart bgcolor-red" data-goodsinfo="{{centerGoods}}" catchtap="jumpToDetail">立即购买
+                  </view>
+                </block>
+                <block wx:else>
+                  <view class="one-addcart bgcolor-red" wx:if="{{centerGoods.buyCount==0}}" data-goodsinfo="{{centerGoods}}" catchtap="addCart">加入购物车</view>
+                  <view wx:else class="buyBtn1 flex justify-between">
+                    <image class="shopCar-image1" bindtap="delCart" data-goodsinfo="{{centerGoods}}" src="/image/delCart.svg">
+                    </image>
+                    <view class="goosNum">{{centerGoods.buyCount}}</view>
+                    <image class="shopCar-image1" bindtap="addCart" data-goodsinfo="{{centerGoods}}" src="/image/addCart.svg">
+                    </image>
+                  </view>
+                </block>
+              </block>
+              <view wx:else class="one-addcart bgcolor-ysq">加入购物车</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <block wx:if="{{secondPageinfo.secondModuleDtoList.length>0}}" hidden="{{isFixedTop}}">
+        <scroll-view scroll-x="{{true}}" scroll-into-view="{{sc2rollIntoItem}}" scroll-with-animation="{{true}}" style="width:750rpx;">
+          <view id="navbar">
+            <view class="category">
+              <view class="categoryItem {{index==curCategoryIndex?' curcategoryItem':''}}" wx:for="{{secondPageinfo.secondModuleDtoList}}" wx:for-item="category" wx:for-index="index" id="sc2rollIntoViewId{{index}}" data-id="{{index}}" catchtap="tabCategorySelect">
+                <text>{{category.moduleTitle}}</text>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </block>
+      <view class="titleText">
+        <image mode="widthFix" src="{{secondPageinfo.secondModuleDtoList[curCategoryIndex].moduleImg}}"></image>
+      </view>
+
+      <view class="brandCouponBox" wx:if="{{couponList.length>0}}">
+        <view class="brandCouponList {{item.createNum>0&&item.createNum==item.receiveCount ? 'brandCouponList_none':'brandCouponList_exist'}}" wx:for="{{couponList}}" wx:for-item="item">
+          <view class="brandCoupon_left">
+            <view class="brandCoupon_top">品牌券</view>
+            <view class="brandCoupon_middle">
+              <text style="font-family: Source Han Sans CN, Source Han Sans CN-Bold;font-weight: 700;">¥</text><text style="font-size: 68rpx;margin:0 5rpx">{{item.productByMoney}}</text><text style="font-size: 20rpx;color:#202020">满{{item.costMoney}}使用</text>
+            </view>
+            <view class="brandCoupon_bottom">{{item.intro}}</view>
+          </view>
+          <view class="brandCoupon_right" data-id="{{item.couponId}}" catchtap="getCoupon"><text>领</text><text>券</text><text>立</text><text>减</text></view>
+          <!-- 已抢光logo -->
+          <view class="noneBox" wx:if="{{item.createNum>0&&item.createNum==item.receiveCount}}">
+            已抢光
+          </view>
+        </view>
+      </view>
+      <!-- <view class="modular" wx:for="{{secondPageinfo.secondModuleDtoList}}" wx:for-item="goodsModular"
+        wx:for-index="modualIndex" id="scrollIntoViewId{{modualIndex}}" data-id="{{modualIndex}}"
+        catchtap="tabCategorySelect">
+        <view class="flex">
+          <view class="modular-title">
+            <view class="modular-title-1"></view>
+            <view class="modular-title-2"></view>
+            <view class="modular-title-3"></view>
+            <view class="modular-title-center">{{goodsModular.moduleTitle}}</view>
+            <view class="modular-title-3"></view>
+            <view class="modular-title-2"></view>
+            <view class="modular-title-1"></view>
+          </view>
+        </view>-->
+      <!--一行展示一个商品-->
+      <!--<block wx:if="{{goodsModular.rowGoodsGount == 1}}">
+          <view class="centerGoodsList">
+            <view class="centerGoods" wx:for="{{goodsModular.goodsList}}" wx:for-item="goodsinfo"
+              wx:for-index="goodsIndex" wx:if="{{goodsIndex<6||goodsModular.showMore}}">
+              <view class="centerGoodsImg" data-goodsinfo="{{goodsinfo}}" catchtap="jumpToDetail">
+                <image src="{{goodsinfo.thumb}}"></image>
+                <image wx:if="{{goodsinfo.total<=0}}" class="yishouqing" src="/image/yishouqing.png"></image>
+              </view>
+              <view class="rightBox">
+                <view class="onetitle" data-goodsinfo="{{goodsinfo}}" catchtap="jumpToDetail">{{goodsinfo.title}}</view>
+                <view class="topiclist" data-goodsinfo="{{goodsinfo}}" catchtap="jumpToDetail">
+                  <block wx:if="{{goodsinfo.topic!= undifinde}}">
+                    <view class="topic">{{goodsinfo.topic}}</view>
+                  </block>
+                </view>
+                <view class="right-bottom">
+                  <view class="oneprice" data-goodsinfo="{{goodsinfo}}" catchtap="jumpToDetail">
+                    <view><text>￥</text>{{goodsinfo.marketPrice}}</view>
+                    <view class="productprice" decode="{{true}}" hidden="{{!goodsinfo.showProductPrice}}">
+                      <text>￥</text>{{goodsinfo.productPrice}}
+                    </view>
+                  </view>
+                  <block wx:if="{{goodsinfo.total>0}}">
+                    <view class="one-addcart bgcolor-red" wx:if="{{goodsinfo.buyCount==0}}"
+                      data-goodsinfo="{{goodsinfo}}" catchtap="addCart">加入购物车</view>
+                    <view wx:else class="buyBtn1 flex justify-between">
+                      <image class="shopCar-image1" bindtap="delCart" data-goodsinfo="{{goodsinfo}}"
+                        src="/image/delCart.svg">
+                      </image>
+                      <view class="goosNum">{{goodsinfo.buyCount}}</view>
+                      <image class="shopCar-image1" bindtap="addCart" data-goodsinfo="{{goodsinfo}}"
+                        src="/image/addCart.svg">
+                      </image>
+                    </view>
+                  </block>
+                  <view wx:else class="one-addcart bgcolor-ysq">加入购物车</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>-->
+      <!--一行展示两个商品-->
+      <!--<block wx:elif="{{goodsModular.rowGoodsGount == 2}}">
+          <view class="modular-goodslist">
+            <view class="modular-goods-2 {{goodsIndex%2!=0?'not-row-first':''}}" wx:for="{{goodsModular.goodsList}}"
+              wx:for-item="goodsinfo" wx:for-index="goodsIndex" wx:if="{{goodsIndex<6||goodsModular.showMore}}">
+              <view class="modular-goods-img-2" data-goodsinfo="{{goodsinfo}}" catchtap="jumpToDetail">
+                <image src="{{goodsinfo.thumb}}"></image>
+                <image wx:if="{{goodsinfo.total<=0}}" class="yishouqing-2" src="/image/yishouqing.png"></image>
+              </view>
+              <view class="modual-goods-info">
+                <text class="modual-goods-title">{{goodsinfo.title}}</text>
+                <view class="topiclist" data-goodsinfo="{{goodsinfo}}" catchtap="jumpToDetail">
+                  <block wx:if="{{goodsinfo.topic!= undifinde}}">
+                    <view class="topic">{{goodsinfo.topic}}</view>
+                  </block>
+                </view>
+                <view class="price-info">
+                  <view class="price" data-goodsinfo="{{goodsinfo}}" catchtap="jumpToDetail">
+                    <view class="marketprice"><text>￥</text>{{goodsinfo.marketPrice}}</view>
+                    <view class="productprice" decode="{{true}}" hidden="{{!goodsinfo.showProductPrice}}">
+                      <text>￥</text>{{goodsinfo.productPrice}}
+                    </view>
+                  </view>
+                  <view style="position: relative;" wx:if="{{goodsinfo.total>0}}">
+                    <image class="shopCar-image2" data-goodsinfo="{{goodsinfo}}" bindtap="addCart"
+                      src="/image/addCart.svg">
+                    </image>
+                    <view class="buyCount" wx:if="{{goodsinfo.buyCount>0}}">{{goodsinfo.buyCount}}</view>
+                  </view>
+                  <image wx:else class="shopCar-image2" src="/image/addcartysq.png"></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>-->
+      <!--一行展示三个商品-->
+      <!--<block wx:elif="{{goodsModular.rowGoodsGount == 3}}">
+          <view class="modular-goodslist">
+            <view class="modular-goods {{goodsIndex%3!=0?'not-row-first':''}}" wx:for="{{goodsModular.goodsList}}"
+              wx:for-item="goodsinfo" wx:for-index="goodsIndex" wx:if="{{goodsIndex<6||goodsModular.showMore}}">
+              <view class="modular-goods-img" data-goodsinfo="{{goodsinfo}}" catchtap="jumpToDetail">
+                <image src="{{goodsinfo.thumb}}"></image>
+                <image wx:if="{{goodsinfo.total<=0}}" class="yishouqing" src="/image/yishouqing.png"></image>
+              </view>
+              <view class="modual-goods-info">
+                <text class="modual-goods-title">{{goodsinfo.title}}</text>
+                <view class="topiclist" data-goodsinfo="{{goodsinfo}}" catchtap="jumpToDetail">
+                  <block wx:if="{{goodsinfo.topic!= undifinde}}">
+                    <view class="topic">{{goodsinfo.topic}}</view>
+                  </block>
+                </view>
+                <view class="price-info">
+                  <view class="price" data-goodsinfo="{{goodsinfo}}" catchtap="jumpToDetail">
+                    <view class="marketprice"><text>￥</text>{{goodsinfo.marketPrice}}</view>
+                    <view class="productprice" decode="{{true}}" hidden="{{!goodsinfo.showProductPrice}}">
+                      <text>￥</text>{{goodsinfo.productPrice}}
+                    </view>
+                  </view>
+                  <view style="position: relative;" wx:if="{{goodsinfo.total>0}}">
+                    <image class="shopCar-image2" data-goodsinfo="{{goodsinfo}}" bindtap="addCart"
+                      src="/image/addCart.svg">
+                    </image>
+                    <view class="buyCount" wx:if="{{goodsinfo.buyCount>0}}">{{goodsinfo.buyCount}}</view>
+                  </view>
+                  <image wx:else class="shopCar-image2" src="/image/addcartysq.png"></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+
+        <block wx:if="{{goodsModular.goodsList.length>6}}">
+          <view class="showmore" wx:if="{{!goodsModular.showMore}}" catchtap="showAllGoods" data-idx="{{modualIndex}}">
+            查看更多商品<text class="cuIcon-unfold"
+              style="margin-left:5rpx;margin-right:10rpx;font-size:42rpx;color:#666666"></text></view>
+          <view class="showmore" wx:else catchtap="showAllGoods" data-idx="{{modualIndex}}">折叠商品<text
+              class="cuIcon-fold" style="margin-left:5rpx;margin-right:10rpx;font-size:42rpx;color:#666666"></text>
+          </view>
+        </block>
+      </view> -->
+      <view class="modular" wx:if="{{secondPageinfo.secondModuleDtoList.length>0}}">
+        <block wx:if="{{secondPageinfo.secondModuleDtoList[curCategoryIndex].rowGoodsGount == 1}}">
+          <view class="centerGoodsList">
+            <view class="centerGoods" wx:for="{{goodsModular.goodsList}}" wx:for-item="goodsinfo" wx:for-index="goodsIndex">
+              <view class="centerGoodsImg" data-goodsinfo="{{goodsinfo}}" catchtap="jumpToDetail">
+                <image src="{{goodsinfo.thumb}}"></image>
+                <image wx:if="{{goodsinfo.total<=0}}" class="yishouqing" src="/image/yishouqing.png"></image>
+                <view class="leftTopImg" wx:if="{{goodsinfo.marketType == 1}}">
+                  <image wx:if="{{goodsinfo.deliveryWay==2}}" src="/image/kuaidi.png"></image>
+                  <image wx:else src="/image/yushou.png"></image>
+                </view>
+              </view>
+              <view class="rightBox">
+                <view class="onetitle" data-goodsinfo="{{goodsinfo}}" catchtap="jumpToDetail">{{goodsinfo.title}}</view>
+                <view class="topiclist" data-goodsinfo="{{goodsinfo}}" catchtap="jumpToDetail">
+                  <block wx:if="{{goodsinfo.topic!= undifinde}}">
+                    <view class="topic">{{goodsinfo.topic}}</view>
+                  </block>
+                </view>
+                <view class="right-bottom">
+                  <view class="oneprice" data-goodsinfo="{{goodsinfo}}" catchtap="jumpToDetail">
+                    <view><text>￥</text>{{goodsinfo.marketPrice}}</view>
+                    <view class="productprice" decode="{{true}}" hidden="{{!goodsinfo.showProductPrice}}">
+                      <text>￥</text>{{goodsinfo.productPrice}}
+                    </view>
+                  </view>
+                  <block wx:if="{{goodsinfo.total>0}}">
+                    <view class="one-addcart bgcolor-red" wx:if="{{goodsinfo.buyCount==0}}" data-goodsinfo="{{goodsinfo}}" catchtap="addCart">加入购物车</view>
+                    <view wx:else class="buyBtn1 flex justify-between">
+                      <image class="shopCar-image1" bindtap="delCart" data-goodsinfo="{{goodsinfo}}" src="/image/delCart.svg">
+                      </image>
+                      <view class="goosNum">{{goodsinfo.buyCount}}</view>
+                      <image class="shopCar-image1" bindtap="addCart" data-goodsinfo="{{goodsinfo}}" src="/image/addCart.svg">
+                      </image>
+                    </view>
+                  </block>
+                  <view wx:else class="one-addcart bgcolor-ysq">加入购物车</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+        <!--一行展示两个商品-->
+        <block wx:elif="{{secondPageinfo.secondModuleDtoList[curCategoryIndex].rowGoodsGount == 2}}">
+          <view class="modular-goodslist">
+            <view class="modular-goods-2 {{goodsIndex%2!=0?'not-row-first':''}}" wx:for="{{goodsModular.goodsList}}" wx:for-item="goodsinfo" wx:for-index="goodsIndex">
+              <view class="modular-goods-img-2" data-goodsinfo="{{goodsinfo}}" catchtap="jumpToDetail">
+                <image src="{{goodsinfo.thumb}}"></image>
+                <image wx:if="{{goodsinfo.total<=0}}" class="yishouqing-2" src="/image/yishouqing.png"></image>
+                <view class="leftTopImg" wx:if="{{goodsinfo.marketType == 1}}">
+                  <image wx:if="{{goodsinfo.deliveryWay==2}}" src="/image/kuaidi.png"></image>
+                  <image wx:else src="/image/yushou.png"></image>
+                </view>
+              </view>
+              <view class="modual-goods-info">
+                <text class="modual-goods-title">{{goodsinfo.title}}</text>
+                <view class="topiclist" data-goodsinfo="{{goodsinfo}}" catchtap="jumpToDetail">
+                  <block wx:if="{{goodsinfo.topic!= undifinde}}">
+                    <view class="topic">{{goodsinfo.topic}}</view>
+                  </block>
+                </view>
+                <view class="price-info">
+                  <view class="price" data-goodsinfo="{{goodsinfo}}" catchtap="jumpToDetail">
+                    <view class="marketprice"><text>￥</text>{{goodsinfo.marketPrice}}</view>
+                    <view class="productprice" decode="{{true}}" hidden="{{!goodsinfo.showProductPrice}}">
+                      <text>￥</text>{{goodsinfo.productPrice}}
+                    </view>
+                  </view>
+                  <view style="position: relative;" wx:if="{{goodsinfo.total>0}}">
+                    <image class="shopCar-image2" data-goodsinfo="{{goodsinfo}}" bindtap="addCart" src="/image/addCart.svg">
+                    </image>
+                    <view class="buyCount" wx:if="{{goodsinfo.buyCount>0}}">{{goodsinfo.buyCount}}</view>
+                  </view>
+                  <image wx:else class="shopCar-image2" src="/image/addcartysq.png"></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+        <!--一行展示三个商品-->
+        <block wx:elif="{{secondPageinfo.secondModuleDtoList[curCategoryIndex].rowGoodsGount == 3}}">
+          <view class="modular-goodslist">
+            <view class="modular-goods {{goodsIndex%3!=0?'not-row-first':''}}" wx:for="{{goodsList}}" wx:for-item="goodsinfo" wx:for-index="goodsIndex">
+              <view class="modular-goods-img" data-goodsinfo="{{goodsinfo}}" catchtap="jumpToDetail">
+                <image src="{{goodsinfo.thumb}}"></image>
+                <image wx:if="{{goodsinfo.total<=0}}" class="yishouqing" src="/image/yishouqing.png"></image>
+                <view class="leftTopImg" wx:if="{{goodsinfo.marketType == 1}}">
+                  <image wx:if="{{goodsinfo.deliveryWay==2}}" src="/image/kuaidi.png"></image>
+                  <image wx:else src="/image/yushou.png"></image>
+                </view>
+              </view>
+              <view class="modual-goods-info">
+                <text class="modual-goods-title">{{goodsinfo.title}}</text>
+                <view class="topiclist" data-goodsinfo="{{goodsinfo}}" catchtap="jumpToDetail">
+                  <block wx:if="{{goodsinfo.topic!= undifinde}}">
+                    <view class="topic">{{goodsinfo.topic}}</view>
+                  </block>
+                </view>
+                <view class="price-info">
+                  <view class="price" data-goodsinfo="{{goodsinfo}}" catchtap="jumpToDetail">
+                    <view class="marketprice"><text>￥</text>{{goodsinfo.marketPrice}}</view>
+                    <view class="productprice" decode="{{true}}" hidden="{{!goodsinfo.showProductPrice}}">
+                      <text>￥</text>{{goodsinfo.productPrice}}
+                    </view>
+                  </view>
+                  <view style="position: relative;" wx:if="{{goodsinfo.total>0}}">
+                    <image class="shopCar-image2" data-goodsinfo="{{goodsinfo}}" bindtap="addCart" src="/image/addCart.svg">
+                    </image>
+                    <view class="buyCount" wx:if="{{goodsinfo.buyCount>0}}">{{goodsinfo.buyCount}}</view>
+                  </view>
+                  <image wx:else class="shopCar-image2" src="/image/addcartysq.png"></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+        <!-- <view class="load-more" wx:if="{{hasData}}" catchtap="onLower">查看更多</view>
+        <view class="load-more" wx:if="{{!hasData && secondPageinfo.secondModuleDtoList.length>(curCategoryIndex+1)}}"
+          catchtap="onLower">查看下一分类</view> -->
+      </view>
+      <view class="bottom-img" wx:if="{{secondPageinfo.bottomImg!=null}}">
+        <image style="width: 750rpx;height: 202rpx;" src="{{secondPageinfo.bottomImg}}"></image>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<!-- </view> -->
+<bottom-action cartTypeName="{{cartTypeName}}" sumPrice="{{cartShopTotal.sumPrice}}" sumProductPrice="{{cartShopTotal.sumProductPrice}}" roomId="{{roomId}}" buyCount="{{cartShopTotal.buyCount}}" goodsInfoList="{{goodsList}}" shopCart="{{shopCart}}" deliveryWay="{{secondPageinfo.deliveryWay}}" isDelivery="{{secondPageinfo.isDelivery}}" bottomVal="bt0" bindcartmodyfiy="carModifyEvent"></bottom-action>
+
+<view class="fixed-aside">
+  <button class="fixed-service" bindtap='share_handler'>
+    <text class="iconfont iconshare"></text>
+    <view>分享</view>
+  </button>
+</view>
+<!-- 分享 -->
+<view class='ui-mask' bindtap='hide_share_handler' hidden='{{is_share_html}}'></view>
+<view class="model-services show" hidden='{{is_share_html}}'>
+  <view class="model-services-title">分享</view>
+  <view class="model-services-content">
+    <view class="service-list">
+      <view class="service-item">
+        <button open-type="share" class='none_btn' plain="true">
+          <text class="iconfont iconweixin service-icon"></text>
+          <view class="cube-text">
+            <text>好友</text>
+          </view>
+        </button>
+      </view>
+      <view class="service-item" catchtap="toPoster">
+        <text class="iconfont iconpengyouquan service-icon"></text>
+        <view class="cube-text">
+          <text>海报</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{secondPageinfo.secondModuleDtoList.length>0&&isFixedTop}}" style="width:750rpx;display:flex;" class="categoryFixed">
+  <scroll-view scroll-x='true' scroll-into-view="{{sc2rollIntoItem}}" scroll-with-animation="{{true}}">
+    <view class="category">
+      <view class="categoryItem {{index==curCategoryIndex?' curcategoryItem':''}}" wx:for="{{secondPageinfo.secondModuleDtoList}}" wx:for-item="category" wx:for-index="index" id="sc2rollIntoViewId{{index}}" data-id="{{index}}" catchtap="tabCategorySelect">
+        <text>{{category.moduleTitle}}</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

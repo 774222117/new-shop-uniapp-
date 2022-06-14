@@ -1,0 +1,314 @@
+{
+  "setting": {},
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "社群购主页",
+          "pathName": "pages/shopping/shopping",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "商品预售",
+          "pathName": "pages/advancegoods/advancegoods",
+          "query": "goodsId=5703846",
+          "scene": null
+        },
+        {
+          "name": "商品详情页",
+          "pathName": "pages/goods/goods",
+          "query": "goodsId=2656768&chooseShop=1",
+          "scene": null
+        },
+        {
+          "name": "结算页面",
+          "pathName": "pages/shoppay/shoppay",
+          "query": "shopId=323&cartTypeName=OTO",
+          "scene": null
+        },
+        {
+          "name": "购物车",
+          "pathName": "pages/shoppingCar/shoppingCar",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "团长中心",
+          "pathName": "pages/groupCenter/groupCenter",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "团员订单",
+          "pathName": "pages/groupMemberOrder/groupMemberOrder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "提现中心",
+          "pathName": "pages/cashOutCenter/cashOutCenter",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "个人中心",
+          "pathName": "pages/myIndex/myIndex",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "申请团长",
+          "pathName": "pages/groupCenter/applyLeader",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "海报",
+          "pathName": "pages/poster/poster",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "分销下单",
+          "pathName": "pages/goods/goods",
+          "query": "shopId=206&goodsId=421413&parentId=682848",
+          "scene": null
+        },
+        {
+          "name": "群接龙分销进入",
+          "pathName": "pages/jielong/jielong",
+          "query": "shopId=206&activityId=12&chooseShop=1",
+          "scene": null
+        },
+        {
+          "name": "直播列表",
+          "pathName": "pages/live/live",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "直播回看",
+          "pathName": "pages/liveReview/liveReview",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "活动促销",
+          "pathName": "pages/promotion/promotion",
+          "query": "activityId=2&chooseShop=0",
+          "scene": null
+        },
+        {
+          "name": "直播商品",
+          "pathName": "pages/livegoods/livegoods",
+          "query": "liveActivityId=2&roomId=304",
+          "scene": null
+        },
+        {
+          "name": "分享进入",
+          "pathName": "pages/index/index",
+          "query": "shopId=207",
+          "scene": null
+        },
+        {
+          "name": "分类页",
+          "pathName": "pages/category/category",
+          "query": "shopId=5107&headId=z&categoryId=40",
+          "scene": null
+        },
+        {
+          "name": "老虎机",
+          "pathName": "pages/machine/index",
+          "query": "activeId=19&orderId=111",
+          "scene": null
+        },
+        {
+          "name": "优惠券详情",
+          "pathName": "pages/coupondetail/coupondetail",
+          "query": "id=2776",
+          "scene": null
+        },
+        {
+          "name": "快递信息",
+          "pathName": "pages/express/express",
+          "query": "ordersn=989881771717&expressNo=462195287402391",
+          "scene": null
+        },
+        {
+          "name": "pages/jielong/jielong",
+          "pathName": "pages/jielong/jielong",
+          "query": "activityId=10",
+          "scene": null
+        },
+        {
+          "name": "支付成功页",
+          "pathName": "pages/paymentSuccess/paymentSuccess",
+          "query": "isShowShare=1&couponSetId=39&orderId=3960985",
+          "scene": null
+        },
+        {
+          "name": "自提订单列表",
+          "pathName": "pages/groupPickupOrder/groupPickupOrder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "退货",
+          "pathName": "pages/afterorder/afterorder",
+          "query": "shopId=206&orderId=687",
+          "scene": null
+        },
+        {
+          "name": "售后",
+          "pathName": "pages/afterorder/afterorder",
+          "query": "shopId=578&orderId=4629016",
+          "scene": null
+        },
+        {
+          "name": "福袋",
+          "pathName": "pages/promotion/promotion",
+          "query": "activityId=25&chooseShop=1",
+          "scene": null
+        },
+        {
+          "name": "商品分类页",
+          "pathName": "pages/category/category",
+          "query": "headId=z&categoryId=2",
+          "scene": null
+        },
+        {
+          "name": "pages/couponList/couponList",
+          "pathName": "pages/couponList/couponList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "订单详情页",
+          "pathName": "pages/shoporderinfo/shoporderinfo",
+          "query": "shopId=775&orderId=6569627",
+          "scene": null
+        },
+        {
+          "name": "搜索页",
+          "pathName": "pages/searchpage/searchpage",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/shoppay/shoppay",
+          "pathName": "pages/shoppay/shoppay",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "二级页",
+          "pathName": "pages/secondpage/secondpage",
+          "query": "bannerId=12",
+          "scene": null
+        },
+        {
+          "name": "供应商活动集合页",
+          "pathName": "pages/supplierActivitys/supplierActivitys",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "团购页",
+          "pathName": "pages/groupbuy/groupbuy",
+          "query": "bannerId=29",
+          "scene": null
+        },
+        {
+          "name": "pages/choosehead/choosehead",
+          "pathName": "pages/choosehead/choosehead",
+          "query": "carrierId=2159&classId=69",
+          "scene": null
+        },
+        {
+          "name": "pages/poster/poster",
+          "pathName": "pages/poster/poster",
+          "query": "{sId:15,pId:20,aId:15}",
+          "scene": null
+        },
+        {
+          "name": "pages/jielong/jielong",
+          "pathName": "pages/jielong/jielong",
+          "query": "aId=67&pId=1755736&sId=207",
+          "scene": null
+        },
+        {
+          "name": "团管理",
+          "pathName": "pages/groupActivityManage/groupActivityManage",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "结算规则",
+          "pathName": "pages/settlementRules/settlementRules",
+          "query": "carrierId=7244",
+          "scene": null
+        },
+        {
+          "name": "pages/groupbuy/groupbuy",
+          "pathName": "pages/groupbuy/groupbuy",
+          "query": "bannerId=137",
+          "scene": null
+        },
+        {
+          "name": "pages/secondpage/secondpage",
+          "pathName": "pages/secondpage/secondpage",
+          "query": "bannerId=128",
+          "scene": null
+        },
+        {
+          "name": "红包雨",
+          "pathName": "pages/packetRain/index",
+          "query": "activeId=1",
+          "scene": null
+        },
+        {
+          "name": "pages/shoporderinfo/shoporderinfo",
+          "pathName": "pages/shoporderinfo/shoporderinfo",
+          "query": "shopId=197&orderId=6504304",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/groupbuy/groupbuy",
+          "query": "bannerId=125",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/goods/goods",
+          "query": "cartTypeName=SecondPage-125-2158&goodsId=6873588&groupBuyActivityId=125&carrierId=2158",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/login/login",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/privacyAgreement/privacyAgreement",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/category/category",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
+  },
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "libVersion": "2.24.2"
+}

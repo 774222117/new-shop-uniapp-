@@ -1,0 +1,191 @@
+.goods{
+  width: 348rpx;
+  margin-bottom: 18rpx;
+}
+.Margin-single{
+  margin-right: 18rpx;
+}
+.goods-item{
+  box-shadow:0px 0px 15rpx 4rpx rgba(0,0,0,0.08);
+  display: flex;
+  background-color: #fff;
+  border-radius: 20rpx;
+  flex-direction: column;
+  align-items: center;
+  /* padding: 8rpx; */
+  position: relative;
+}
+.goods-mainImg{  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.goods-mainImg image{
+  width: 348rpx;
+  height: 348rpx;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+}
+.goods-desc{
+  display: flex;
+  width: 348rpx;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 18rpx;
+  padding-right: 18rpx;
+}
+.goods-desc .title{
+  margin-top: 18rpx;
+  align-items: flex-start;
+  width: 100%; 
+  font-size: 28rpx;
+  /* height: 72rpx; */
+  /* line-height: 36rpx; */
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:600;
+
+}
+.price-info{
+  display: flex;
+  justify-content: space-between;  
+}
+.productprice{
+  height: 26rpx;
+  font-size: 24rpx;
+  font-family: PingFang-SC-Bold,PingFang-SC;
+  color: rgba(155,155,155,1);
+  line-height: 26rpx;
+  text-decoration: line-through;
+}
+.price{
+  color:rgba(238,48,60,1);
+  font-size: 36rpx;
+  line-height:42rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:600;
+  display: flex;
+  flex-direction: column;
+}
+.marketprice text{
+  font-size: 24rpx;
+}
+.plusBtn {
+  width: 36rpx;
+  height: 36rpx;
+  background-color: #FF3B30;
+  color: white;
+  text-align: center;
+  line-height: 36rpx;
+  border-radius: 50%;
+  font-size: 28rpx;
+}
+.buyBtn {
+  width: 142rpx;
+  height: 40rpx;
+  line-height: 36rpx;
+  text-align: center;
+  color: rgba(255,59,48,1);
+  font-size: 28rpx;
+  border-radius: 20rpx;
+  border: 1px solid rgba(255,59,48,1);
+}
+.leftTopImg{
+  width: 80rpx;
+  height: 32rpx;
+  position: absolute;
+  left: 10rpx;
+  top: 10rpx;
+  font-size:11px;
+  color:rgba(255,255,255,1);
+  text-align: center;
+  border-radius: 6rpx
+}
+.leftTopImg image{
+  width:80rpx;
+  height:32rpx;
+}
+.shopCar-image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.topiclist{
+  display: flex;
+  margin-top: 12rpx;
+  margin-bottom: 17rpx;
+}
+.topic{
+  height: 26rpx;
+  line-height: 26rpx;
+  font-size: 20rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #333333;
+  background-color: #FFCD71;
+  border-radius: 5rpx;
+  padding: 3rpx 6rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15rpx;
+}
+.couponsInfo{
+  border: 2rpx solid #FF3B30;
+  display: flex;
+  height: 26rpx;
+  line-height: 26rpx;
+  font-size: 20rpx;
+  font-family: PingFang SC, PingFang SC-Regular;
+  font-weight: 400;
+  padding: 3rpx 6rpx;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-right: 15rpx;
+}
+.coupon{
+  color: #FF3B30 !important;
+  font-size: 20rpx !important;
+}
+.yuan{
+  width: 6rpx;
+  height: 12rpx;
+  border: 2rpx solid #FF3B30;
+  border-radius: 0 100% 100% 0/50%;
+  border-left: none;
+  position: absolute;
+  left: -2rpx;
+  z-index: 1;
+  background-color: #fff;
+}
+.yuan2{
+  width: 6rpx;
+  height: 12rpx;
+  border: 2rpx solid #FF3B30;
+  border-radius: 100% 0 0 100%/50%;
+  border-right: none;
+  position: absolute;
+  right: -2rpx;
+  z-index: 1;
+  background-color: #fff;
+}
+.nocoupon{
+  height: 26rpx;
+  line-height: 26rpx;
+  font-size: 20rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #8E8E8D;
+  border:2rpx solid #8E8E8D;
+  border-radius: 5rpx;
+  padding: 3rpx 6rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

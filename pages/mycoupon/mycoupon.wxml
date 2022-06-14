@@ -1,0 +1,100 @@
+<wxs module="getDate" src="../../utils/dataParse.wxs"></wxs>
+<view class="cardStatus">
+    <view class="tabContainer">
+      <block wx:for="{{tabsList}}" wx:item="item" wx:key="index">
+        <view class="tab-item {{currentTab === index? 'active':''}}" bindtap="changeTab" data-item="{{item}}" data-index="{{index}}">
+          <text>{{ item.title }}</text>
+        </view>
+      </block>
+    </view>
+    <!-- 搜索框 -->
+    <view class="search" wx:if="{{currentTab == 0}}">
+      <input type="text" placeholder='搜索优惠券' placeholder-class='searchPlaceholder' bindinput='searchInput'></input>
+    </view>
+    <!-- 卡片展示区 -->
+    <view class="cardItmeBox">
+      <view class="cardListBox" wx:for="{{currentData}}" wx:key="currentDataKey">
+          <image class="goods" src="{{item.picture}}" data-infoData='{{item}}' bindtap="goToCouponDetail"></image>
+          <view class="cardDesc" data-infoData='{{item}}' bindtap="goToCouponDetail">
+            <view class="title">{{item.name}}</view>
+            <view class="info {{currentTab == 1?'invalid':'' || currentTab == 2?'invalid':'' }}">
+              <text style="font-size:28rpx;">￥</text>
+              <text style="font-size:40rpx;">{{item.productByMoney}}</text>
+              <text class='wovh' style="font-size:22rpx;margin-left:14rpx;margin-right:10rpx;">{{item.intro}}</text>
+              <!-- 不确定那个字段表示为什么券 有影响-->
+              <!-- <image class="cardType" src="../../image/changeCard.png"></image> -->
+            </view>
+            <view class="time"> 
+              {{getDate.getDateM(item.couponStartTime,'.')}}
+              ~
+              {{getDate.getDateM(item.couponEndTime,'.')}}
+            </view>
+          </view>
+          <view class="useBtn" data-infoData='{{item}}' bindtap='immediateUse' wx:if="{{currentTab == 0}}">
+            立即使用
+          </view>
+          <image wx:elif="{{currentTab == 1}}" class="done" src="{{imgUrl}}done.png"></image>
+          <view wx:elif="{{currentTab == 2}}" class='empty'></view>
+        </view>
+    </view>       
+  </view>
+  <!-- 弹出层 -->
+  <view class='immediateUsePopup' hidden="{{isImmediateUsePopup}}" catchtouchmove="{{!isImmediateUsePopup}}" bindtap='closePopup'>
+    <view class="immediateUsePopupBg">
+      <image src='{{imgUrl}}mineToast.png' mode='scaleToFill'></image>
+      <view class='immediateUsePopupMainBox'>
+      <!-- 支付聚合 -->
+      <view class='paymentAggregation' wx:if="{{cardDetailsData.isWeChat}}">电子支付聚合</view>
+      <view class='paymentAggregation' wx:else>券类支付聚合</view>
+      <!-- 头部 -->
+        <view class='immediateUsePopupHeadBox'>
+          <view class='immediateUsePopupHeadBoxLeft'>
+            <text class='rmbLogo'>￥</text>
+            <text class='bymoney'>{{cardDetailsData.productByMoney}}</text>
+          </view>
+          <view class='immediateUsePopupHeadBoxRight'>
+            <text class='couponType'>满减券</text>
+            <text class='couponInfo'>{{cardDetailsData.intro}}</text>
+          </view>
+        </view>
+        <!-- 商品图片区 -->
+        <view class='immediateUsePopupImgBox'>
+          <image src='{{cardDetailsData.picture}}' mode='scaleToFill'></image>
+        </view>
+        <!-- 商品说明区 -->
+        <view class='immediateUsePopupText'>
+         {{cardDetailsData.name}}
+        </view>
+        <!-- 条码区 -->
+        <view class='barCodeBox' hidden="{{cardDetailsData.isWeChat}}">
+          <view class='barCodeCanvasBox'>
+            <canvas canvas-id="barcode" class="barCodeCanvas" />
+          </view>
+          <view class='barCodeNumBox'>{{cardDetailsData.couponCode}}</view>
+        </view>
+        <view class='barCodeBox1' hidden="{{!cardDetailsData.isWeChat}}" >
+          <text class='text'>关闭本页面后</text>
+          <text class='text'>使用微信支付将进行自动抵扣</text>
+        </view>
+        <!-- 底部地址区 -->
+        <view class='btmAddress'>
+          <!-- 底部logo图片 -->
+          <view class='btmAddressLeftImgBox'>
+            <!-- <image src='../../image/supermarket.png'  mode='scaleToFill'></image> -->
+            <image wx:if="{{cardDetailsData.merchantIcon}}" src="{{cardDetailsData.merchantIcon}}"  mode='scaleToFill'></image>
+            <image wx:else src="{{imgUrl}}supermarket.png"  mode='scaleToFill'></image>
+          </view>
+          <!-- 底部地址文字 -->
+          <view class='btmAddressRightImgBox'>
+            {{cardDetailsData.useShop}}
+          </view>
+        </view>
+        <!-- 底部日期说明 -->
+        <view class='ValidDate'>有效时间：
+          {{getDate.getDate(cardDetailsData.couponStartTime,'.')}}
+          ～
+          {{getDate.getDate(cardDetailsData.couponEndTime,'.')}}
+        </view>
+      </view>
+    </view>
+  </view>

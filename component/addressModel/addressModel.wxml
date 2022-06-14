@@ -1,0 +1,49 @@
+<!--门店选择组件-->
+<view class="flex justify-start topBox {{isIndex?'topBox_pd':''}}" style="background-color:{{bgColor}};color:{{fontColor}}" bindtap="showModal" data-target="bottomModal">
+  <text class="cuIcon-locationfill" style="margin-left:20rpx;color:{{iconColor}}"></text>
+  <view class="shopInfo">{{shopInfo.name}}</view>
+  <text class="cuIcon-unfold" style="margin-left:5rpx;font-size:42rpx;color:{{fontColor}}"></text>
+  <block wx:if = "{{shopInfo.businessHours!=undefined}}">
+    <text wx:if="{{isIndex && shopInfo.businessHours!=''}}" class="businessInfo" catchtap="toBusinessInfoPage">营业资质</text>
+  </block>
+</view>
+ <!-- 门店选择 显示窗口 -->
+  <view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+    <view class="cu-dialog addressBox">
+      <!-- 顶部定位 -->
+      <view class="cu-bar bg-white addressTitle">
+        <view class="search-form round" style="font-size:18px;">
+          <text class="cuIcon-search"></text>
+          <input type="text" placeholder="输入您想要查询的门店" confirm-type="search" bindinput="searchAddress"></input>
+        </view>
+        <view class="action cuIcon-close" style="font-size:20px;" data-target="bottomModal" bindtap="hideModal"></view>
+      </view>
+      <!-- 标签选择 -->
+      <view style="height:80rpx;">
+        <view class="tabContainer">
+          <block wx:for="{{tabsList}}" wx:item="item" wx:key="index" wx:key="shopFormList">
+            <view class="tab-item {{currentTab == item.value? 'active':''}}" bindtap="changeTab" data-item="{{item}}" data-index="{{index}}">
+              <text>{{ item.title }}</text>
+            </view>
+          </block>
+        </view>
+      </view>
+      <!-- 内容展示 -->
+      <view class="padding-sm bg-white">
+        <view style="height:900rpx;">
+          <scroll-view scroll-y scroll-with-animation style="height:100%" bindscrolltolower="addressBtmFun">
+            <!-- 地址内容 -->
+            <view class="addressItem flex justify-around" wx:for="{{shops}}" wx:key="shopListKey">
+              <view class="addressItemLeftImg">
+                <image src="https://sourced.sgsugou.com/merchant/icon/bd1b4bb88e434c94ac6c352c6a8f5a9f.png"></image>
+              </view>
+              <view class="addressItemMiddleBox" data-id="{{item.id}}" data-target="bottomModal" bindtap="hideModal">
+              <text>{{item.name}}</text>
+              <view class="text-sty2"><view>约{{item.distance}}m </view><view>{{item.detailAddress}}</view></view>
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+    </view>
+  </view>

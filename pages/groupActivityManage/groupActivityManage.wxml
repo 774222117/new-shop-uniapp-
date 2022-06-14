@@ -1,0 +1,73 @@
+<!--pages/groupActivityManage/groupActivityManage.wxml-->
+<wxs module="getDate" src="../../utils/dataParse.wxs"></wxs>
+<view class="tabs">
+  <view class="tabs-item {{tabFlag==0?'tabs-item-active':''}}" bindtap="changeTabs" data-index="0">我的团</view>
+  <view class="tabs-item {{tabFlag==1?'tabs-item-active':''}}" bindtap="changeTabs" data-index="1">已结束</view>
+  <view class="active {{tabFlag==1?'active2':''}}"></view>
+</view>
+<view class="tips">
+  <image src="../../image/tips.png" class="iconImg" style="margin-right:12rpx"></image>
+  温馨提示：销售显示非实时更新，仅供参考
+</view>
+<block wx:if="{{tabFlag==0}}">
+  <view class="card" wx:for="{{listData}}">
+    <view class="card-head">
+      <view class="card-headL">
+        <image src="{{item.progress==1?'../../image/onGoing.png':'../../image/notice.png'}}" class="iconImg"></image>
+        {{item.progress==1?'进行中':'预告中'}}
+      </view>
+      <view class="card-headR" wx:if="{{item.progress==1}}">{{getDate.getDate_New(item.startTime,'.')}}-{{getDate.getDate_New(item.endTime,'.')}}</view>
+    </view>
+    <view class="card-body">
+      <view class="card-body-font1">{{item.bannerTitle}}</view>
+      <view class="card-body-middle">
+        <view class="card-body-font2"> {{item.progress==1?'销售额：':'开团时间：'}}</view>
+        <view class="{{item.progress==1?'card-body-font3':'card-body-font5'}}">{{item.progress==1?item.totalPrice+'元':getDate.getDate_New(item.startTime,'.')+'-'+getDate.getDate_New(item.endTime,'.')}}</view>
+      </view>
+      <view class="card-body-bottom">
+        <view class="card-body-bottomL">
+          <view class="card-body-font2">{{item.progress==1?'订单数：':'提货时间：'}}  </view>
+          <view class="{{item.progress==1?'card-body-font2':'card-body-font5'}}">{{item.progress==1?item.orderCount+'件':getDate.getDate_New(item.takeTime,'.')}}</view>
+        </view>
+        <view class="card-body-bottomR" wx:if="{{item.progress==1}}">
+          <view class="card-body-font2"> 预计佣金：</view>
+          <view class="card-body-font4">{{item.totalCommisson}}元</view>
+        </view>
+      </view>
+    </view>
+    <view class="card-foot">
+      <button class="btn" catchtap="toNavicataShare" data-url="../groupbuy/groupbuy" data-id="{{item.id}}">去分享</button>
+      <button class="btn" wx:if="{{item.progress==1}}" catchtap="toNavicata" data-url="../groupMemberOrder/groupMemberOrder" data-id="{{item.id}}">查看订单</button>
+    </view>
+  </view>
+</block>
+<block wx:else>
+  <view class="card" wx:for="{{listData2}}">
+    <view class="card-head">
+      <view class="card-headL">
+        <image src="../../image/over.png" class="iconImg"></image>已结束
+      </view>
+      <view class="card-headR">{{getDate.getDate_New(item.startTime,'.')}}-{{getDate.getDate_New(item.endTime,'.')}}</view>
+    </view>
+    <view class="card-body">
+      <view class="card-body-font1">{{item.bannerTitle}}</view>
+      <view class="card-body-middle">
+        <view class="card-body-font2">销售额：</view>
+        <view class="card-body-font3">{{item.totalPrice}}元</view>
+      </view>
+      <view class="card-body-bottom">
+        <view class="card-body-bottomL">
+          <view class="card-body-font2"> 订单数： </view>
+          <view class="card-body-font2">{{item.orderCount}}件</view>
+        </view>
+        <view class="card-body-bottomR">
+          <view class="card-body-font2"> 预计佣金： </view>
+          <view class="card-body-font4">{{item.totalCommisson}}元</view>
+        </view>
+      </view>
+    </view>
+    <view class="card-foot">
+      <button class="btn" catchtap="toNavicata" data-url="../groupMemberOrder/groupMemberOrder" data-id="{{item.id}}">查看订单</button>
+    </view>
+  </view>
+</block>

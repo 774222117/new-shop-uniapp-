@@ -1,0 +1,28 @@
+.background{
+  position: fixed;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+.activity-head{
+  width: 750rpx;
+  height: 466rpx;
+}
+.activity-head image{
+  width: 750rpx;
+  height: 466rpx;
+}
+.more-goods-body{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  top: 400rpx;
+  width: 750rpx;
+}
+.more-goods-card{
+  display: flex;
+  flex-direction: row;
+  width: 714rpx;
+  flex-wrap: wrap;
+  margin-top: 22rpx;
+}

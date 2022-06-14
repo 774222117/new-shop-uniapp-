@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "老虎机",
+  "navigationBarBackgroundColor": "#DB3027",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "sol-slot-machine": "/component/slot-machine/index"
+  }
+}

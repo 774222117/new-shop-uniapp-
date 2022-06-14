@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "团购接龙",
+  "usingComponents": {
+    "goods-card":"/component/goods-card/index",
+    "bottom-action": "/component/bottomAction/index",
+    "back-index": "/component/backToIndex/backToIndex"
+  }
+}

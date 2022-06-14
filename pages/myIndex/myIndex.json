@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "个人中心",
+  "navigationBarBackgroundColor": "#FF3455",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "i-card":"../../component/card/index",
+    "bottom-tabbar": "/component/bottomTabbar/index"
+  }
+}

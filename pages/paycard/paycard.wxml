@@ -1,0 +1,43 @@
+<import src="../../component/wxParse/wxParse.wxml" />
+<!-- 优享卡 -->
+<view class="container-box">
+  <!--主图-->
+  <view class="header-image">
+    <image src="{{indexImage}}" bindtap="indexImgClick"></image>
+  </view>
+  <!--权益1-->
+  <view class="clearFix eqyityItem">
+    <image src="{{imgUrl}}equity1.png" class="image1"></image>
+    <view class="clearFix equity1-box">
+      <text class="quity-text">开通领取<text class="quity-text2">{{couponCount}}</text>张{{couponText}}券</text>
+      <image src="{{equity1}}" class="image2"></image>
+    </view>
+  </view>
+  <!-- 权益2 -->
+  <view class="clearFix eqyityItem" style="{{windowHeightKey?'margin-bottom:196rpx':'margin-bottom:140rpx'}}">
+    <image src="{{imgUrl}}equity2.png" class="image1"></image>
+    <view class="clearFix equity2-box" style="font-size:28rpx;background-color:#fff;">
+      <!-- <image src="{{equity2}}" class="image2"></image> -->
+      <template is="wxParse" data="{{wxParseData:ruleInfoHtml.nodes}}"/>
+    </view>
+  </view>
+  <!-- 底部 -->
+  <view class="detail-footer clearFix {{windowHeightKey?'active':''}}">
+    <view class="footer-btn lt clearFix footer-index" bindtap="toIndexPage">
+      <image class="footer-img lt s" src="{{imgUrl}}detail-footer-detail.png"></image>
+      <text class="footer-text lt">首页</text>
+    </view>
+    <label class="footer-btn lt clearFix footer-share">
+      <image class="footer-img lt s" src="{{imgUrl}}detail-footer-share.png"></image>
+      <text class="footer-text lt">分享</text>
+      <button open-type="share" id="btnShare" data-intro="{{couponContent.intro}}" data-title="{{indexTitle}}" data-cid="{{couponId}}" data-url="{{bannerList[0].url}}"></button>
+    </label>
+    <view class="footer-btn lt clearFix footer-code" bindtap="toScanCode">
+      <image class="footer-img lt s" src="{{imgUrl}}detail-footer-code.png"></image>
+      <text class="footer-text lt">扫码</text>
+    </view>
+    <view class="footer-getCode lt" bindtap="indexImgClick">{{btnText}}</view>
+    <!-- <view class="footer-getCode lt" bindtap="indexImgClick" wx:if="{{amount == 0}}">立即领取</view>
+    <view class="footer-getCode lt" bindtap="indexImgClick" wx:else>{{amount}}元立抢</view> -->
+  </view>
+</view>

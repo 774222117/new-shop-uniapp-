@@ -1,0 +1,14 @@
+<view class="navbar custom-class titleBg" style='height:{{navHeight}}px'>
+  <view class='navbar-title' style='top:{{navTop}}px' >
+    <!-- 搜索框 -->
+    <view class="section outerLayer">
+      <view class='sectionInput' catchtap="gotoSearch">
+        <text class="cuIcon-search"></text>
+        <text style="padding-left:8rpx;">搜索商品/品牌</text>
+        
+      </view>
+      <image class="saoyisao" bindtap="sancode" src="/image/saoyisao.svg"></image>
+    </view>
+    
+  </view>
+</view>

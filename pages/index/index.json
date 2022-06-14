@@ -1,0 +1,12 @@
+{
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "my-address": "/component/addressModelNewIndex/addressModel",
+    "my-banner-component": "/component/bannerCom/bannerCom",
+    "index-goods-card": "/component/index-goods-card/index",
+    "index-goods-card-two": "/component/index-goods-card-two/index",
+    "bottom-action": "/component/bottomAction/index",
+    "bottom-tabbar":"/component/bottomTabbar/index"
+  }
+}

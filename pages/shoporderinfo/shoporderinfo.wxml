@@ -1,0 +1,344 @@
+<wxs module="getDate" src="../../utils/dataParse.wxs"></wxs>
+<view class="service">
+    <button plain class="contact_button" open-type="contact" session-from="weapp">
+      <image style="width: 45rpx; height:45rpx;" src="/image/orderDetailInfo/service.png"></image>
+      <view class="txt">客服</view>
+    </button>
+</view>
+<view>
+<view class="head-bg">
+  <image style="width: 100%;" mode="widthFix" src="/image/orderDetailInfo/bg.png"></image>
+</view>
+  <!------------------标题区 --------------------------->
+  <view class="title">
+    <!-- <image class="titleLeftImg" src='{{orderInfo.imgsrc}}'></image> -->
+    <view class="titleRight">
+      <block wx:if="{{orderInfo.isSend==1&&orderInfo.statusExplain!='已退款'}}">
+        <view wx:if="{{orderInfo.sendStatus==0}}" class="titleTop">待配送</view>
+        <view wx:elif="{{orderInfo.sendStatus==1}}" class="titleTop">等待骑手待接单</view>
+        <view wx:elif="{{orderInfo.sendStatus==20}}" class="titleTop">骑手正赶往商家</view>   
+        <view wx:elif="{{orderInfo.sendStatus==80}}" class="titleTop">骑手已到店</view>          
+        <view wx:elif="{{orderInfo.sendStatus==2}}" class="titleTop">骑手正在送货</view>              
+        <view wx:elif="{{orderInfo.sendStatus==3}}" class="titleTop">订单已送达</view>
+        <view wx:elif="{{orderInfo.sendStatus==4}}" class="titleTop">配送已取消</view>
+        <view wx:else class="lable">配送异常</view>
+      </block>
+      <view class="titleTop" wx:else>{{orderInfo.statusExplain}}></view>
+      
+      <view class="titleShopName" wx:if="{{orderInfo.status != 3 && orderInfo.dispatchType == 1}}">提货门店：{{orderInfo.shopName}}</view>
+      <view class="titleAddress" wx:if="{{orderInfo.status != 3 && orderInfo.dispatchType == 1}}">提货点：{{orderInfo.carrierAddress}}</view>
+      <view class="titleTakeTime" wx:if="{{orderInfo.status != 3 && orderInfo.dispatchType == 1}}">取货时间：{{orderInfo.takeTimeDes}}</view>
+    </view>
+  </view>
+
+  <view class="headBlock" wx:if="{{orderInfo.dispatchType == 1}}">
+    <view class="headBlock_item" bindtap="callPhone">
+      <view class="head-icon"><image style="width: 100%; height:100%;" src="/image/orderDetailInfo/telephone.png"></image></view>
+      <view class="headBlock_text">联系电话</view>
+    </view>
+    <view class="line" style="background-color: #b3b3b3;"></view>
+    <view class="headBlock_item" bindtap="callShopPhone">
+      <view class="head-icon"><image style="width: 100%; height:100%;" src="/image/orderDetailInfo/shop.png"></image></view>
+      <view class="headBlock_text">联系门店</view>
+    </view>
+    <block wx:if="{{orderInfo.status != 3}}">
+      <view class="line" style="background-color: #b3b3b3;"></view>
+      <view class="headBlock_item" bindtap="showCode">
+        <view class="head-icon" style="width: 50rpx; height:50rpx;"><image style="width: 100%; height:100%;" src="/image/orderDetailInfo/code.png"></image></view>
+        <view class="headBlock_text">提货码</view>
+      </view>
+    </block>
+  </view>
+
+  <view class="headBlock-isSend" wx:if="{{orderInfo.dispatchType == 2 && orderInfo.isSend == 1}}">
+    <view class="onTheWay" wx:if="{{orderInfo.sendStatus!=3 && orderInfo.sendStatus!=4}}">
+      <view class="predictTime">预计<text style="color:#FD6A7C;">{{orderInfo.takeTime}}</text>送达</view>
+      <view class="sendType">蜂鸟快送</view>
+      <view class="headBlock-isSend-body">
+        <view class="headBlock_item" bindtap="callShopPhone">
+          <view class="head-icon"><image style="width: 100%; height:100%;" src="/image/orderDetailInfo/shop.png"></image></view>
+          <view class="headBlock_text">联系门店</view>
+        </view>
+        <view class="line"  wx:if="{{orderInfo.status==0}}" style="background-color: #b3b3b3;"></view>
+        <view class="headBlock_item"  wx:if="{{orderInfo.status==0}}"  data-id="{{orderInfo.id}}" data-shopId="{{orderInfo.shopId}}" bindtap="cancelOrder">
+          <view class="head-icon"><image style="width: 100%; height:100%;" src="/image/orderDetailInfo/cancel.png"></image></view>
+          <view class="headBlock_text">取消订单</view>
+        </view>
+        <view class="headBlock_item" wx:if="{{orderInfo.carrierDriverPhone}}" bindtap="callRiderPhone">
+          <view class="head-icon"><image style="width: 100%; height:100%;" src="/image/orderDetailInfo/rider.png"></image></view>
+          <view class="headBlock_text">联系骑手</view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{orderInfo.sendStatus==3 || orderInfo.sendStatus==4}}">
+      <view class="headBlock-isSend-body" style="border-top: none;">
+        <view class="headBlock_item" bindtap="callShopPhone">
+          <view class="head-icon"><image style="width: 100%; height:100%;" src="/image/orderDetailInfo/shop.png"></image></view>
+          <view class="headBlock_text">联系门店</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="headBlock-delivery" wx:if="{{orderInfo.dispatchType == 2 && orderInfo.isSend == 0}}">
+    <view class="headBlock_item" bindtap="callShopPhone">
+      <view class="head-icon"><image style="width: 100%; height:100%;" src="/image/orderDetailInfo/shop.png"></image></view>
+        <view class="headBlock_text">联系门店</view>
+      </view>
+      <view class="line" style="background-color: #b3b3b3;"></view>
+      <view class="headBlock_item" bindtap="jumpExpressPage">
+        <view class="head-icon"><image style="width: 40rpx; height:30rpx;" src="/image/orderDetailInfo/express.png"></image></view>
+        <view class="headBlock_text">查看物流</view>
+      </view>
+  </view>
+
+  <view class="goodsList">
+    <view class="goodsList-title">
+      <view class="txt">苏果优选（{{orderInfo.shopName}}）</view>
+    </view>
+    <view class="listBody">
+       <view class="commoditiesListItem" wx:for="{{orderInfo.goodsItems}}">
+          <view class="leftImg">
+            <image src="{{item.goodsThumb}}"></image>
+          </view>
+          <view class="middeText">{{item.title}}
+            <view class="numTextSty">x{{item.total}}</view>
+          </view>
+          <view class="rightNum">
+            <view>￥{{item.realPrice}}</view>
+            <view class="originPrice" hidden="{{!item.productPrice}}">￥{{item.productPrice*item.total}}</view>
+          </view>
+       </view>
+    </view>
+    <view class="goodsList-item">
+      <view class="txt">商品总额</view>
+      <view class="money">￥{{orderInfo.goodsPrice}}</view>
+    </view>
+    <view class="goodsList-item" wx:if="{{orderInfo.dispatchType == 2}}">
+      <view class="txt" wx:if="{{orderInfo.isSend == 0}}">邮费</view>
+      <view class="txt" wx:if="{{orderInfo.isSend == 1}}">配送费</view>
+      <view class="money">￥{{orderInfo.dispatchPrice}}</view>
+    </view>
+    <view class="goodsList-item" wx:if="{{orderInfo.dispatchType == 2 && orderInfo.isSend == 1}}">
+      <view class="txt">配送费优惠金额</view>
+      <view class="money">￥{{orderInfo.dispatchDiscountPrice}}</view>
+    </view>
+    <view class="goodsList-item" wx:if="{{orderInfo.dispatchType == 2 && orderInfo.isSend == 1}}">
+      <view class="txt">包装费</view>
+      <view class="money">￥{{orderInfo.packPrice}}</view>
+    </view>
+    <view class="goodsList-item">
+      <view class="txt">优惠金额</view>
+      <view class="money">￥{{orderInfo.discountPrice}}</view>
+    </view>
+    <view class="goodsList-total">
+      <view></view>
+      <view class="txt">合计：<text>￥{{orderInfo.price}}</text></view>
+    </view>
+  </view>
+
+  <view class="consigneeInfo">
+    <view class="goodsList-title">
+      <view class="txt" wx:if="{{orderInfo.dispatchType == 1}}">提货人信息</view>
+      <view class="txt" wx:if="{{orderInfo.dispatchType == 2}}">配送信息</view>
+    </view>
+    <view class="goodsList-item" wx:if="{{orderInfo.dispatchType == 2}}">
+      <view class="txt" wx:if="{{orderInfo.isSend == 1}}">配送地址</view>
+      <view class="txt" wx:if="{{orderInfo.isSend == 0}}">收货地址</view>
+      <view class="money"  style="font-size:28rpx;">{{orderInfo.detailInfo}}</view>
+    </view>
+    <view class="goodsList-item">
+      <view class="txt" wx:if="{{orderInfo.dispatchType == 1}}">提货人</view>
+      <view class="txt" wx:if="{{orderInfo.dispatchType == 2}}">收货人</view>
+      <view class="money" style="font-size:28rpx;">{{orderInfo.pickerName}}</view>
+    </view>
+    <view class="goodsList-item" style="border-bottom: none;">
+      <view class="txt">手机号</view>
+      <view class="money"  style="font-size:28rpx;">{{orderInfo.pickerMobile}}</view>
+    </view>
+  </view>
+
+  <view class="orderDetailInfo">
+    <view class="goodsList-title">
+      <view class="txt">订单信息</view>
+      <view class="order-refund" wx:if="{{orderInfo.showRefund}}" bindtap="refundOrder">退款</view>      
+      <view class="order-pay" wx:elif="{{orderInfo.showPay}}" bindtap="payOrder">支付</view>
+    </view>
+    <view class="goodsList-item">
+      <view class="txt">订单编号</view>
+      <view class="ordersnCopyBlock">
+        <view class="money" style="font-size: 24rpx;">{{orderInfo.ordersn}}</view>
+        <view class="copyIcon" catchtap="copyOrdersn">
+          <image style="width: 100%; height:100%;" src="/image/orderDetailInfo/copyOrdersn.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="goodsList-item" wx:if="{{orderInfo.dispatchType == 1 && orderInfo.isSend == 0}}">
+      <view class="txt">取货地址</view>
+      <view class="money" style="font-size:28rpx;">{{orderInfo.carrierAddress}}</view>
+    </view>
+    <view class="goodsList-item" style="border-bottom: none;">
+      <view class="txt">下单时间</view>
+      <view class="money" style="font-size:28rpx;">
+        {{getDate.getDate(orderInfo.createTime,'-')}} 
+        {{getDate.getDateH(orderInfo.createTime,':')}}
+      </view>
+    </view>
+  </view>
+  <view style="width:100%;height:0rpx;height:calc(0rpx + constant(safe-area-inset-bottom));height:calc(0rpx + env(safe-area-inset-bottom));"></view>
+</view>
+
+  <!------------------ 提货区 --------------------------->
+  <!-- <view class="pubsty addressInfo" wx:if="{{orderInfo.dispatchType== 1}}">
+    <view class="leftIcon cuIcon-locationfill"></view>
+    <view class="addressName">{{orderInfo.carrierAddress}}</view>
+    <view class="verifycode" wx:if="{{orderInfo.showCode}}" bindtap="showCode"> 
+      提货码
+    </view>
+  </view>
+  <view class="boxLine userInfo" wx:if="{{orderInfo.dispatchType== 1}}"> -->
+    <!-- <view class="cu-form-group">
+      <view class="lable">门店电话：{{orderInfo.shopPhone}}</view>      
+    </view> -->
+    <!-- <view class="cu-form-group" wx:if="{{orderInfo.takeTimeDes != undefined}}">
+      <view class="lable">取货时间：{{orderInfo.takeTimeDes}}</view>      
+    </view>
+    <view class="cu-form-group" wx:else>
+      <view class="lable">取货时间：{{orderInfo.carrierServerTime}}</view>      
+    </view>
+    <view class="cu-form-group" bindtap="callPhone">
+      <view class="lable">联系电话：{{orderInfo.carrierMobile}}</view>   
+      <view class="box-phone">
+        <view class="phoneIcon cuIcon-dianhua"></view>
+        <view >联系Ta</view>
+      </view>         
+    </view>    
+  </view> -->
+
+  <!------------------ 配送地址 --------------------------->
+  <!-- <view class="pubsty addressInfo" wx:if="{{orderInfo.dispatchType== 2}}">
+    <view class="leftIcon cuIcon-locationfill"></view>
+    <view class="addressName">{{orderInfo.detailInfo}}</view>    
+  </view>
+  <view class="boxLine userInfo" wx:if="{{orderInfo.dispatchType== 2 && orderInfo.isSend ==0}}">
+    <view class="cu-form-group" wx:if="{{orderInfo.takeTime != undefined}}">
+      <view class="lable">门店电话：{{orderInfo.shopPhone}}</view>      
+    </view>
+    <view class="cu-form-group">
+      <view class="lable">快递公司：{{orderInfo.expressCompany}}</view>      
+    </view>  
+    <view class="cu-form-group" bindtap="jumpExpressPage">
+      <view class="lable">快递单号：{{orderInfo.expressNumber}}</view>
+      <view>
+        <view class="cu-list menu">
+          <view class="cu-item arrow" >
+          </view>     
+        </view> 
+      </view>
+    </view>    
+  </view> -->
+  <!------------------ 订单信息 ------------------>
+  <!-- <view class=".pubsty orderInfo">
+    <view class="order-title">
+      <view class="order-describe">订单信息</view>
+      <view class="order-refund" wx:if="{{orderInfo.showRefund}}" bindtap="refundOrder">退款</view>      
+      <view class="order-pay" wx:elif="{{orderInfo.showPay}}" bindtap="payOrder">支付</view>
+    </view>    
+  </view>
+  <view class="boxLine userInfo">
+    <view class="cu-form-group">
+      <view class="lable">订单编号：<text>{{orderInfo.ordersn}}</text></view>
+      <view class="copyOrdersn" catchtap="copyOrdersn">复制单号</view>      
+    </view>
+    <view class="cu-form-group">
+      <view class="lable">下单时间：
+        {{getDate.getDate(orderInfo.createTime,'-')}} 
+        {{getDate.getDateH(orderInfo.createTime,':')}}
+      </view>      
+    </view>
+    <view class="cu-form-group">
+      <view class="lable">门店电话：{{orderInfo.shopPhone}}</view>      
+    </view>
+    <view class="cu-form-group">
+      <view class="lable">提货人员：{{orderInfo.pickerName}}</view>      
+    </view>
+    <view class="cu-form-group">
+      <view class="lable">联系电话：{{orderInfo.pickerMobile}}</view>      
+    </view>
+    <view class="cu-form-group" wx:if="{{orderInfo.isSend==1&&orderInfo.statusExplain!='已退款'}}">
+      <view wx:if="{{orderInfo.sendStatus==0}}" class="lable">配送状态：待配送</view>
+      <view wx:elif="{{orderInfo.sendStatus==1}}" class="lable">配送状态：待接单</view>
+      <view wx:elif="{{orderInfo.sendStatus==20}}" class="lable">配送状态：骑手已接单</view>   
+      <view wx:elif="{{orderInfo.sendStatus==80}}" class="lable">配送状态：骑手已到店</view>          
+      <view wx:elif="{{orderInfo.sendStatus==2}}" class="lable">配送状态：配送中</view>              
+      <view wx:elif="{{orderInfo.sendStatus==3}}" class="lable">配送状态：已送达</view>
+      <view wx:elif="{{orderInfo.sendStatus==4}}" class="lable">配送状态：已取消</view>
+      <view wx:else class="lable">配送状态：异常</view>
+    </view>
+    <view class="cu-form-group">
+      <view class="lable-price">订单金额：{{orderInfo.price}}元(
+      <block wx:if="{{orderInfo.dispatchPrice>0}}">配送费：{{orderInfo.dispatchPrice}}元,</block>
+      <block wx:if="{{orderInfo.dispatchDiscountPrice>0}}">配送费优惠：{{orderInfo.dispatchDiscountPrice}}元,</block>
+      包装费：{{orderInfo.packPrice}}元)
+      </view>      
+    </view>
+    <view class="cu-form-group">
+      <view class="lable-price">优惠金额：{{orderInfo.discountPrice}}元
+      </view>      
+    </view>
+  </view> -->
+
+  <!-- 商品信息 -->
+  <!-- <view class="pubsty commoditiesList">
+    <view class="commoditiesListTitle">
+      <text>商品清单</text>
+      <text>共{{orderInfo.goodsCount}}件</text>
+    </view>
+    <view>
+       <view class="commoditiesListItem" wx:for="{{orderInfo.goodsItems}}">
+          <view class="leftImg">
+            <image src="{{item.goodsThumb}}"></image>
+          </view>
+          <view class="middeText">{{item.title}}
+            <view class="numTextSty">x{{item.total}}</view>
+          </view>
+          <view class="rightNum">
+            <view>{{item.realPrice}}</view>
+          </view>
+       </view>
+    </view>
+  </view>
+
+
+  
+</view> -->
+<view class="cu-modal {{modalName=='resoneModal'?'show':''}}" bindtap="hideModal">
+    <view class="cu-dialog" catchtap>
+      <radio-group class="block">
+        <view class="cu-list menu text-left">
+          <view class="cu-item" wx:for="{{resonList}}" wx:key>
+            <label class="flex justify-between align-center flex-sub" data-value="{{item.reason}}" bindtap="confirmRefund">
+              <view class="flex-sub">{{item.reason}}</view>
+              <radio class="round"></radio>
+            </label>
+          </view>
+        </view>
+      </radio-group>
+    </view>
+  </view>
+<!-- 提货码弹出显示 -->
+<view class="showCodeMainBox" hidden="{{modelIsShow}}" catchtap="closeModel">
+  <view class="showCodeBox">
+    <view class="codeAreaBox">
+      <canvas canvas-id="barcode" class="qrcodebox"></canvas>
+    </view>
+    <view class='barCodeBox'>
+      <view class="barCodeCanvasBox">
+        <canvas canvas-id="barcode2" class="barCodeCanvas" />
+        <view class="numAreaBox">{{orderInfo.verifycode}}</view>
+      </view>
+    </view>
+    
+    <!-- <view class="closeAreaBox" bindtap="closeModel">确定</view> -->
+  </view>
+</view>

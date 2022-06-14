@@ -1,0 +1,231 @@
+/* 卡券状态 */
+.orderlist,.orderStatus {
+ 
+}
+.orderlist{
+  margin-top: 100rpx;
+}
+.orderStatus{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.tabContainer{
+  overflow: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items:center;
+  justify-content:space-around;
+  height: 100rpx;
+  background-color: #FFF
+}
+
+.tab-item{
+    color: #363636;
+    height: 100%;
+    /* flex-grow: 1; */
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    font-size: 28rpx;
+    box-sizing:border-box;
+    
+    position:relative;
+  }
+  .tab-item.active{
+    color: #363636;
+    font-size: 28rpx;
+    font-weight:bold;
+  }
+  .tab-item.active::after {
+    content: " ";
+    width:76rpx;
+    height: 8rpx;
+    border-radius: 6rpx;
+    position: absolute;
+    left:10;
+    bottom:0;
+    background-color:#FF3B30;
+    z-index:10;
+  }
+
+  /* 卡牌样式 */
+.cardItmeBox{
+  width: 692rpx;
+  height: 306rpx;
+  background-color: white;
+  margin:15px auto 0;
+  padding: 20rpx;
+}
+.cardItmeBox .topTitle{
+  width: 100%;
+  height: 40rpx;
+  font-size:28rpx;
+  font-weight:bold;
+  color:#363636;
+  line-height:40rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.cardItmeBox .topTitle .leftAddressName{
+  width: 560rpx;
+  height: 100%;
+  font-size:26rpx;
+  font-weight:bold;
+  color:#363636;
+  line-height:18px;
+}
+.cardItmeBox .topTitle .rightState{
+  width: 90rpx;
+  height: 100%;
+  font-size:22rpx;
+  font-weight:bold;
+  color:rgba(155,155,155,1);
+  text-align: right;
+}
+.cardItmeBox .topTime{
+  width: 100%;
+  height:32rpx;
+  font-size:22rpx;
+  color:rgba(155,155,155,1);
+  line-height:32rpx;
+  border-bottom:rgba(0,0,0,0.05);
+  margin-top: 10rpx;
+}
+.cardItemInfo{
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-top: 12rpx;
+  
+}
+.leftImg{
+  width: 120rpx;
+  height: 120rpx;
+  padding-right: 12rpx;
+}
+.leftImg>image{width: 120rpx;height: 120rpx;max-width: none;}
+.middeText{
+  width: 380rpx;
+  height: 120rpx;
+  padding-left: 20rpx;
+  font-size:26rpx;
+  font-weight:bold;
+}
+.rightNum{
+  width: 150rpx;
+  height: 120rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  font-size:32rpx;
+  font-weight:bold;
+  color:#363636;
+}
+.numTextSty{
+  font-size:24rpx;
+  color:rgba(54,54,54,1);
+  padding-top: 10rpx;
+}
+.carItemBtm{
+  width: 100%;
+  /* height: 100rpx; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.carItemBtm .allMoney{
+  width: 400rpx;
+  height: 100%;
+  font-size:22rpx;
+  font-weight:bold;
+  color:rgba(155,155,155,1);
+  /* line-height:100rpx; */
+}
+.carItemBtm .lookOrder{
+  width:168rpx;
+  height:44rpx;
+  border-radius:26rpx;
+  border:2rpx solid rgba(255,59,48,1);
+  font-size:26rpx;
+  color:rgba(255,59,48,1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.carItemBtm .payOrder{
+  width:168rpx;
+  height:46rpx;
+  border-radius:26rpx;
+  background-color: rgba(255,59,48,1);
+  border:1px solid rgba(255,59,48,1);
+  font-size:26rpx;
+  text-align: center;
+  color:#FFFFFF;
+  margin-left: 14rpx;
+}
+.carItemBtm .cancelOrder{
+  width:108rpx;
+  height:46rpx;
+  border-radius:26rpx;
+  background-color: rgba(155,155,155,1);
+  border:1px solid rgba(155,155,155,1);
+  font-size:26rpx;
+  text-align: center;
+  color:#FFFFFF;
+  margin-right: 4rpx;
+}
+.bottomLoadConplete{
+  width: 100%;
+  height:200rpx;
+  line-height: 200rpx;
+  text-align: center;
+  font-size:14px;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color:rgba(136,136,136,1);
+}
+
+
+/* 弹出框 */
+.popModel{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,0.5)
+}
+.popModel .popImgBox{
+  width: 712rpx;
+  height: 712rpx;
+  position: absolute;
+  top: 212rpx;
+  left: 19rpx;
+}
+
+.popModel .popImgBox image{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.popModel .popClose{
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  left: 335rpx;
+  top: 924rpx;
+}
+.popModel .popClose image {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

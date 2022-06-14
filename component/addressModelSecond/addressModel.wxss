@@ -1,0 +1,180 @@
+
+/* 门店显示样式 */
+.topBox{
+  width: 706rpx;
+  height: 60rpx;
+  background-color: rgba(255, 255, 255, 0.15) ;
+  /* opacity: 0.15; */
+  align-items: center;
+  font-weight: bold;
+  font-size: 36rpx;
+  margin: 22rpx auto 22rpx auto;
+  border-radius: 10rpx;
+  position: absolute;
+  z-index: 999;
+  top:0;
+  left: 22rpx;
+}
+.topBox_pd{
+  /* padding-top: 36rpx; */
+}
+/* 门店选择列表 */
+.cu-dialog.addressBox{
+  border-radius:25px !important;
+}
+.addressTitle{
+  height: 138rpx;
+}
+.addressTitle .addressLeft{
+  width: 600rpx;
+  height: 100%;
+  margin-left: 40rpx;
+  display: flex;
+  align-items: center;
+}
+.addressTitle .addressLeft .leftIcon{
+  color: rgba(255, 59, 48, 1);
+  font-size: 60rpx;
+}
+.addressTitle .addressLeft .rightText{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.addressTitle .addressLeft .rightText .text1{
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #393939;
+}
+.addressTitle .addressLeft .rightText .text2{
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #888888;
+}
+.inputSearch{
+  height: 70rpx;
+}
+.addressItem{
+  width: 100%;
+  min-height:120rpx;
+  align-items: center;
+  border-bottom: 1px solid rgba(0,0,0,0.1)
+}
+.addressItem .addressItemLeftImg{
+  width: 80rpx;
+  height: 80rpx;
+}
+.addressItem .addressItemLeftImg image{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.addressItem .addressItemMiddleBox{
+  width: 600rpx;
+  text-align: left;
+  /* font-weight: bold; */
+  font-size:14px;
+}
+.addressItem .addressItemMiddleBox .text-sty2{
+  width: 100%;
+  height: auto;
+  font-size:12px;
+  line-height: 34rpx;
+  color:rgba(136,136,136,1);
+  margin-top: 10rpx;
+  font-weight: normal;
+  display: flex;
+}
+.addressItem .addressItemMiddleBox .text-sty2 view:nth-child(1){
+  width: auto;
+  height: 34rpx;
+}
+.addressItem .addressItemMiddleBox .text-sty2 view:nth-child(2){
+  width: 420rpx;
+  height: 34rpx;
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-left: 20rpx;
+}
+.shopInfo{
+  max-width: 600rpx;
+  margin-left:4rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  -webkit-line-clamp: 1;
+  font-size: 32rpx;
+  line-height: 46rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+}
+.businessInfo{
+  font-size: 20rpx;
+  position: absolute;
+  right: 32rpx;
+  color: rgb(243, 144, 139);
+}
+
+
+.orderlist,.orderStatus {
+ 
+}
+.orderlist{
+  margin-top: 100rpx;
+}
+.orderStatus{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.tabContainer{
+  overflow: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items:center;
+  justify-content:start;
+  height: 100rpx;
+  background-color: #FFF;
+  padding:0 40rpx 0 46rpx;
+}
+/*业态筛选*/
+.tab-item{
+    color: #363636;
+    height: 100%;
+    /* flex-grow: 1; */
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    font-size: 28rpx;
+    box-sizing:border-box;
+    position:relative;
+    margin-right: 40rpx;
+  }
+  .changeTab{
+    font-size: 28rpx;
+    font-weight: 400;
+    color: #202020;
+  }
+  .tab-item.active{
+    color: #363636;
+    font-size: 28rpx;
+    font-weight:bold;
+  }
+  .tab-item.active::after {
+    content: " ";
+    width:36rpx;
+    height: 4rpx;
+    position: absolute;
+    left:0;
+    right: 0;
+    bottom:24rpx;
+    margin: 0 auto;
+    background-color:rgba(255, 59, 48, 1);
+    z-index:10;
+  }

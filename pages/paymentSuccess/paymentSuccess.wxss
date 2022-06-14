@@ -1,0 +1,96 @@
+/* pages/paymentSuccess/paymentSuccess.wxss */
+page{
+  background-color: white;
+}
+.paymentSuccessBox{
+  width: 100%;
+  height: 100%;
+}
+.iconBox{
+  margin: 366rpx auto 0;
+  display: flex;
+  justify-content: center;
+}
+.successText{
+  margin: 48rpx auto 0;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #202020;
+  text-align: center;
+}
+.successBtn{
+  width: 366rpx;
+  height: 96rpx;
+  background: rgba(178, 178, 178, 0.3);
+  border-radius: 8rpx;
+  margin: 150rpx auto 0;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #6ACC01;
+  line-height: 96rpx;
+  text-align: center;
+}
+
+/* 支付完成弹框 */
+.shareButton{
+  width: 518rpx;
+  height: 724rpx;
+  position: absolute;
+  top: 200rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+  background: none;
+  padding: 0;
+}
+.paymentSuccessMainBox{
+  width: 518rpx;
+  height: 724rpx;
+  background: url('https://source.ckldzsw.com/coupon/share/share.png') no-repeat center;
+  background-size: cover;
+}
+
+.closeAlert{
+  width: 136rpx;
+  height: 136rpx;
+  position: absolute;
+  top: 954rpx;
+  left: calc(50% - 66rpx);
+  background: url(https://source.ckldzsw.com/coupon/share/close.png) no-repeat center;
+  background-size: contain;
+}
+/* 弹出框 */
+.popModel{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,0.5)
+}
+.popModel .popImgBox{
+  width: 712rpx;
+  height: 712rpx;
+  position: absolute;
+  top: 212rpx;
+  left: 19rpx;
+}
+
+.popModel .popImgBox image{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.popModel .popClose{
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  left: 335rpx;
+  top: 924rpx;
+}
+.popModel .popClose image {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

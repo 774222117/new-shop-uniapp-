@@ -1,0 +1,12 @@
+<poster id="poster" hide-loading="{{false}}" preload="{{false}}" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail">
+</poster>
+<view >
+  <view class="imageBox">
+    <image style="width:100%;height:100%" src="{{posterImg}}" mode= 'scaleToFill' show-menu-by-longpress='true'></image>
+  </view>
+  <view class="savebtnBox">
+    <view class="savebtn" bindtap="saveToPhotos">保存到手机</view>
+  </view>
+  
+</view>
+

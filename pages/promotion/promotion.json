@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "bottom-action": "/component/bottomAction/index",
+    "index-goods-card-two": "/component/index-goods-card-two/index",
+    "my-address": "/component/addressModel/addressModel",
+    "back-index": "/component/backToIndex/backToIndex"
+  }
+}

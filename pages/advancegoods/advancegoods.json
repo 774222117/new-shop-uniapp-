@@ -1,0 +1,5 @@
+{
+  "navigationBarTitleText": "苏果优选-商品详情",
+  "usingComponents": {
+    "back-index": "/component/backToIndex/backToIndex"}
+}

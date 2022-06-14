@@ -1,0 +1,196 @@
+.goods{
+  padding: 28rpx 36rpx 28rpx 32rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.goods-img{
+  width:180rpx;
+  height:180rpx;
+  display: flex;
+}
+.goods-img image{
+  width:180rpx;
+  height:180rpx;
+}
+.goods-rightBox{
+  width: 100%;
+  margin-left: 26rpx;
+}
+.goods-title{
+  font-size:28rpx;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:600;
+  color:rgba(32,32,32,1);
+  line-height:36rpx;
+}
+.goods-title-height36{
+  height:36rpx;
+  -webkit-line-clamp: 1;
+}
+.goods-title-height72{
+  height:72rpx;
+  -webkit-line-clamp: 2;
+}
+/*2行超出截断*/
+.text-ellipsis{
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  word-break: break-all; /* 追加这一行代码 */
+}
+.goods-count-info{
+  display: flex;
+  margin-top: 10rpx;
+  height: 36rpx;
+  align-items: center;
+}
+.goods-count-info text:not(:first-child){
+  margin-left: 32rpx;
+}
+.goods-count-info text{
+  height:36rpx;
+  font-size:26rpx;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color: rgba(155,155,155,1);
+  line-height:36rpx;
+}
+.goods-price-info{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+.margin-top8{
+  margin-top: 8rpx;
+}
+.margin-top44{
+  margin-top: 44rpx;
+}
+.sale-price{
+  height:40rpx;
+  font-size:28rpx;
+  font-family:PingFang-SC-Heavy,PingFang-SC;
+  font-weight:800;
+  color:rgba(255,59,48,1);
+  line-height:40rpx;
+}
+.market-price {
+  height: 36rpx;
+  font-size: 26rpx;
+  font-family: PingFang-SC-Bold,PingFang-SC;
+  font-weight: bold;
+  color: rgba(155,155,155,1);
+  line-height: 36rpx;
+  text-decoration: line-through;
+  margin-left: 10rpx;
+
+}
+.numEditView{
+  display: flex;
+  justify-content: space-between;
+}
+.minusBtn,.plusBtn {
+  width: 44rpx;
+  height: 44rpx;
+  background-color: #FF3B30;
+  color: white;
+  text-align: center;
+  line-height: 44rpx;
+  border-radius: 50%;
+  font-size: 34rpx;
+}
+.goosNum{
+  width: 84rpx;
+  height: 44rpx;
+  text-align: center;
+  line-height: 44rpx;
+}
+.buyBtn{
+  width: 142rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  text-align: center;
+  color:rgba(255,59,48,1);
+  font-size: 22rpx;
+  font-weight: bold;
+  border-radius:24rpx;
+  border:1px solid rgba(255,59,48,1);
+}
+.shopCar-image{
+  width: 44rpx;
+  height: 44rpx;
+}
+.promotionInfoview{
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10rpx
+}
+.promotionInfo{
+  border: 2rpx solid #FF3B30;
+  color: #FF3B30;
+  display: flex;
+  height: 28rpx;
+  font-size: 20rpx;
+  font-family: PingFang SC, PingFang SC-Regular;
+  font-weight: 400;
+  padding: 3rpx 6rpx;
+  display: flex;
+  align-items: center;
+  margin-right: 15rpx
+}
+.couponsInfo{
+  border: 2rpx solid #FF3B30;
+  display: flex;
+  height: 28rpx;
+  line-height: 28rpx;
+  font-size: 20rpx;
+  font-family: PingFang SC, PingFang SC-Regular;
+  font-weight: 400;
+  padding: 3rpx 6rpx;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-right: 15rpx;
+}
+.coupon{
+  color: #FF3B30 !important;
+  font-size: 20rpx !important;
+}
+.yuan{
+  width: 6rpx;
+  height: 12rpx;
+  border: 2rpx solid #FF3B30;
+  border-radius: 0 100% 100% 0/50%;
+  border-left: none;
+  position: absolute;
+  left: -2rpx;
+  z-index: 1;
+  background-color: #fff;
+}
+.yuan2{
+  width: 6rpx;
+  height: 12rpx;
+  border: 2rpx solid #FF3B30;
+  border-radius: 100% 0 0 100%/50%;
+  border-right: none;
+  position: absolute;
+  right: -2rpx;
+  z-index: 1;
+  background-color: #fff;
+}
+.leftTopImg{
+  width: 80rpx;
+  height: 32rpx;
+  position: absolute;
+  left: 32;
+  font-size:11px;
+  color:rgb(102, 22, 22);
+  text-align: center;
+  border-radius: 6rpx
+}
+.leftTopImg image{
+  width:80rpx !important; 
+  height:32rpx !important;
+}

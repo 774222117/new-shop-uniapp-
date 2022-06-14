@@ -1,0 +1,19 @@
+<!-- 轮播 -->
+<view>
+  <swiper
+  class='swiper {{shopclass?"shopClass":""}}'
+    indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}" 
+    interval="{{interval}}" 
+    duration="{{duration}}"
+    previous-margin="{{previousMargin}}"
+    next-margin="{{nextMargin}}"
+    circular ="{{isCircular}}"
+    >
+    <block wx:for="{{imgUrls}}" wx:key="imgUrlsKey">
+      <swiper-item  class='back center' data-item="{{item}}" bindtap="bannerClick">
+        <image src="{{item.bannerImg}}" class="back"/>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>

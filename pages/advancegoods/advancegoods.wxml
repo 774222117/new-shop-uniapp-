@@ -1,0 +1,231 @@
+<import src="../../component/wxParse/wxParse.wxml" />
+<wxs module="getDate" src="../../utils/dataParse.wxs"></wxs>
+<!-- 轮播 -->
+<view class="shopadvanceBox" style="height:{{shopadvanceBoxHeight}};">
+  <view class="swiperBox">
+    <swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="3000"
+      duration="500" style="height:100%">
+      <swiper-item wx:for="{{goodsInfo.imageList}}" wx:key data-aaaa="{{shopCarInfoData}}">
+        <image src="{{item.url}}" mode="aspectFill"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>
+
+<!-- 限时预售价 -->
+<view class="limitedTimeAdvanceSale">
+  <view class="leftAdvanceSale">
+    <view class="leftAdvanceSaleTop">
+      <view class="lishen">
+        <text
+          hidden="{{!goodsinfo.showProductPrice}}">立省{{getDate.toFix((goodsInfo.productPrice - goodsInfo.marketPrice))}}元</text>
+        <image class="imgBlock" src="/image/seckillTopBg.png"></image>
+      </view>
+      <view>
+        <text style="font-size:28rpx;">￥</text>{{goodsInfo.marketPrice}}
+      </view>
+      <view style="margin-left:12rpx;">
+        <text style="text-decoration:line-through;color:rgba(255,255,255,0.8);">￥{{goodsInfo.productPrice}}</text>
+      </view>
+    </view>
+    <view class="leftAdvanceSaleBtm">
+      已售{{goodsInfo.salesReal}}件 剩余{{goodsInfo.total}}件
+    </view>
+
+  </view>
+  <view class="rightLimitedTime">
+    <view>距结束</view>
+    <view class="countDownTime">
+      <text>{{end_time.dd}}天</text>
+      <text>{{end_time.hh}}</text>
+      <text>{{end_time.mm}}</text>
+      <text>{{end_time.ss}}</text>
+    </view>
+  </view>
+</view>
+
+
+<!-- 标题 -->
+<view class="shopadvanceTitle">
+  <text class="text1">{{goodsInfo.title}}</text>
+  <text class="text2">{{goodsInfo.subtitle}}</text>
+  <view class="share">
+    <button open-type="share" class="shareButton">
+      <view class="shareIcon">
+        <image class="imgBlock" src="/image/share.png"></image>
+      </view>
+      <view>分享</view>
+    </button>
+  </view>
+</view>
+
+<!-- 提货门店信息 -->
+<view class="shopadvanceInfo">
+  <view class="goods-title-detail_view">优惠券：
+    <view style="display:flex;justify-content: space-between;flex:1;"
+      wx:if="{{goodsInfo.couponDtoList==null||goodsInfo.couponDtoList.length>0}}" catchtap="showlingquan">
+      <view style="display:flex;align-items: center;">
+        <view class="couponsInfo" catchtap="showlingquan" wx:for="{{goodsInfo.couponDtoList}}" wx:if="{{index<2}}">
+          <view class="yuan"></view>
+          <view class="yuan2"></view>
+          <text class="coupon">满{{item.costMoney}}元减{{item.productByMoney}}元</text>
+        </view>
+      </view>
+      <text class="iconfont iconarrow-right font40" wx:if="{{goodsInfo.couponDtoList.length>0}}"
+        catchtap="showlingquan"></text>
+    </view>
+    <text wx:if="{{goodsInfo.couponDtoList==null||goodsInfo.couponDtoList.length<=0}}"
+      style='color:rgba(155,155,155,1);'>该商品无可用优惠券</text>
+  </view>
+  <view wx:if="{{goodsInfo.topic!=null}}">优惠活动： <text class="promotionInfo">{{goodsInfo.topic}}</text></view>
+  <view hidden="{{goodsInfo.deliveryWay == 2}}">提货门店： <text>{{shopName}}</text> </view>
+  <view>商品描述： <text>{{goodsInfo.subtitle}}</text> </view>
+  <view hidden="{{goodsInfo.deliveryWay == 2}}">提货时间： <text>{{goodsInfo.takeGoodsExplain}}</text> </view>
+  <view>商品规格： <text>{{goodsInfo.spec}}</text> </view>
+  <view>限购数量： <text>{{goodsInfo.userMaxBuy}}</text><text>{{goodsInfo.unit}}</text>  </view>
+
+</view>
+
+<!-- 商品详情 -->
+<view class="commodityDetails" wx:if="{{goodsInfo.content}}">
+  <view class="commodityDetailsTitle">商品详情</view>
+  <template is="wxParse" data="{{wxParseData:commodityDetails.nodes}}" />
+</view>
+
+<!-- 接龙 -->
+<view class="page-body">
+  <view class="jielong-buylist">
+    <view class="jielong-buylist-title">
+      <view class="red-span"></view>
+      <text class="cantuan-title">参团人</text>
+    </view>
+    <view class="cantuan-info" wx:for="{{activityOrdersList}}" wx:for-index="idx">
+      <text class="cantua-num-radiu">{{orderNumber-idx}}</text>
+      <image src="{{item.icon}}"></image>
+      <view class="cantuan-right">
+        <view class="userinfo">
+          <text class="userinfo-nick">{{item.nickName}}</text>
+          <text class="opc06">共团购了{{item.total}}件商品</text>
+        </view>
+        <text class="cantuan-date opc06">{{getDate.getDate_New(item.payTime,'.')}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="nomore" wx:if="{{hasMore}}">已经没有更多啦~</view>
+  <view class="showMore" wx:else catchtap="getSupplierActivityInfo">点击查看更多>></view>
+</view>
+
+<!-- 底部 -->
+<view class="shopadvancebtmBar">
+  <view class="leftShare" bindtap="toShop">
+    <view class="cuIcon-cart" style="font-size:18px;"></view>
+    <view>返回</view>
+  </view>
+  <!-- <view class="leftShare"> <view class="cuIcon-share" style="font-size:18px;" bindtap=""></view> <view>分享</view></view> -->
+  <view class="leftShare" bindtap="toPoster">
+    <view class="cuIcon-qr_code" style="font-size:18px;"></view>
+    <view>海报</view>
+  </view>
+  <view class="rightImmediatePurchase" bindtap="btnPayTap" data-target="immediatePurchase">立即购买</view>
+</view>
+
+<!-- 立即购买出现弹出选择 -->
+<view class="cu-modal bottom-modal {{modalName=='immediatePurchase'?'show':''}}" bindtap="hideModal"
+  style="position:fixed;">
+  <view class="cu-dialog" catchtap>
+    <view class="immediatePurchaseModelBox">
+      <view class="commodityInfo">
+        <view class="commodityPrice">商品总价: <text>￥{{advanceCartTotal.sumPrice}}</text> </view>
+        <view class="commodityNum">
+          <view style="margin-right:20rpx;">购买数量:</view>
+          <view class="shopCarBtn flex justify-between">
+            <view class="minusBtn" bindtap="delCart" data-goodsinfo="{{goodsInfo}}">-</view>
+            <!-- <view class="goosNum">{{buyCount}}</view> -->
+            <input class="goosNum" type="number" value="{{goodsInfo.buyCount!= undefined?goodsInfo.buyCount:0}}" data-goodsinfo="{{goodsInfo}}"
+              bindinput='changeBuyCount'></input>
+            <view class="plusBtn" bindtap="addCart" data-goodsinfo="{{goodsInfo}}">+</view>
+          </view>
+        </view>
+      </view>
+      <view class="determineBox">
+        <view class="determineBtn" bindtap="toPay">确定</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 地址 显示窗口 -->
+<view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}" style="position:fixed;">
+  <view class="cu-dialog addressBox">
+    <view class="cu-bar bg-white addressTitle">
+      <view class="search-form round" style="font-size:18px;">
+        <text class="cuIcon-search"></text>
+        <input type="text" placeholder="输入您想要查询的门店" confirm-type="search" bindinput="searchAddress"></input>
+      </view>
+      <view class="action cuIcon-close" style="font-size:20px;" data-target="bottomModal" bindtap="selectShop"></view>
+    </view>
+    <view class="padding-sm bg-white">
+      <view style="height:900rpx;">
+        <scroll-view scroll-y scroll-with-animation style="height:100%" bindscrolltolower="addressBtmFun">
+          <!-- 地址内容 -->
+          <view class="addressItem flex justify-around" wx:for="{{shops}}" wx:key="shopListKey">
+            <view class="addressItemLeftImg">
+              <image src="https://sourced.sgsugou.com/merchant/icon/bd1b4bb88e434c94ac6c352c6a8f5a9f.png"></image>
+            </view>
+            <view class="addressItemMiddleBox" data-id="{{item.id}}" data-target="bottomModal" bindtap="selectShop">
+              <text>{{item.name}}</text>
+              <view class="text-sty2">
+                <view>约{{item.distance}}m </view>
+                <view>{{item.detailAddress}}</view>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+
+    </view>
+  </view>
+</view>
+<view class="cu-modal bottom-modal {{modalName=='couponModal'?'show':''}}">
+  <view class="cu-dialog addressBox">
+    <!-- 顶部定位 -->
+    <view class="cu-bar bg-white addressTitle">
+      <view class="headcontent">该商品可用优惠券</view>
+      <view class="action cuIcon-close" bindtap="hideModal"></view>
+    </view>
+    <!-- 内容展示 -->
+    <view class="padding-sm" style="background-color:#EEEEEE">
+      <view style="height:900rpx;">
+        <scroll-view scroll-y scroll-with-animation style="height:100%" bindscrolltolower="addressBtmFun">
+          <!-- 优惠券内容 -->
+          <view class="couponInfo" wx:for="{{couponList}}">
+            <view class="coupon-money">
+              <view class="coupon-left">
+                <view>
+                  <text>￥</text>{{item.productByMoney}}
+                </view>
+                <text>满{{item.costMoney}}元立减</text>
+              </view>
+            </view>
+            <view class="verticalline"></view>
+            <view class="coupon-desc">
+              <view class="coupon-desc-left">
+                <text class="coupon-name">{{item.name}}</text>
+                <text class="coupon-date">{{getDate.getDate(item.couponStartTime,'.')}}-{{getDate.getDate(item.couponEndTime,'.')}}</text>
+              </view>
+              <view class="yilinquanbtn" wx:if="{{item.received==1}}" data-index="{{index}}" data-id ="{{item.couponId}}" catchtap="getCoupon">
+                已领取
+              </view>
+              <view class="lingquanbtn" wx:else data-id ="{{item.couponId}}" data-index="{{index}}" catchtap="getCoupon">
+                立即领用
+              </view>
+            </view>
+            <view class="couponyuan1"></view>
+            <view class="couponyuan2"></view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+</view>
+<back-index></back-index>

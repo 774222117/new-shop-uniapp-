@@ -1,0 +1,315 @@
+<wxs module="m1">
+  var numberToFix= function (value) {
+    return value.toFixed(2)
+  }
+ module.exports.numberToFix=numberToFix;
+</wxs>
+<!-- 抬头切换区域 -->
+
+<!-- TODO : 加入配送方式选择，根据deliveryWay判断 0 就显示， 1 就不显示-->
+<!--取货方式选择-->
+<view class="cu-modal bottom-modal {{modalName=='RadioModal'?'show':''}}" bindtap="hideRadioModal">
+  <view class="cu-dialog pickTypeBox" catchtap>
+    <view class="cu-bar bg-white addressTitle">
+      <view style="font-size:28rpx;color:rgba(57,57,57,1);margin-left:30rpx;font-weight:600;">
+        选择收货方式
+      </view>
+      <view class="action cuIcon-close" style="font-size:40rpx;" data-target="hideRadioModal" bindtap="hideRadioModal"></view>
+    </view>
+    <radio-group class="block">
+      <view class="cu-list menu text-left">
+        <view class="cu-item" wx:for="{{dispatchList}}" wx:key="disIndex">
+          <label class="flex justify-between align-center flex-sub" data-value="{{item.value}}" bindtap="radiotap">
+            <view class="flex-sub pickTypeInfo">
+              <text>{{item.name}}</text>
+              <text class="pickTypeInfo-desc">{{item.description}}</text>
+            </view>
+            <radio class="round"></radio>
+          </label>
+        </view>
+        <view class="cu-item">
+        </view>
+      </view>
+    </radio-group>
+  </view>
+</view>
+
+<!-- 地址 显示窗口 -->
+<view class="cu-modal bottom-modal {{modalName=='addressModel'?'show':''}}">
+  <view class="cu-dialog addressBox" catchtap>
+    <view class="cu-bar bg-white addressTitle">
+      <view style="font-size:14px;color:rgba(57,57,57,1);margin-left:30rpx;">
+        提货点选择
+      </view>
+      <view class="action cuIcon-close" style="font-size:40rpx;" data-target="bottomModal" bindtap="hideModal"></view>
+    </view>
+    <view class="padding-sm bg-white">
+      <view style="height:900rpx;">
+        <scroll-view scroll-y scroll-with-animation style="height:100%" bindscrolltolower="addressBtmFun">
+          <!-- 地址内容 -->
+          <view class="addressItem flex justify-around" wx:for="{{carrierList}}" wx:key="shopPaycarrierListKey">
+            <view class="addressItemLeftImg">
+              <image src="https://sourced.sgsugou.com/merchant/icon/bd1b4bb88e434c94ac6c352c6a8f5a9f.png"></image>
+            </view>
+            <view class="addressItemMiddleBox" data-id="{{item.id}}" data-carrier="{{item}}" bindtap="hideModal">
+              <block wx:if="{{item.pointType == 2}}">
+                <text>小区自提-{{item.address}}</text>
+              </block>
+              <block wx:else>
+                <text>到店自提-{{item.address}}</text>
+              </block>
+              <view class="text-sty2">提货时间： {{item.serverTime}}</view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    
+    </view>
+  </view>
+</view>
+
+<!-- 中间用户信息 -->
+<view class="pubsty userInfo">
+  <view class="tabContainer" hidden="{{hidetabbar}}">
+    <block wx:for="{{tabsList}}" wx:item="item" wx:key="index">
+      <view class="tab-item {{currentTab == index? 'active':''}}" bindtap="changeTab" data-item="{{item}}" data-index="{{index}}">
+        <text>{{ item.title }}</text>
+      </view>
+    </block>
+  </view>
+  <!-- <view class="cu-form-group" hidden="{{hideSelectDispatchType}}">
+    <view class="picktype">
+      <view class="title">收货方式：
+      </view>
+      <view class="content">
+        <text>{{dispatchTitle}}</text>
+      </view>
+    </view>
+    <view>
+      <view class="cu-list menu">
+        <view class="cu-item arrow" bindtap="showRadioModal">
+          更改
+        </view>
+      </view>
+    </view>
+  </view> -->
+  <view class="cu-form-group" style="padding:1rpx 0rpx 1rpx 30rpx;" hidden="{{hideAddrress}}">
+    <view class="picktype">
+      <view class="title">收货地址：
+      </view>
+      <view class="content" bindtap="chooeAddress" data-target="addressModel" >
+        <view class="leftIcon cuIcon-locationfill"></view>
+        <view class="addressInfoChoice">
+          <view>{{detailInfo}}</view>
+        </view>
+      </view>
+    </view>
+    <view>
+      <view class="cu-list menu">
+        <view class="cu-item arrow" bindtap="chooeAddress" data-target="addressModel">
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-form-group" style="padding:1rpx 0rpx 1rpx 30rpx;" hidden="{{hideAddrress||(dispatchType==2&&isSend==0)}}">
+    <view class="picktype">
+      <view class="title">预计送达：
+      </view>
+      <view class="content" bindtap="showTakeTimeModal" data-target="takeTimeModal" >
+        <view>{{expectTime}}</view>
+      </view>
+    </view>
+    <view>
+      <view class="cu-list menu">
+        <view class="cu-item arrow" bindtap="showTakeTimeModal" data-target="takeTimeModal">
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-form-group" style="padding:1rpx 0rpx 1rpx 30rpx;" hidden="{{hideTake}}">
+    <view class="picktype">
+      <view class="title">自提点：
+      </view>
+      <view class="content" bindtap="showModal" data-target="addressModel">
+        <view class="leftIcon cuIcon-locationfill"></view>
+        <view class="addressInfoChoice">
+          <view>{{carrierAddress}}</view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{carrierList.length>1}}">
+      <view class="cu-list menu">
+        <view class="cu-item arrow" bindtap="showModal" data-target="addressModel">
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-form-group" hidden="{{hideTake}}">
+    <view class="picktype">
+      <view class="title">提货时间：
+      </view>
+      <view>{{takeTimeDescription}}</view>
+    </view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">提货人：</view>
+    <input bindinput="changeName" placeholder="请填写联系人姓名" selection-start="-1" selection-end="-1" cursor="-1" value="{{pickerName}}"></input>
+  </view>
+   <view class="cu-form-group">
+    <view class="title">联系电话：</view>
+    <input bindinput="changeMobile" placeholder="请填写联系电话" selection-start="-1" selection-end="-1" cursor="-1" value="{{pickerMobile}}"></input>
+  </view>
+   <view class="cu-form-group">
+    <view class="title">填写备注：</view>
+    <input bindinput="changeBuyRemark" placeholder="请填写备注" selection-start="-1" selection-end="-1" cursor="-1"></input>
+  </view>    
+</view>
+
+<!-- 红包选择 -->
+<view style="margin-top: 10rpx;" class="cu-list menu pubsty">
+    <view class="cu-item arrow" bindtap="toShopCoupon">
+      <view class="content">        
+        <text class="text-black">红包/优惠券</text>
+      </view>
+      <view class="action">
+        <text class="cuIcon-redpacket_fill {{useCouponCount==0?'text-grey':'text-red'}}"></text>
+        <text class="{{useCouponCount==0?'text-grey':'text-red'}}">{{couponDetail}}</text>
+    </view>
+  </view>
+</view>
+<!--配送费、包装费-->
+<view style="margin-top: 10rpx;" class="cu-list menu pubsty">
+  <view class="cu-item" wx:if="{{dispatchPrice > 0}}">
+    <view class="content">        
+      <text class="text-black">配送费</text>
+      <text class="tipsFont" wx:if="{{freightTips}}">（{{freightTips}}）</text>
+    </view>
+    <view class="action">
+      <text class="text-red" wx:if="{{dispatchDiscountPrice<=0}}">￥{{dispatchPrice}}元</text>
+      <text class="text-red" wx:else>￥{{dispatchPrice-dispatchDiscountPrice}}元(优惠{{dispatchDiscountPrice}}元)</text>
+    </view>
+  </view>
+  <view class="cu-item" wx:if="{{packPrice > 0}}">
+    <view class="content">        
+      <text class="text-black">包装费</text>
+      <text class="tipsFont" >（下单即同意收取可降解包装费用）</text>
+    </view>
+    <view class="action">
+      <text class="text-red">￥{{packPrice}}元</text>
+    </view>
+  </view>
+</view>
+<!-- 下面的商品清单 -->
+<view class="pubsty commoditiesList">
+  <view class="commoditiesListTitle"><text>商品清单</text><text>共{{buyCount}}件</text></view>
+  <!-- <scroll-view scroll-y scroll-with-animation  style="height:590rpx;"> -->
+      <block wx:if="{{exchangeActivity!=null}}">
+        <view class="commoditiesListItem" wx:for="{{shopCart}}" wx:if="{{index<1||ishowallCartgoods}}">
+          <view class="leftImg" data-id='{{item.goodsId}}' catchtap="toGoodsInfo">
+            <image src="{{item.goodsThumb}}"></image>
+          </view>
+          <view class="middeText" data-id='{{item.goodsId}}' catchtap="toGoodsInfo">{{item.title}}
+            <view class="numTextSty">x{{item.total}}</view>
+          </view>
+          <view class="rightNum">
+            <view>{{m1.numberToFix(item.realPrice)}}</view>
+          </view>
+       </view>
+       <view class="showallcart" wx:if="{{shopCart.length>1}}" catchtap="showAllCartGoods">
+         <block wx:if="{{!ishowallCartgoods}}">+展开全部商品</block>
+         <block wx:else>-收起商品</block>
+       </view>
+      </block>
+      <!--如果没有换购展示所有商品-->
+      <block wx:else>
+        <scroll-view scroll-y scroll-with-animation  style="height:590rpx;">
+          <view class="commoditiesListItem" wx:for="{{shopCart}}">
+            <view class="leftImg" data-id='{{item.goodsId}}' catchtap="toGoodsInfo">
+              <image src="{{item.goodsThumb}}"></image>
+            </view>
+            <view class="middeText" data-id='{{item.goodsId}}' catchtap="toGoodsInfo">{{item.title}}
+              <view class="numTextSty">x{{item.total}}</view>
+            </view>
+            <view class="rightNum">
+              <view>{{m1.numberToFix(item.realPrice)}}</view>
+            </view>
+          </view>
+        </scroll-view>
+      </block>
+      <block wx:if="{{exchangeActivity!=null}}">
+        <view class="colorline"></view>
+        <view class="exchangeListTitle"><text>超值换购</text><text class="exchangeDesc">{{exchangeActivity.description}}</text></view>
+        <view class="exchangeListItem" wx:for="{{exchangeActivity.shopGoodsListDtoList}}">
+          <view class="leftImg" data-id='{{item.goodsId}}'>
+            <image src="{{item.thumb}}"></image>
+          </view>
+          <view class="right-item">
+            <view class="right-item-top">
+              <view class="exchange_middeText">{{item.title}}</view>
+              <view class="exchage_price">
+              {{item.marketPrice}}元带回家
+              </view>
+            </view>
+            <view class="right-item-bottom">
+              <view class="productPrice">{{item.productPrice}}</view>
+              <image src="{{item.selected?'/image/exchangeSelect.png':'/image/exchangeDefault.png'}}" data-id='{{item.id}}' catchtap="selectExchangeGoods"></image>
+            </view>
+          </view>
+        </view>  
+      </block> 
+  <!-- </scroll-view> -->
+</view>
+<!-- 底部按钮 -->
+<view class="shopadvancebtmBar">
+  <view class="leftShare">
+  <block wx:if="{{payAmount > 0}}">
+    待支付<text>￥{{payAmount}}</text>
+  </block>
+  </view>
+  <view class="rightImmediatePurchase" bindtap="btnPay" data-target="immediatePurchase">{{payAmount>0?'下单并支付':'立即领取'}}</view>
+</view>
+
+<!-- 弹窗 -->
+<view class='popModel' wx:if="{{popModelIsShow}}">
+  <view id="pop" class='popImgBox' data-item='{{couponSetInfo}}' bindtap="toCouponSet">
+    <image src='{{couponSetInfo.displayImg}}'></image>
+  </view>
+  <view class='popClose' bindtap='popCloseBtn'>
+    <image src='{{imgUrl}}pop-close.png'></image>
+  </view>
+</view>
+<!--选择蜂鸟配送时间-->
+<view class="cu-modal bottom-modal {{modalName=='takeTimeModal'?'show':''}}" bindtap="hideTakeTimeModal">
+  <view class="cu-dialog takeTimeBox" catchtap>
+    <view class="cu-bar bg-white addressTitle">
+      <view style="font-size:28rpx;color:rgba(57,57,57,1);margin-left:30rpx;font-weight:600;">
+        选择时间
+      </view>
+      <view class="action cuIcon-close" style="font-size:40rpx;" data-target="takeTimeModal" bindtap="hideTakeTimeModal"></view>
+    </view>
+    <view class="takeChoose">
+      <view class="takeLeft bg-white">
+        <view catchtap="chooseDeliveryDay" data-timelist="{{item.timeIntervalList}}" data-index="{{index}}" class="{{expectDateSelectIndex == index? 'selected':''}}" wx:for="{{deliveryTimeList}}">{{item.dateDesc}}</view>
+      </view>
+      <view class="takeRight">
+        <scroll-view scroll-y scroll-with-animation style="height:100%">
+        <radio-group class="block">
+          <view class="cu-list menu text-left">
+            <view class="cu-item" wx:for="{{canSelectTimeList}}">
+              <label class="flex justify-between align-center flex-sub" data-index="{{index}}" data-value="{{item}}" bindtap="takeTimeSelectTap">
+                <view class="flex-sub takeTimeInfo {{takeTimeIndex == index? 'selected':''}}">
+                  <text>{{item.intervalName}}</text>
+                </view>
+                <radio style="transform:scale(0.8);display:none;"></radio>
+                <image hidden="{{takeTimeIndex != index}}" src="/image/select.png"></image>
+              </label>
+            </view>
+            <view class="cu-item">
+            </view>
+          </view>
+        </radio-group>
+      </scroll-view>
+      </view>
+    </view>
+  </view>
+</view>

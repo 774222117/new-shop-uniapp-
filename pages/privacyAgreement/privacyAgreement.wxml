@@ -1,0 +1,170 @@
+<!--pages/privacyAgreement/privacyAgreement.wxml-->
+<view class="title">第一章 总则</view>
+
+<view class="paragraph">苏果优选平台(以下简称“平台”)，由江苏天合云商公司独立开发、运营的电子商务平台。本平台是由江苏天合云商有限公司所运营。用户包含采购人、供应商、服务商等在平台从事经营、服务及活动的主体。</view>
+<view class="paragraph">平台非常重视用户的隐私和用户信息保护。用户在使用平台各业务线产品与服务时，平台可能会收集并使用用户的相关信息。平台希望通过《苏果优选平台隐私条款》(以下简称“本隐私条款”)向用户说明平台在用户使用平台各业务线的产品和服务时如何收集、使用、保存、共享和转让这些信息，以及平台为用户提供的访问、更新、删除和保护这些信息的方式。</view>
+
+<view class="paragraph">本隐私条款将帮助用户了解以下内容:</view>
+<view class="subParagraph">1.平台如何收集和使用用户的信息</view>
+<view class="subParagraph">2.平台如何保护和保存用户的信息</view>
+<view class="subParagraph">3.用户如何管理自身信息</view>
+<view class="subParagraph">4.平台如何共享、转让、公开披露用户的信息</view>
+<view class="subParagraph">5.通知和修订</view>
+<view class="subParagraph">6.如何联系平台</view>
+
+<view class="paragraph">本隐私条款与用户所使用的平台服务以及该服务所包括的各种业务功能(以下统称“平台的产品与/或服务”)息息相关，希望用户在使用平台各业务线的产品和服务前仔细阅读并确认已经充分理解本隐私条款所写明的内容，并可以按照本隐私条款的指引做出适当的选择。本隐私条款中涉及的相关术语，平台尽量以简明扼要的表述，以便用户更好地理解。用户使用或在平台更新本隐私条款后(平台会及时提示用户本隐私条款更新的情况)继续使用平台的产品和服务，即意味着用户同意本隐私条款(含更新版本)内容，并且同意平台按照本隐私条款收集、使用、保存和共享用户的相关信息。</view>
+
+<view class="title">第二章 平台如何收集和使用用户的信息</view>
+<view class="paragraph"><text class="tertiaryTitle">第一条</text>用户信息是指以电子或者其他方式记录的能够单独或者与其他信息结合识别特定企业、个体工商户或自然人身份，或者反映特定企业、个体工商户或自然人活动情况的各种信息。本隐私条款中涉及的用户信息包括:基本信息(包括用户名称、注册/联系地址、手机号码、电子邮箱);用户身份信息(包括企业资质、身份证等);网络身份标识信息(包括系统账号、IP地址、邮箱地址及与前述有关的密码);用户财产信息(交易记录、以及相关虚拟财产信息);用户上网记录(包括平台浏览记录、点击记录);用户位置信息(包括精准定位信息、登录平台信息等);
+  用户敏感信息是指一旦泄露、非法提供或滥用可能危害人身和财产安全，极易导致用户名誉或身心健康受到损害等的用户信息，本隐私条款中涉及的用户敏感信息包括:用户的财产信息(包括交易记录、以及相关虚拟财产信息);用户身份信息(包括企业资质、身份证等);网络身份识别信息(包括账户名、密码、电子邮箱等);其他信息(手机号码、网页浏览记录、平台定位信息等)。</view>
+
+<view class="title">第三章 目的</view>
+<view class="paragraph"><text class="tertiaryTitle">第二条</text>平台仅会出于实现线上交易、改进平台的产品和服务、保障交易安全等目的，收集和使用用户的信息。</view>
+<view class="subParagraph">平台各业务线的产品和服务包括一些核心功能，这些功能包含了实现网上购物和交易所必须的功能、改进平台的产品和服务所必须的功能及保障交易安全所必须的功能。平台可能会收集、保存和使用下列与用户有关的信息才能实现上述这些功能。如果用户不提供相关信息，用户将无法享受平台提供的产品和服务。这些功能包括:</view>
+<view class="subParagraph">1.实现线上交易所必须的功能</view>
+<view class="subParagraph">(1)用户注册与信息完善</view>
+<view class="subParagraph">用户注册时，需要填写登录名和密码，通过手机号码的短信验证码，验证用户的身份是否有效。注册通过后，登录平台网址，完善用户的名称、注册地址或联系地址、电子邮箱、开户信息、资质信息等，这些信息均属于用户的“账户信息”。用户补充的账户信息是实现用户线上交易的基本要求。</view>
+<view class="subParagraph">(2)选购下单</view>
+<view class="subParagraph">当用户选购商品时，平台系统会生成用户购买该商品的订单。用户需要在订单中填写收货人姓名、收货地址以及手机号码和发票等信息，同时该订单中会载明订单号、用户应支付的货款金额及支付方式等。</view>
+<view class="subParagraph">上述所有信息构成用户的“订单信息”，平台将使用用户的订单信息来进行用户的身份核验、确定交易、支付结算、为用户查询订单以及提供客服咨询与售后服务;平台还会使用用户的订单信息来判断用户的交易是否存在异常，以保护用户的交易安全。</view>
+<view class="subParagraph">(3)支付功能</view>
+<view class="subParagraph">平台支持线上与线下两种支付结算形式。线上支付结算由平台依托银行通道、第三方支付通道提供(支持微信、采购卡支付)。线下支付由采购人通过银行转账等方式，直接向供应商支付货款。线下支付结算时，采购人应及时将汇款信息上传至平台。</view>
+<view class="subParagraph">(4)物流服务</view>
+<view class="subParagraph">供应商发货时，将与第三方配送公司(包括邮政、德邦等，以下称“配送公司”)为用户完成商品配送。用户知晓并同意与供应商合作的第三方配送公司会在上述环节内使用用户的订单信息以保证用户订购的商品能够安全送达。</view>
+<view class="subParagraph">(5)客服与售后功能</view>
+<view class="subParagraph">平台的客服和售后功能会使用用户的账号信息和订单信息。</view>
+<view class="subParagraph">为保证用户的账号安全，平台的呼叫中心客服和在线客服会使用用户的账号信息与用户核验身份。当用户需要平台提供与用户订单信息相关的售后服务时，平台将会查询用户的订单信息。</view>
+<view class="subParagraph">2.保障交易安全所必须的功能</view>
+<view class="subParagraph">为提高用户使用平台的产品和服务时系统的安全性，更准确地保护用户的账户安全，平台可能会通过了解用户的订单信息、用户常用的软件信息、设备信息等手段来判断用户的账号风险，并可能会记录一些平台认为有风险的链接(“URL”);平台也会收集用户的设备信息，对平台系统问题进行分析、统计流量并排查可能存在的风险。</view>
+
+<view class="title">第四章 授权</view>
+<view class="paragraph"><text class="tertiaryTitle">第三条</text>为使用户交易更便捷，平台的以下附加功能可能会收集和使用用户的信息，且用户可选择是否授权平台收集和使用用户信息。这些附加功能包括:</view>
+<view class="subParagraph">1.基于地址信息的平台定位功能:平台会收集用户的地址信息自动为用户推荐所在区域的供应商及商品。</view>
+<view class="subParagraph">2.基于图片上传的附加功能:用户可以在平台上传用户的照片来实现晒单及评价功能。</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第四条</text>用户充分知晓，以下情形中，平台收集、使用用户信息无需征得用户的授权同意:</view>
+<view class="subParagraph">1.与国家安全、国防安全有关的;</view>
+<view class="subParagraph">2.与公共安全、公共卫生、重大公共利益有关的;</view>
+<view class="subParagraph">3.与犯罪侦查、起诉、审判和判决执行等有关的;</view>
+<view class="subParagraph">4.出于维护用户信息主体或其他用户的财产、生命等重大合法权益但又很难得到用户本身同意的;</view>
+<view class="subParagraph">5.所收集的用户信息是用户信息主体自行向社会公众公开的;</view>
+<view class="subParagraph">6.从合法公开披露的信息中收集的用户信息的，如合法的新闻报道、政府信息公开等渠道;</view>
+<view class="subParagraph">7.根据用户的要求签订合同所必需的:</view>
+<view class="subParagraph">8.用于维护所提供的产品与/或服务的安全稳定运行所必需的，例如发现、处置产品与/或服务的故障;</view>
+<view class="subParagraph">9.为合法的新闻报道所必需的;</view>
+<view class="subParagraph">10.学术研究机构基于公共利益开展统计或学术研究所必要，且对外提供学术研究或描述的结果时，对结果中所包含的用户信息进行去标识化处理的;</view>
+<view class="subParagraph">11.法律法规规定的其他情形。</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第五条</text>用户信息使用的规则</view>
+<view class="subParagraph">1.平台会根据本隐私条款的约定并为实现平台的产品和服务功能对所收集的用户信息进行使用。</view>
+<view class="subParagraph">2.在收集用户的信息后，平台将通过技术手段对数据进行去标识化处理，去标识化处理的信息将无法识别主体。请用户了解并同意，在此情况下平台有权使用已经去标识化的信息;并在不透露用户信息的前提下，平台有权对用户数据库进行分析并予以商业化的利用。</view>
+<view class="subParagraph">3.请用户注意，用户在使用平台的产品和服务时所提供的所有用户信息，除非用户删除或通过系统设置拒绝平台收集，否则将在用户使用平台的产品与/或服务期间持续授权平台使用。</view>
+<view class="subParagraph">4.平台会对平台的产品和服务使用情况进行统计，并可能会与公众或第三方共享这些统计信息，以展示平台的产品和服务的整体使用趋势。但这些统计信息不包含用户的任何身份识别信息。</view>
+<view class="subParagraph">5.当平台展示用户的信息时，平台会采用包括内容替换、匿名处理、敏感信息隐藏等方式对用户的信息进行脱敏，以保护用户的信息安全。</view>
+<view class="subParagraph">6.当平台要将用户的信息用于本隐私条款未载明的其它用途时，或基于特定目的收集而来的信息用于其他目的时，会通过用户主动做出勾选的形式事先征求用户的同意。</view>
+
+<view class="title">第五章 平台如何保护和保存用户信息</view>
+<view class="paragraph"><text class="tertiaryTitle">第六条</text>平台保护用户信息的技术与措施
+  平台非常重视用户信息安全，并采取一切合理可行的措施，保护用户的信息:</view>
+<view class="subParagraph">1.数据安全技术措施</view>
+<view class="subParagraph">平台会采用符合业界标准的安全防护措施，包括建立合理的制度规范、安全技术来防止用户的信息遭到未经授权的访问、使用、修改,避免数据的损坏或丢失。</view>
+<view class="subParagraph">平台采取加密技术对用户信息进行加密保存，并通过隔离技术进行隔离。</view>
+<view class="subParagraph">在用户信息使用时，例如用户信息展示、用户信息关联计算，平台会采用包括内容替换、敏感信息隐藏在内多种数据脱敏技术增强用户信息在使用中的安全性。</view>
+<view class="subParagraph">平台采用严格的数据访问权限控制和多重身份认证技术保护用户信息，避免数据被违规使用。</view>
+<view class="subParagraph">平台采用代码安全自动检查、数据访问日志分析技术进行用户信息安全审计。</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第七条</text>平台为保护用户信息采取的其他安全措施</view>
+<view class="subParagraph">平台通过建立数据安全管理规范、数据安全开发规范来管理规范用户信息的存储和使用。</view>
+<view class="subParagraph">平台通过信息接触者保密协议、监控和审计机制来对数据进行全面安全控制。</view>
+<view class="subParagraph">加强安全意识。平台还会举办安全和隐私保护培训课程，加强员工对于保护用户信息重要性的认识。</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第八条</text>平台仅允许有必要知晓这些信息的平台及平台关联方的员工、合作伙伴访问用户信息，并为此设置了严格的访问权限控制和监控机制。平台同时要求可能接触到用户信息的所有人员履行相应的保密义务。如果未能履行这些义务，可能会被中止与平台的合作关系并被追究法律责任。</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第九条</text>平台会采取一切合理可行的措施，确保未收集无关的用户信息。平台只会在达成本隐私条款所述目的所需的期限内保留用户的信息，除非需要延长保留期或受到法律的允许。</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第十条</text>互联网并非绝对安全的环境，而且电子邮件、即时通讯、社交软件等与其他用户的交流方式无法确定是否完全加密，平台建议用户使用此类工具时请使用复杂密码，并注意保护用户的信息安全。</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第十一条</text>互联网环境并非百分之百安全，平台将尽力确保或担保用户发送给平台的任何信息的安全性。如果平台的物理、技术、或管理防护设施遭到破坏，导致信息被非授权访问、公开披露、篡改、或毁坏，导致用户的合法权益受损，平台将承担相应的法律责任。</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第十二条</text>安全事件处置</view>
+<view class="subParagraph">在通过平台与第三方进行网上商品或服务的交易时，用户不可避免的要向交易对方或潜在的交易对方披露自己的用户信息，如联系方式或者收货地址等。请用户妥善保护自己的用户信息，仅在必要的情形下向他人提供。</view>
+<view class="subParagraph">为应对用户信息泄露、损毁和丢失等可能出现的风险，平台制定了多项制度，明确安全事件、安全漏洞的分类分级标准及相应的处理流程。</view>
+<view class="subParagraph">在不幸发生用户信息安全事件后，平台将按照法律法规的要求，及时向用户告知:安全事件的基本情况和可能的影响、平台已采取或将要采取的处置措施、用户可自主防范和降低风险的建议、对用户的补救措施等。平台及时将事件相关情况以邮件、信函、电话、推送通知等方式告知用户，难以逐一告知用户信息主体时，平台会采取合理、有效的方式发布公告。同时，平台还将按照信息安全相关部门要求，主动上报用户信息安全事件的处置情况。</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第十三条</text>用户信息的保存</view>
+<view class="subParagraph">1.用户的信息将全被存储于中华人民共和国境内。</view>
+<view class="subParagraph">2.如果平台终止服务或运营，平台会至少提前三十日向用户通知，并在终止服务或运营后对用户的信息进行删除或匿名化处理。</view>
+
+<view class="title">第六章 用户如何管理自身信息</view>
+<view class="subParagraph">平台非常重视用户对自身信息的关注，并尽全力保护用户对于自身信息访问、更正、删除以及撤回同意的权利，以使用户拥有充分的能力保障自身的隐私和安全。用户的权利包括:</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第十四条</text>访问和更正用户的信息</view>
+<view class="subParagraph">除法律法规规定外，用户有权随时访问和更正用户的账户信息、收货信息和订单信息。</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第十五条</text>改变用户授权同意的范围或撤回用户的授权</view>
+<view class="subParagraph">用户可以通过删除信息、关闭设备功能、在平台或软件中进行隐私设置等方式改变用户授权平台继续收集用户信息的范围或撤回用户的授权。用户也可以通过注销账户的方式，撤回平台继续收集用户信息的全部授权。
+</view>
+<view class="subParagraph">请用户理解，每个业务功能需要一些基本的用户信息才能得以完成，当用户撤回同意或授权后，平台无法继续为用户提供撤回同意或授权所对应的服务，也不再处理用户相应的信息。但用户撤回同意或授权的决定，不会影响此前基于用户的授权而开展的用户信息处理。</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第十六条</text>响应用户的请求</view>
+<view class="subParagraph">如果用户无法通过上述方式访问、更正或删除用户的信息，或用户需要访问、更正或删除用户在使用平台产品与/或服务时所产生的其他用户信息，或用户认为平台存在任何违反法律法规或与用户关于用户信息的收集或使用的约定，用户均可以通过本协议下方的其他方式与平台联系。为了保障安全，平台可能需要用户提供书面请求，或以其他方式证明用户的身份，平台将在收到用户反馈并验证用户的身份后的30天内答复用户的请求。对于用户合理的请求，平台原则上不收取费用，但对多次重复、超出合理限度的请求，平台将视情况收取一定成本费用。对于那些无端重复、需要过多技术手段(例如，需要开发新系统或从根本上改变现行惯例)、给他人合法权益带来风险或者非常不切实际的请求，平台可能会予以拒绝。</view>
+<view class="subParagraph">在以下情形中，按照法律法规要求，平台将无法响应用户的请求:</view>
+<view class="subParagraph">(1)与国家安全、国防安全有关的;</view>
+<view class="subParagraph">(2)与公共安全、公共卫生、重大公共利益有关的;</view>
+<view class="subParagraph">(3)与犯罪侦查、起诉和审判等有关的;</view>
+<view class="subParagraph">(4)有充分证据表明用户存在主观恶意或滥用权利的;</view>
+<view class="subParagraph">(5)响应用户的请求将导致用户或其他用户的合法权益受到严重损害的。</view>
+
+
+<view class="title" style="font-size: 30rpx;">第七章 平台如何共享、转让、公开披露用户的信息</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第十七条</text>共享</view>
+<view class="subParagraph">平台不会与平台以外的任何公司、组织共享用户的信息，但以下情况除外:</view>
+<view class="subParagraph">1.事先获得用户明确的同意或授权;</view>
+<view class="subParagraph">2.根据适用的法律法规、法律程序的要求、强制性的行政或司法要求所必须的情况下进行提供;</view>
+<view class="subParagraph">3.在法律法规允许的范围内，为维护平台、平台的关联方或合作伙伴、用户或其他平台用户或社会公众利益、财产或安全免遭损害而有必要提供;</view>
+<view class="subParagraph">4.只有共享用户的信息，才能实现平台的产品与/或服务的核心功能或提供用户需要的服务;</view>
+<view class="subParagraph">5.应用户需求为用户处理其与他人的纠纷或争议;</view>
+<view class="subParagraph">6.符合与用户签署的相关协议(包括在线签署的电子协议以及相应的平台规则)或其他的法律文件约定所提供;</view>
+<view class="subParagraph">7.基于学术研究而使用;</view>
+<view class="subParagraph">8.基于符合法律法规的社会公共利益而使用。</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第十八条</text>平台可能会将用户的信息与平台的关联方共享。但平台只会共享必要的用户信息，且受本隐私条款中所声明目的的约束。平台的关联方如要改变用户信息的处理目的，将再次征求用户的授权同意。</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第十九条</text>平台可能会向合作伙伴等第三方共享用户的订单信息、账户信息、设备信息以及地址信息，以保障为用户提供的服务顺利完成。但平台仅会出于合法、正当、必要、特定、明确的目的共享用户的信息，并且只会共享提供服务所必要的信息。平台的合作伙伴无权将共享的用户信息用于任何其他用途。</view>
+<view class="subParagraph">平台的合作伙伴包括商品或技术服务的供应商。平台可能会将用户的信息共享给支持平台功能的第三方。这些支持包括为平台的供货或提供基础设施技术服务、物流配送服务、支付服务、数据处理等。平台共享这些信息的目的是可以实现平台产品与/或服务的核心购物功能，比如平台必须与物流服务提供商共享用户的订单信息才能安排送货;或者针对线上支付付款方式，平台需要将用户的订单号和订单金额与第三方支付机构共享以实现其确认用户的支付指令并完成支付等。</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第二十条</text>对平台与之共享用户信息的公司、组织，平台会与其签署严格的保密协定，要求他们按照平台的说明、本隐私条款以及其他任何相关的保密和安全措施来处理用户信息。</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第二十一条</text>转让</view>
+<view class="subParagraph">平台不会将用户的信息转让给任何公司、组织，但以下情况除外:</view>
+<view class="subParagraph">1事先获得用户明确的同意或授权;</view>
+<view class="subParagraph">2.根据适用的法律法规、法律程序的要求、强制性的行政或司法要求所必须的情况进行提供;</view>
+<view class="subParagraph">3.符合与用户签署的相关协议(包括在线签署的电子协议以及相应的平台规则)或其他法律文件约定所提供;</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第二十二条</text>公开披露</view>
+<view class="subParagraph">平台仅会在以下情况下，且采取符合业界标准的安全防护措施的前提下，才会公开披露用户的信息:</view>
+<view class="subParagraph">1.根据用户的需求，在用户明确同意的披露方式下披露用户所指定的信息:</view>
+<view class="subParagraph">2.根据法律、法规的要求、强制性的行政执法或司法要求所必须提供用户信息的情况下，平台可能会依据所要求的用户信息类型和披露方式公开披露用户的信息。在符合法律法规的前提下，当平台收到上述披露信息的请求时，平台会要求必须出具与之相应的法律文件，如传票或调查函。对于要求平台提供的信息，应该在法律允许的范围内尽可能保持透明。平台对所有的请求都进行了慎重的审查，以确保其具备合法依据，且仅限于执法部门因特定调查目的且有合法权利获取的数据。在法律法规许可的前提下，平台披露的文件均在加密密钥的保护之下。</view>
+
+<view class="title">第八章 通知和修订</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第二十三</text>为给用户提供更好的服务以及随着平台业务的发展，本隐私条款也会随之更新。但未经用户明确同意，平台不会削减用户依据本隐私条款所应享有的权利。平台会通过在平台上发出更新版本并在生效前通过平台公告或以其他适当方式提醒用户相关内容的更新，也请用户访问平台以便及时了解最新的隐私条款。</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第二十四条</text>对于重大变更，平台还会提供更为显著的通知(平台会通过包括但不限于邮件、短信或在浏览页面做特别提示等方式，说明隐私条款的具体变更内容)。</view>
+<view class="subParagraph">本隐私条款所指的重大变更包括但不限于:</view>
+<view class="subParagraph">(1)平台的服务模式发生重大变化。如处理用户信息的目的、处理的用户信息类型、用户</view>
+<view class="subParagraph">信息的使用方式等;</view>
+<view class="subParagraph">(2)平台在所有权结构、组织架构等方面发生重大变化。如业务调整、破产并购等引起的所有者变更等;</view>
+<view class="subParagraph">(3)用户信息共享、转让或公开披露的主要对象发生变化;</view>
+<view class="subParagraph">(4)用户参与信息处理方面的权利及其行使方式发生重大变化;</view>
+<view class="subParagraph">(5)平台负责处理用户信息安全的责任部门、联络方式及投诉渠道发生变化时;</view>
+<view class="subParagraph">(6)用户信息安全影响评估报告表明存在高风险时。</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第二十五条</text>平台还会将本策略的旧版本存档，供用户查阅。</view>
+
+<view class="title">第九章 如何联系平台</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第二十六条</text>如用户对本隐私条款或用户信息的相关事宜有任何问题、意见或建议，请通过在线客服或拨打平台的统一客服电话等方式与平台联系。</view>
+
+<view class="paragraph"><text class="tertiaryTitle">第二十七条</text>一般情况下，平台将在三十日内回复。如果用户对平台的回复不满意，特别是平台的用户信息处理行为损害了用户的合法权益，用户还可以向网信、电信、公安及工商等相关部门进行投诉或举报。</view>

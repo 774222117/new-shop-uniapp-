@@ -1,0 +1,20 @@
+<view>
+  <my-address bgColor="#fff" fontColor="black" iconColor="red" isIndex="{{false}}" useShopCategory="{{activityInfo.useShopCategory}}" chooseShop="{{chooseShop}}" bind:chooseEvent="chooseShopEvent" shopInfo="{{shopInfo}}"></my-address>
+  <view class="activity-head">
+    <image src="{{activityInfo.backImg}}"></image>
+  </view>
+  <view class="more-goods-body" style="background-color: {{activityInfo.bgcolor}};padding-bottom:136rpx;">
+    <view class="more-goods-card">
+      <view class="more-goods-card-list">
+        <index-goods-card-two isAlwaysShowAdd="{{true}}" bindclick="addCart" bindjump="jumpToGoodsDetail" wx:for="{{goodsInfoList}}" wx:for-item="goods" wx:for-index="idx" isSingle="{{true}}" wx:if="{{idx%2==0}}"
+        goodsinfo="{{goods}}" ></index-goods-card-two>
+      </view>
+      <view class="more-goods-card-list">
+        <index-goods-card-two isAlwaysShowAdd="{{true}}" bindclick="addCart" bindjump="jumpToGoodsDetail" wx:for="{{goodsInfoList}}" wx:for-item="goods" wx:for-index="idx" isSingle="{{false}}" wx:if="{{idx%2!=0}}"
+        goodsinfo="{{goods}}" ></index-goods-card-two>
+      </view>
+    </view>
+  </view>
+</view>
+<bottom-action cartTypeName = "{{cartTypeName}}" sumPrice="{{cartShopTotal.sumPrice}}" sumProductPrice="{{cartShopTotal.sumProductPrice}}" buyCount="{{cartShopTotal.buyCount}}" deliveryWay="{{activityInfo.deliveryWay}}" bottomVal="bt20" goodsInfoList="{{goodsInfoList}}" shopCart="{{shopCart}}" saleActivityId = "{{activityId}}" bindcartmodyfiy="carModifyEvent"></bottom-action>
+<back-index></back-index>

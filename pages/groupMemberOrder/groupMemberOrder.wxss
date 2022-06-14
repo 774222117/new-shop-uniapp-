@@ -1,0 +1,152 @@
+page{
+  font-family:PingFangSC-Medium,PingFang SC;
+  width:100%;
+  height:100%;
+}
+.orderStatus{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.tabContainer{
+  overflow: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items:center;
+  justify-content:space-around;
+  height: 100rpx;
+  background-color: #FFF
+}
+
+.tab-item{
+    color: #363636;
+    height: 100%;
+    /* flex-grow: 1; */
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    font-size: 28rpx;
+    box-sizing:border-box;
+    position:relative;
+  }
+  .tab-item.active{
+    color: #363636;
+    font-size: 28rpx;
+    font-weight:bold;
+  }
+  .tab-item.active::after {
+    content: " ";
+    width:76rpx;
+    height: 8rpx;
+    border-radius: 6rpx;
+    position: absolute;
+    left:10;
+    bottom:0;
+    background-color:#FF3B30;
+    z-index:10;
+  }
+  .orderlist{
+    margin-top: 100rpx;
+  }
+
+  /* 卡牌样式 */
+.cardItmeBox{
+  width: 692rpx;
+  height: 306rpx;
+  background-color: white;
+  margin:30rpx auto 0;
+  padding: 20rpx;
+}
+.cardItmeBox .topTitle{
+  width: 100%;
+  height: 40rpx;
+  font-size:26rpx;
+  font-weight:bold;
+  color:rgba(57,57,57,1);
+  line-height:36rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cardItmeBox .topTitle .leftAddressName{
+  /* width: 560rpx; */
+  font-size:26rpx;  
+  font-weight:600;
+  color:rgba(57,57,57,1);
+  line-height:36rpx;
+}
+.cardItmeBox .topTitle .rightState{
+  /* width: 90rpx; */
+  font-size:26rpx;
+  font-weight:500;
+  color:rgba(155,155,155,1);
+  line-height:36px;
+}
+.cardItmeBox .topTime{
+  width: 100%;
+  font-size:22rpx;
+  font-family:PingFangSC-Semibold,PingFang SC;
+  color:rgba(155,155,155,1);
+  line-height:32rpx;
+}
+.line{
+  height: 1rpx;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.cardItemInfo{
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-top: 12rpx;
+  
+}
+.leftImg{
+  width: 120rpx;
+  height: 120rpx;
+}
+.leftImg>image{display: block;width: 100%;height: 100%}
+.middeText{
+  width: 356rpx;
+  padding-left: 20rpx;
+  font-weight:500;
+  height: 80rpx;
+  font-size:28rpx;
+  color:rgba(54,54,54,1);
+  line-height:40rpx;
+}
+.carItemBtm{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16rpx;
+}
+.carItemBtm .allMoney{
+  width: 400rpx;
+  height: 100%;
+  color:rgba(155,155,155,1);
+  font-size:22rpx;
+  font-weight:600;
+  line-height:32rpx;
+}
+.carItemBtm .yongjin{
+  font-size:26rpx;
+  font-weight:600;
+  color:rgba(32,32,32,1);
+  line-height:36rpx;
+}
+
+.bottomLoadConplete{
+  width: 100%;
+  height:200rpx;
+  line-height: 200rpx;
+  text-align: center;
+  font-size:14px;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color:rgba(136,136,136,1);
+}

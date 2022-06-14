@@ -1,0 +1,54 @@
+/* components/navbar/index.wxss */
+
+.navbar {
+  width: 100%;
+  overflow: hidden;
+  position:relative;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  flex-shrink: 0;
+  background-color: white;
+}
+
+.navbar-title {
+  box-sizing: border-box;
+  padding-right: 398px;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  z-index: 10;
+  font-size: 36rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-left: 20rpx;
+}
+
+.sectionInput {
+  width: 300rpx;
+  height: 70rpx;
+  border-radius: 88rpx;
+  font-size: 26rpx;
+  background:rgba(245,245,245,1);
+  display: flex;
+  padding-left: 28rpx;
+  justify-content: start;
+  align-items: center;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:#9B9B9B;
+  line-height:70rpx;
+}
+.saoyisao{
+  width: 70rpx;
+  height: 70rpx;
+  margin-left: 4rpx;
+}
+/* .titleBg{
+  background-image: url(https://sourced.sgsugou.com/new-shop/image/indextitlebg.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+} */

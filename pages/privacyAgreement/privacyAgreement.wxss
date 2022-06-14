@@ -1,0 +1,32 @@
+/* pages/privacyAgreement/privacyAgreement.wxss */
+page {
+  padding: 0 28rpx env(safe-area-inset-bottom);
+  box-sizing: border-box;
+}
+
+.title {
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 700;
+  margin: 60rpx 0 30rpx;
+}
+
+.subTitle {
+  font-size: 30rpx;
+  font-weight: 700;
+  margin: 56rpx 0 15rpx;
+}
+.tertiaryTitle{
+  font-weight: 700;
+  margin-right: 10rpx;
+}
+.paragraph {
+  margin-top: 56rpx;
+  text-indent: 56rpx;
+}
+.subParagraph{
+  text-indent: 56rpx;
+}
+.text{
+  margin-bottom: 10rpx;
+}

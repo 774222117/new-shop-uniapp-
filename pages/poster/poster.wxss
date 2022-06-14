@@ -1,0 +1,28 @@
+.imageBox{
+  width: 680rpx !important;
+  height: 1070rpx  !important;
+  margin: 0 auto;
+  
+  margin-top: 10rpx;
+}
+
+/* 保存图片按钮样式 */
+
+.savebtnBox{
+  width: 100%;
+  height: 100rpx;
+  margin-top: 10rpx;
+  }
+
+.savebtnBox .savebtn{
+  width:680rpx;
+  height:90rpx;
+  
+  background:rgba(255,59,48,1);
+  border-radius:10px;
+  text-align: center;
+  line-height: 90rpx;
+  font-size:18px;
+  color:rgba(255,255,255,1);
+  margin: 0 auto;
+}

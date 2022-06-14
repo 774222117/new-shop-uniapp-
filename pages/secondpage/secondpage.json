@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "优选大集",
+  "usingComponents": {
+    "my-address": "/component/addressModelSecond/addressModel",
+    "bottom-action": "/component/bottomAction/index"
+  }
+}

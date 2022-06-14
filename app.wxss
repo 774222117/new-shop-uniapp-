@@ -1,0 +1,13 @@
+@import "colorui/main.wxss";
+@import "colorui/icon.wxss";
+@import "colorui/new-icon.wxss";
+/* 公共 */
+.outerLayer{
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+.ft12{
+  font-size: 12px;
+}

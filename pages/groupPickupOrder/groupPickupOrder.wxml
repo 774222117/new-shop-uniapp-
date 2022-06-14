@@ -1,0 +1,42 @@
+<wxs module="getDate" src="../../utils/dataParse.wxs"></wxs>
+<!-- 抬头切换区域 -->
+<view class="orderlist">
+  <!-- 订单卡牌 height:calc(100% - 100rpx)-->
+  <scroll-view scroll-y scroll-with-animation lower-threshold="200" style="height:100%">
+    <view class="cardItmeBox" wx:for="{{orderList}}" wx:key="shopOrderList">
+      <view class="topTitle">
+        <view class="leftAddressName">订单号:{{item.ordersn}}</view>
+        <view class="rightState">{{item.statusExplain}}</view>
+      </view>
+      <view class="topTime">
+        {{getDate.getDate_New(item.createTime,'.')}} 
+        {{getDate.getDateH_New(item.createTime,':')}}
+      </view>
+      <view class="line"></view>
+      <view class="cardItemInfo" wx:if="{{item.orderGoods.length > 1}}">
+        <view class="leftImg" wx:for="{{item.orderGoods}}" wx:key="shopOrderGoods" >
+          <image src="{{item.goodsThumb}}"></image>
+        </view>   
+      </view>
+      <view class="cardItemInfo" wx:else>
+        <view class="leftImg">
+          <image src="{{item.orderGoods[0].goodsThumb}}"></image>          
+        </view>
+        <view class="middeText">{{item.orderGoods[0].title}}</view>
+      </view>
+      <view class="carItemBtm">
+        <view class="allMoney">共{{item.orderGoods[0].total}}件 ￥{{item.price}}</view>
+        <!-- <view class="quhuobtn" catchtap="quhuo" data-item="{{item}}">取货</view> -->
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+  <!-- 订单卡牌结束 -->
+  <view class='bottomLoadConplete' wx:if="{{bottomIsShow}}">
+    到底啦，没有其他订单啦~~
+  </view>
+
+  <!-- <view class="saoyisao" bindtap="saoyisao">
+    <view class="iconfont iconsaoyisao"></view>
+  </view> -->

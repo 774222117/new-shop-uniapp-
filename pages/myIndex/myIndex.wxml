@@ -1,0 +1,129 @@
+<wxs module="getDate" src="../../utils/dataParse.wxs"></wxs>
+<view class="mine">
+  <!--pages/mine/mine.wxml-->
+  <view class="topBox">
+    <view class="userInfo">
+      <view class="info">
+        <view class="headPic">
+          <image src="{{userInfoIconUrl}}" wx:if="{{userInfoIconUrl}}"></image>
+          <image src="/image/defaultAvatar.svg" wx:else catchtap="toNavicata" data-url="../login/login"></image>
+        </view>
+        <view class="peopleInfo">
+          <view class="name" wx:if="{{userInfoName}}">{{userInfoName}}
+            <button class="onkeyClick" bindtap="oneKeyClick">一键同步</button>
+          </view>
+          <view class="name" catchtap="toNavicata" wx:else data-url="../login/login">登录/注册</view>
+          <view class="phone" wx:if="{{userInfoPhone}}">{{getDate.plusXing(userInfoPhone,3,4,"*")}}</view>
+          <view class="phone2" wx:else>登录后获取更多精彩内容</view>
+        </view>
+        <!-- <image src="{{userInfoIconUrl}}"></image>
+        <text>{{userInfoName}}</text> -->
+      </view>
+    </view>
+    <view class="qrcoode">
+      <button class="contact_button" open-type="contact" session-from="weapp">
+        <image src="https://sourced.sgsugou.com/img-coupon/contact.png"></image>
+      </button>
+
+      <image class="qrcoode_image" catchtap="showCode" wx:if='{{suguoMemberNo!=""}}' src="https://sourced.sgsugou.com/new-shop/image/qrcoode.png"></image>
+    </view>
+  </view>
+  <!--华润会员条码-->
+  <view class="barCodeBoxPopup" hidden="{{isShowBarCode}}" catchtap="hideBarCode">
+    <view class='barCodeBox'>
+      <view class="barCodeCanvasBox">
+        <canvas canvas-id="barcode" class="barCodeCanvas" />
+        <view class="barCodeNumBox">苏果会员号：{{suguoMemberNo}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="myorder">
+    <!--我的订单导航-->
+    <view class="card">
+      <view class="card-head">我的订单</view>
+      <view class='line'></view>
+      <view class="card-body">
+        <view class="card-btn" catchtap="jumpToOrder" data-tab="1">
+          <image src="https://sourced.sgsugou.com/new-shop/image/daifukuan.png"></image>
+          <text>待付款</text>
+          <view class="buy-num" wx:if="{{daizhifuCount>0}}">{{daizhifuCount}}</view>
+        </view>
+        <view class="card-btn" catchtap="jumpToOrder" data-tab="2">
+          <image src="https://sourced.sgsugou.com/new-shop/image/daitihuo.png"></image>
+          <text>待提货</text>
+          <view class="buy-num" wx:if="{{daiquhuoCount>0}}">{{daiquhuoCount}}</view>
+        </view>
+        <view class="card-btn" catchtap="jumpToOrder" data-tab="3">
+          <image src="https://sourced.sgsugou.com/new-shop/image/yitihuo.png"></image>
+          <text>待退款</text>
+        </view>
+        <view class="card-btn" catchtap="jumpToOrder" data-tab="0">
+          <image src="https://sourced.sgsugou.com/new-shop/image/quanbudd.png"></image>
+          <text>全部订单</text>
+        </view>
+      </view>
+    </view>
+    <!--跳转导航-->
+    <view class="card card-marggin">
+      <view class="nav_item" catchtap="toNavicata" data-url="../mycoupon/mycoupon">
+        <view class="nav-item-left">
+          <image class="icon" src="https://sourced.sgsugou.com/new-shop/image/icon-yhq.png"></image>
+          <text>优惠券</text>
+        </view>
+        <view class="coupon-count-info">
+          <view class="coupon-num" wx:if="{{couponCount>0}}">{{couponCount}}</view>
+          <text class="iconfont iconarrow-right font12"></text>
+        </view>
+      </view>
+      <view class='line'></view>
+      <view class="nav_item" catchtap="goToCardBag">
+        <view class="nav-item-left">
+          <image class="icon" src="../../image/myYouCard.svg"></image>
+          <text>我的悠享卡</text>
+        </view>
+        <text class="iconfont iconarrow-right font12"></text>
+      </view>
+      <view class='line'></view>
+      <view wx:if="{{isSharePeople}}" class="nav_item" catchtap="toNavicata" data-url="../groupCenter/groupCenter">
+        <view class="nav-item-left">
+          <image class="icon" src="https://sourced.sgsugou.com/new-shop/image/icon-tz.png"></image>
+          <text>团长中心</text>
+        </view>
+        <text class="iconfont iconarrow-right font12"></text>
+      </view>
+      <view wx:else class="nav_item" catchtap="toNavicata" data-url="../groupCenter/applyLeader">
+        <view class="nav-item-left">
+          <image class="icon" src="https://sourced.sgsugou.com/new-shop/image/icon-tz.png"></image>
+          <text>申请成为团长</text>
+        </view>
+        <text class="iconfont iconarrow-right font12"></text>
+      </view>
+      <view class='line'></view>
+      <view class="nav_item" catchtap="toActivityCode" data-url="../">
+        <view class="nav-item-left">
+          <image class="icon" src="../../image/activityCode.png"></image>
+          <text>兑换码</text>
+        </view>
+        <text class="iconfont iconarrow-right font12"></text>
+      </view>
+    </view>
+  </view>
+</view>
+<bottom-tabbar currentIdx='4' cartNum='{{cartNum}}'></bottom-tabbar>
+
+
+<!--兑换码弹框-->
+<view class='popModel' wx:if="{{popModelIsShow}}">
+  <view class="cu-dialog shopCar">
+    <view class="cu-bar bg-white bar-top" style="min-height:72rpx;">
+      <view class="cuIcon-close" style="font-size:20px;" bindtap="cancel"></view>
+    </view>
+    <view class="activity codeInfo">
+      <view class='codeTitle'>请填写兑换码</view>
+      <view class="inputCodeView">
+        <input bindinput="changeActivityCode" class="codeInput" placeholder="请填写兑换码" value='{{activityCode}}'></input>
+      </view>
+      <view class="duihuanbtn" catchtap="submitActivityCode"><text>确定</text></view>
+    </view>
+  </view>
+</view>

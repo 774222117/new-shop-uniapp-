@@ -1,0 +1,107 @@
+<!--pages/afterorder/afterorder.wxml 退货-->
+
+<!-- 退款类型 -->
+<view class="pubsty userInfo">
+  <view class="cu-form-group" hidden="{{hideSelectDispatchType}}">
+    <view class="picktype">
+      <view class="title">退款类型：</view>
+      <view class="content" bindtap="showRadioModal">
+        <text>{{dispatchTitle}}</text>
+      </view>
+    </view>
+    <view>
+      <view class="cu-list menu">
+        <view class="cu-item arrow" bindtap="showRadioModal">
+          <!-- 更改 -->
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 退款类型弹出选择 -->
+<!--取货方式选择-->
+<view class="cu-modal bottom-modal {{modalName=='RadioModal'?'show':''}}" bindtap="hideRadioModal">
+  <view class="cu-dialog pickTypeBox" catchtap>
+    <view class="cu-bar bg-white addressTitle">
+      <view style="font-size:28rpx;color:rgba(57,57,57,1);margin-left:30rpx;font-weight:600;">
+        选择退货类型
+      </view>
+      <view class="action cuIcon-close" style="font-size:40rpx;" data-target="hideRadioModal" bindtap="hideRadioModal"></view>
+    </view>
+    <radio-group class="block">
+      <view class="cu-list menu text-left">
+        <view class="cu-item">
+          <label class="flex justify-between align-center flex-sub" data-value="0" bindtap="radiotap">
+            <view class="flex-sub pickTypeInfo">
+              <text>{{applyTypeList[0].name}}</text>
+              <text class="pickTypeInfo-desc">没收到货/货物损坏，或和商家协商一致</text>
+            </view>
+            <radio class="round"></radio>
+          </label>
+        </view>
+        <view class="cu-item">
+          <label class="flex justify-between align-center flex-sub" data-value="1" bindtap="radiotap">
+            <view class="flex-sub pickTypeInfo">
+              <text>{{applyTypeList[1].name}}</text>
+              <text class="pickTypeInfo-desc">已收到货物，需要退换货物</text>
+            </view>
+            <radio class="round"></radio>
+          </label>
+        </view>
+        <view class="cu-item"></view>
+      </view>
+    </radio-group>
+  </view>
+</view>
+<!-- 退款原因 -->
+<view class="reasonRefund">退款原因</view>
+<view class="reasonRefundContent">
+  <view class="contents">
+    <view class="titles">
+      <input class="reasonRefundInput" placeholder="请在此处填写退款原因" bindinput="reasonRefundInput" value="{{reason}}"></input>
+    </view>
+    <view class="fillImg">
+      <view class="items" bindtap="uploadPhoto" wx:for="{{updateImg}}">
+        <image class="imgs" src="{{item==''?'../../image/uploadBg.png':item}}"></image>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 选择商品 -->
+<view class="goodsChoice">
+  <view class="title">
+    <view>选择商品</view>
+    <view>共{{orderInfo.goodsCount}}件</view>
+  </view>
+  <view style="height:calc(100% - 80rpx);">
+    <scroll-view scroll-y scroll-with-animation style="height:100%">
+      <!-- 此处为购物车 -->
+      <block wx:for="{{goodsItems}}">
+        <view class="shopCart-Item">
+          <view class="shopCar-LeftImg">
+            <image src="{{item.goodsThumb}}"></image>
+          </view>
+          <view class="shopCar-RightBox">
+            <view class="shopCar-topTitle shopCar-text-ellipsis">{{item.title}}</view>
+            <view class="shopCar-PriceBox">
+              <text class="text-shopCarMoney1"> ￥{{item.realPrice}} </text>
+              <text class="text-shopCarMoney2"> ￥{{item.realProductPrice}} </text>
+            </view>
+          </view>
+          <view class="shopCar-countBox">
+            <view class="flex justify-between">
+              <image class="shopCar-image" bindtap="delRefund" src="/image/delCart.svg" data-item="{{item}}"></image>
+              <view class="shopCar-goosNum">{{item.quantity}}</view>
+              <image class="shopCar-image" bindtap="addRefund" src="/image/addCart.svg" data-item="{{item}}"></image>
+            </view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>
+<!-- 底部提交申请 -->
+<view class="btmBtnContent">
+  <view class="leftInfo">共{{totalReturned || 0}}件商品 ¥{{moneyReturned || 0}}</view>
+  <view class="rightBtn" bindtap="submitBtn">提交申请</view>
+</view>

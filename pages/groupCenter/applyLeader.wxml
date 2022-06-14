@@ -1,0 +1,62 @@
+<view class="apply-main">
+  <view class="cu-form-group">
+    <view class="title">门店编号：</view>
+    <input bindinput="changeShopCode" placeholder="请填门店编号" selection-start="-1" selection-end="-1" cursor="-1" value="{{shopCode}}"></input>
+  </view>
+  <!-- <view class="cu-form-group">
+    <view class="title">自提点：</view>
+    <view class="content" catchtap="showRadioModal">
+      <text>{{selectPickAddr.address}}</text>
+      <text class="cuIcon-unfold" style="margin-left:5rpx;font-size:42rpx;color:{{fontColor}}"></text>
+    </view>
+  </view> -->
+  <view class="cu-form-group">
+    <view class="title">苏果工号：</view>
+    <input bindinput="changeemployeeNo" placeholder="请填苏果工号" selection-start="-1" selection-end="-1" cursor="-1" value="{{employeeNo}}"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">联系电话：</view>
+    <input bindinput="changeMobile" placeholder="请填手机号码" selection-start="-1" selection-end="-1" cursor="-1" value="{{phone}}" disabled="false"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">真实姓名：</view>
+    <input bindinput="changeRealName" placeholder="请填真实姓名" selection-start="-1" selection-end="-1" cursor="-1" value="{{realName}}"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">验证码：</view>
+    <input bindinput="changeMsgCode" placeholder="请填短语验证" selection-start="-1" selection-end="-1" cursor="-1" value="{{msgCode}}"></input>
+    <button class="send-Code-btn" type="primary" bindtap="sendCode" disabled="{{sending}}">{{sendCodeText}}</button>
+  </view>
+  <view class="apply-tips">
+    <text>请填写微信绑定的真实姓名，否则佣金无法提现</text>
+  </view>
+  <view class="apply-btn">
+    <button bindtap="apply">申请团长</button>
+  </view>
+</view>
+
+<view class="cu-modal bottom-modal {{modalName=='RadioModal'?'show':''}}" bindtap="hideRadioModal">
+  <view class="cu-dialog pickAddrBox" catchtap>
+    <view class="cu-bar bg-white addressTitle">
+      <view style="font-size:28rpx;color:rgba(57,57,57,1);margin-left:30rpx;font-weight:600;">
+        选择自提点
+      </view>
+      <view class="action cuIcon-close" style="font-size:40rpx;" data-target="hideRadioModal" bindtap="hideRadioModal"></view>
+    </view>
+    <radio-group class="block">
+      <view class="cu-list menu text-left">
+        <view class="cu-item" wx:for="{{pickAddrList}}" wx:key="disIndex">
+          <label class="flex justify-between align-center flex-sub" data-item="{{item}}" bindtap="radiotap">
+            <view class="flex-sub pickAddrInfo">
+              <text>{{item.address}}</text>
+              <text class="pickAddrInfo-desc">{{item.description}}</text>
+            </view>
+            <radio class="round"></radio>
+          </label>
+        </view>
+        <view class="cu-item">
+        </view>
+      </view>
+    </radio-group>
+  </view>
+</view>

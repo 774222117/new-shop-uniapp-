@@ -1,0 +1,98 @@
+<import src="../../component/wxParse/wxParse.wxml" />
+<!-- 优惠券详情页 -->
+<view class="detail-box">
+  <!-- 主体 -->
+  <view class="detail-content {{windowHeightKey?'active':''}}">
+    <!-- 介绍图轮播 -->
+    <swiper autoplay interval="3000" circular class="content-bannerBox">
+      <swiper-item wx:for="{{bannerList}}" wx:key="bannerListKey">
+        <image src="{{item.url}}" data-id="{{item.id}}"
+        data-couponId="{{item.couponId}}" data-sort="{{item.sort}}" data-type="{{item.type}}" class="content-imgShow"></image>
+      </swiper-item>
+    </swiper>
+    <!-- 优惠券 -->
+    <view class="content-title">
+      <text class="title-content singleText">{{indexTitle}}</text>
+      <view class="clearFix title-coupon">
+        <text class="lt title-f1">￥</text>
+        <text class="lt title-f2">{{couponContent.productByMoney}}</text>
+        <text class="title-f3">{{couponContent.useType}}</text>
+        <text class="title-f4">{{couponContent.intro}}</text>
+        <view class="title-coupon-border border1"></view>
+        <view class="title-coupon-border border2"></view>
+      </view>
+    </view>
+    <!-- 地址门店 -->
+    <view class="coupon-area">
+      <block wx:for="{{canUseArea}}" wx:key="canUseAreaKey" >
+        <view class="clearFix area-item"  wx:if="{{!item.isHidden && item.type!=2}}"
+      catchtap="alertBoxFunc" data-type="{{item.type}}">
+        <text class="lt area-text t1" catchtap="alertBoxFunc" data-type="{{item.type}}">{{item.name}}</text>
+        <text class="lt area-text t2" data-content="{{item.content}}" catchtap="alertBoxFunc" data-type="{{item.type}}">{{item.content}}</text>
+        <image src="{{imgUrl}}detailArrow1.png" class="rt area-image" wx:if="{{!item.isHide}}" 
+            catchtap="alertBoxFunc" data-type="{{item.type}}"></image>
+      </view>
+      </block>
+    </view>
+    <!--优惠详情-->
+    <view class="couponDetails">
+      <text class="couponDetals-title">优惠详情</text>
+      <view>
+        <!-- <text class="coupon-use-title">使用说明</text> -->
+        <view class="coupon-use-content" style="font-size:28rpx">
+          <template is="wxParse" data="{{wxParseData:ruleInfoHtml.nodes}}"/>
+        </view>
+      </view>
+      <view style="font-size:28rpx" class="coupon-use-content">
+        <template is="wxParse" data="{{wxParseData:descriptionHtml.nodes}}"/>
+      </view>
+      <!-- <view>
+        <text class="coupon-use-title">使用方法</text>
+        <view class="detail-useMethod" wx:for="{{useMethhodDes}}"  wx:key="useMethhodDesKey">
+          <image src="{{imgUrl}}detail-use.png"></image>
+          <text class="use-t1">{{item.index}}</text>
+          <text class="use-t2 {{item.index == '2'?'t4':'t3'}}">{{item.content}}</text>
+        </view>
+      </view> -->
+      
+    </view>
+  </view>
+  <!-- 底部 -->
+  <view class="detail-footer clearFix {{windowHeightKey?'active':''}}">
+    <view class="footer-btn lt clearFix footer-index" bindtap="toIndexPage">
+      <image class="footer-img lt s" src="{{imgUrl}}detail-footer-detail.png"></image>
+      <text class="footer-text lt">首页</text>
+    </view>
+    <label class="footer-btn lt clearFix footer-share" hidden="{{isActivity==1}}">
+      <image class="footer-img lt s" src="{{imgUrl}}detail-footer-share.png"></image>
+      <text class="footer-text lt">分享</text>
+      <button open-type="share" id="btnShare" data-intro="{{couponContent.intro}}" data-title="{{indexTitle}}" data-cid="{{couponId}}" data-url="{{bannerList[0].url}}"></button>
+    </label>
+    <view class="footer-btn lt clearFix footer-code" bindtap="toScanCode">
+      <image class="footer-img lt s" src="{{imgUrl}}detail-footer-code.png"></image>
+      <text class="footer-text lt">扫码</text>
+    </view>
+    <!-- <view class="footer-getCode lt" bindtap="getCoupon" wx:if="{{buyMoneyNum == 0}}">立即领取</view>
+    <view class="footer-getCode lt" bindtap="getCoupon" wx:else>{{buyMoneyNum}}元立抢</view> -->
+    <view class="footer-getCode lt" bindtap="getCoupon">{{btnText}}</view>
+  </view>
+  <!-- 弹框盒子 -->
+  <view class="detailContentBox" hidden="{{alertBoxShow}}">
+      <view class="alertBoxContainer">
+        <text>{{alertBoxList.title}}</text>
+        <image src="{{imgUrl}}closeBtn.png" bindtap="alertBoxHidden"></image>
+        <block wx:if="{{alertBoxList.type == '1'}}">
+          <view class="clearFix alert-content-container" wx:for="{{alertBoxList.array}}">
+            <image src="{{couponContent.merchantIcon}}"></image>
+            
+            <text wx:if="{{!!item.name}}">{{item.name}}</text>
+          </view>
+        </block>
+        <block wx:else="{{alertBoxList.type == '2'}}">
+          <view class="clearFix alert-content-container" wx:for="{{alertBoxList.array}}" wx:key="alertBoxListArrayKey">
+            <text>{{item}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+</view>

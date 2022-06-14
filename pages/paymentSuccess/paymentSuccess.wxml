@@ -1,0 +1,25 @@
+<!--pages/paymentSuccess/paymentSuccess.wxml-->
+<view class="paymentSuccessBox">
+  <view class="iconBox">
+    <icon class="iconItem" color="#6ACC01" type="success" size="72"></icon>
+  </view>
+  <view class="successText">支付成功</view>
+  <view class="successBtn" bindtap="successBtn">完成</view>
+</view>
+
+<!-- 支付完成弹出分享框 -->
+<!-- <view class="cu-modal bottom-modal {{modalName=='paymentSuccess'?'show':''}}">
+    <button open-type="share" class="shareButton">
+      <view class="paymentSuccessMainBox"></view>
+    </button>
+    <view class="closeAlert" catchtap="hideModal"></view>
+</view> -->
+<!-- 弹窗 -->
+<view class='popModel' wx:if="{{popModelIsShow}}">
+  <view id="pop" class='popImgBox' data-item='{{couponSetInfo}}' bindtap="toCouponSet">
+    <image src='{{couponSetInfo.displayImg}}'></image>
+  </view>
+  <view class='popClose' bindtap='popCloseBtn'>
+    <image src='{{imgUrl}}pop-close.png'></image>
+  </view>
+</view>

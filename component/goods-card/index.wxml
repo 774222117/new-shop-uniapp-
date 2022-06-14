@@ -1,0 +1,60 @@
+ <view class="goods">
+  <view class= "goods-img" data-goodsinfo="{{goodsinfo}}" bindtap="jumpToDetail">
+    <image src="{{goodsinfo.thumb}}"></image>
+    <view class="leftTopImg" wx:if="{{goodsinfo.marketType == 1}}">
+      <image wx:if="{{goodsinfo.deliveryWay==2}}" src="/image/kuaidi.png"></image>
+      <image wx:else src="/image/yushou.png"></image>
+    </view>
+  </view>
+  <view class="goods-rightBox">
+    <text class="goods-title text-ellipsis {{isCommunity?'goods-title-height36':'goods-title-height72'}}" data-goodsinfo="{{goodsinfo}}" bindtap="jumpToDetail">{{goodsinfo.title}}</text>
+    <view class="goods-count-info {{isCommunity?'margin-top44':'margin-top8'}}" data-goodsinfo="{{goodsinfo}}" bindtap="jumpToDetail">
+      <text wx:if="{{goodsinfo.total > 0 && goodsinfo.total < 20}}">仅剩{{goodsinfo.total}}件</text>
+      <text wx:elif="{{goodsinfo.total > 200}}">库存充足</text>
+      <text wx:else>库存：{{goodsinfo.total}}</text>
+      <!-- <text>已售：{{goodsinfo.salesReal}}</text> -->
+      <!-- <text wx:if="{{showRate}}">佣金：￥{{goodsinfo.commission}}</text> -->
+    </view>
+    <view class="promotionInfoview">
+      <!-- <text class="promotionInfo">{{goodsinfo.topic}}</text> -->
+      <block wx:if="{{goodsinfo.topic!= undifinde}}" >
+          <view class="promotionInfo" data-goodsinfo="{{goodsinfo}}" bindtap="jumpToDetail">{{goodsinfo.topic}}</view>
+          <view class="couponsInfo" wx:for="{{goodsinfo.couponDtoList}}" wx:if="{{index<3}}" data-goodsinfo="{{goodsinfo}}" bindtap="jumpToDetail">
+            <view class="yuan"></view>
+            <view class="yuan2"></view>
+            <text class="coupon">{{item.productByMoney}}元券</text>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="couponsInfo" wx:for="{{goodsinfo.couponDtoList}}" wx:if="{{index<4}}" data-goodsinfo="{{goodsinfo}}" bindtap="jumpToDetail">
+            <view class="yuan"></view>
+            <view class="yuan2"></view>
+            <text class="coupon">{{item.productByMoney}}元券</text>
+          </view>
+        </block>
+    </view>
+    <view class="goods-price-info">
+      <view  class="price-info-left" data-goodsinfo="{{goodsinfo}}" bindtap="jumpToDetail">
+        <text class="sale-price">￥{{goodsinfo.marketPrice}}</text>
+        <text class="market-price" hidden="{{!goodsinfo.showProductPrice}}">￥{{goodsinfo.productPrice}}</text>
+      </view>
+      <block wx:if="{{isCommunity}}"><!--社区购商品直接显示加减-->
+        <view class="numEditView">
+          <image class="shopCar-image" bindtap="delCart" data-goodsinfo="{{goodsinfo}}" src="/image/delCart.svg"></image>
+          <view class="goosNum" style="width:44rpx;">{{goodsinfo.buyCount}}</view>
+          <image class="shopCar-image" bindtap="addCart" data-goodsinfo="{{goodsinfo}}" src="/image/addCart.svg"></image>
+        </view> 
+      </block>
+      <block wx:else>
+        <view class="buyBtn" catchtap="jumpToDetail" data-goodsinfo="{{goodsinfo}}" wx:if="{{goodsinfo.marketType == 1}}">立即购买</view>
+        <view class="numEditView" wx:if="{{goodsinfo.marketType == 0 || goodsinfo.marketType == 2}}">
+          <view class="minusBtn" bindtap="delCart" data-goodsinfo="{{goodsinfo}}">-</view>
+          <view class="goosNum" style="width:44rpx;">{{goodsinfo.buyCount}}</view>
+          <!-- <view class="plusBtn" bindtap="addCart" data-goodsinfo="{{goodsinfo}}">+</view>  -->
+          <image class="shopCar-image" bindtap="addCart" data-goodsinfo="{{goodsinfo}}" src="/image/addCart.svg"></image>
+        </view> 
+      </block>
+     
+    </view>
+  </view>
+</view>

@@ -1,0 +1,302 @@
+page {
+  background-color: #f2f2f2;
+}
+.cardStatus {
+  position: relative;
+  padding: 0 30rpx;
+}
+.tabContainer{
+  overflow: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items:center;
+  justify-content:space-around;
+  height: 100rpx;
+}
+.tab-item{
+    color: #888;
+    height: 100%;
+    /* flex-grow: 1; */
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    font-size: 28rpx;
+    box-sizing:border-box;
+    
+    position:relative;
+  }
+  .tab-item.active{
+    color: #000;
+    font-size: 28rpx;
+  }
+  .tab-item.active::after {
+    content: " ";
+    width:38rpx;
+    height: 8rpx;
+    border-radius: 6rpx;
+    position: absolute;
+    left:10;
+    bottom:0;
+    background-color:#FF3B30;
+    z-index:10;
+  }
+
+  /* cardListBox */
+  .cardStatus .cardListBox {
+    display:flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    background-color: #fff;
+    align-items: center;
+    padding:24rpx 0;
+    margin-bottom: 20rpx;
+  }
+  .cardStatus .search {
+    height: 70rpx;
+    margin-top: 20rpx;
+  }
+
+  .cardStatus .search input{
+    width: 100%;
+    height: 70rpx;
+    background-color:#fff;
+    border-radius: 38rpx;
+    padding-left: 30rpx;
+    box-sizing: border-box;
+  }
+  .cardStatus .cardListBox {  
+    margin-top: 20rpx;
+  }
+  
+  .cardStatus .cardListBox .goods {
+    width: 88rpx;
+    height: 112rpx;
+    margin-left: 40rpx;
+  }
+  .cardStatus .cardListBox .cardDesc{
+    color:#FF3B30;
+    width: 52%;
+   
+  }
+  .cardStatus .cardListBox .cardDesc .title {
+    font-size:28rpx;
+    color: #363636;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  } 
+  .cardStatus .cardListBox .cardDesc .cardType {
+    width: 72rpx;
+    height: 32rpx;
+  }
+  .cardStatus .cardListBox .cardDesc .time {
+    color:#B8B8B8;
+    font-size:22rpx;
+  }
+  .cardStatus .cardListBox  .useBtn {
+    width: 140rpx;
+    height: 50rpx;
+    border-radius: 28rpx;
+    color:#fff;
+    background-color:#FF3B30;
+    text-align: center;
+    line-height: 50rpx;
+    font-size: 24rpx;
+    margin-right: 20rpx;
+  }
+  
+  .cardStatus .cardListBox .cardDesc.used{
+   color:#B8B8B8;
+  }
+  .cardStatus .cardListBox  image.done,.cardStatus .cardListBox  view.empty {
+    width: 140rpx;
+    height: 108rpx;
+    margin-right: 20rpx;
+  }
+  .immediateUsePopup{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background:rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .immediateUsePopup .immediateUsePopupBg{
+    width: 690rpx;
+    height: 920rpx;
+    position: relative;
+  }
+  .immediateUsePopup .immediateUsePopupBg>image{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+  .immediateUsePopupMainBox{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+  .immediateUsePopupHeadBox {
+    width: 678rpx;
+    height:100rpx;
+    margin: 0 2rpx;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  .immediateUsePopupHeadBox .immediateUsePopupHeadBoxLeft{
+    width: 272rpx;
+    height: 100%;
+    font-family:PingFang-SC-Heavy;
+    font-weight:800;
+    color:rgba(255,255,255,1);
+    font-size: 10px;
+    text-align: center;
+  }
+  .rmbLogo{
+    font-size:20px;
+    font-family:PingFang-SC-Bold;
+    font-weight:bold;
+  }
+  .bymoney{
+    font-size:36px;
+    font-family:PingFang-SC-Bold;
+    font-weight:bold;
+  }
+  
+  .immediateUsePopupHeadBox .immediateUsePopupHeadBoxRight{
+    width: 404rpx;
+    height: 100%;
+  }
+  .couponType{
+    width: 100%;
+    height:50rpx;
+    font-size:19px;
+    font-family:PingFang-SC-Heavy;
+    font-weight:800;
+    color:rgba(255,255,255,1);
+    line-height:24px;
+    display: block;
+    text-align: center;
+  }
+  .couponInfo{
+    width: 100%;
+    height:50rpx;
+    font-size:14px;
+    font-family:PingFang-SC-Bold;
+    font-weight:bold;
+    color:rgba(255,255,255,1);
+    line-height:24px;
+    display: block;
+    text-align: center;
+  }
+  .immediateUsePopupImgBox {
+    width: 236rpx;
+    height: 300rpx;
+    margin: 60rpx auto 0;
+  }
+  .immediateUsePopupImgBox>image{
+    width: 100%;
+    height: 100%;
+  }
+  .immediateUsePopupText{
+    width: 622rpx;
+    height: 42rpx;
+    margin: 40rpx 34rpx 28rpx;
+    font-size:15px;
+    font-family:PingFang-SC-Bold;
+    font-weight:bold;
+    color:rgba(56,56,56,1);
+    line-height:42rpx;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .barCodeBox{
+    width:572rpx;
+    height:170rpx;
+    margin: 0 60rpx;
+  }
+  .barCodeBox1{
+    width:100%;
+    height:170rpx;
+    text-align: center;
+    line-height: 85rpx;
+    background:rgba(242,242,242,1);
+  }
+  .barCodeBox1 .text{
+    width: 100%;
+    height: 50%;
+    display: block;
+    line-height: 85rpx;
+    text-align: center;
+  }
+  .barCodeBox .barCodeCanvasBox{
+    width:100%;
+    height:140rpx;
+  }
+  .barCodeCanvas{
+    width: 100%;
+    height: 140rpx;
+  }
+  .barCodeBox .barCodeNumBox{
+    width:100%;
+    height:30rpx;
+    line-height:30rpx;
+    text-align: center;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .btmAddress {
+    width: 100%;
+    height: 80rpx;
+    margin-top: 30rpx;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .btmAddressLeftImgBox{
+    width: 80rpx;
+    height: 80rpx;
+    margin-left: 34rpx;
+  }
+  .btmAddressLeftImgBox>image{
+    width: 100%;
+    height: 100%;
+  }
+  .btmAddressRightImgBox{
+    width: 542rpx;
+    height: 80rpx;
+    font-size: 14px;
+    line-height: 80rpx;
+    margin-left: 20rpx;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ValidDate{
+    width: 100%;
+    height: 50rpx;
+    margin-top: 24rpx;
+    text-align: center;
+    line-height: 50rpx;
+    font-size:12px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .invalid{
+    color: #000000 !important;
+  }
+  

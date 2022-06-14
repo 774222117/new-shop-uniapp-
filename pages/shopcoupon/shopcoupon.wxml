@@ -1,0 +1,26 @@
+<!--pages/shopcoupon/shopcoupon.wxml-->
+<wxs module="filter" src="../../utils/dataParse.wxs"></wxs>
+<view class="shopcouponMainBox">
+ <scroll-view scroll-y="true" style="height: calc(100% -140rpx);" bindscrolltoupper="upper">
+    <!-- list元素 -->
+      <view class="shopcouponItem {{item.isUse == 1?'':'isUseColor0'}}" wx:for="{{myCoupons}}">
+          <view class="leftPriceBox" >
+            <view class="priceImg"><image src="{{item.picture}}"></image></view>
+            <view class="ft12 line20 textCen {{item.isUse == 1?'text_red':''}}">{{item.intro}}</view>
+          </view>
+          <view class="middleTextBox">
+            <view class="ft16 ftWeight">{{item.name}}</view>
+            <view class="ft12"> 限{{filter.getDate(item.couponStartTime)}}至{{filter.getDate(item.couponEndTime)}}使用</view>
+            <view class="ft12">优惠券: <text class="{{item.isUse == 1?'text_red':''}}">￥{{item.productByMoney}}</text> </view>
+          </view>
+          <view class="rightBtnBox">
+              <view class="listRadio {{choosedCouponId == item.couponId && couponCode == item.couponCode? 'listRadioActive' : '' }}"  data-item="{{item}}" bindtap="listRadioChange"></view>
+          </view>
+      </view>
+  </scroll-view>
+  <view class="footer">
+  <view class="ft14">已选择{{shopcouponNum}}张,可抵扣 <text class="ft20 text_red ftWeight">￥{{shopcouponPrice}}</text>
+  </view>
+  <view class="btnOkSty"  bindtap="btnOK">确认使用</view>
+  </view>
+</view>

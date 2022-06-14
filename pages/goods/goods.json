@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "苏果优选-商品详情",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "my-address": "/component/addressModel/addressModel",
+    "bottom-action": "/component/bottomAction/index",
+    "back-index": "/component/backToIndex/backToIndex",
+    "poster": "/component/poster/index"
+  }
+}

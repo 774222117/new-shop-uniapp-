@@ -1,0 +1,27 @@
+<!--pages/expressInfo/expressInfo.wxml-->
+<!-- <wxs module="priceUtil" src="../../utils/priceSpilt.wxs"></wxs> -->
+<view class="mainBox">
+  <view class="expressInfo_label">
+    <text>物流状态：{{deliStatus[expStatus]}}</text>
+  </view>
+  <view class="expressInfo_label">
+    <text>承运公司：{{expName}}</text>
+  </view>
+  <view class="expressInfo_label">
+    <text>运单编号：{{expressNo}}</text>
+    <view class="copy-icon"  catchtap="copyOrdersn"> 
+      <image style="width: 35rpx; height:35rpx;" src="/image/orderDetailInfo/copyOrdersn.png"></image>
+    </view>
+  </view>
+  <view class="expressInfo_label">
+    <text>发货时间：{{sendTime}}</text>
+  </view>
+  <view class="expressInfo_detailsBox">
+    <image src="/image/close.svg" style="{{flag==true?'transform: rotate(180deg);':''}}" class="btn"
+      bindtap="changeFlag" wx:if="{{expList[0]!=null}}"></image>
+      <view class="expressInfo_details" wx:for="{{expListTemp}}" wx:key="index">
+        <view class="expressInfo_detailsStatus">{{item==null?'暂无物流信息':item.status}}</view>
+        <view class="expressInfo_detailsTime" wx:if="{{item!=null}}">{{item.time}}</view>
+      </view>
+  </view>
+</view>

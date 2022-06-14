@@ -1,0 +1,49 @@
+<wxs module="getDate" src="../../utils/dataParse.wxs"></wxs>
+<!-- 抬头切换区域 -->
+<view class="orderStatus">
+  <view class="tabContainer">
+    <block wx:for="{{tabsList}}" wx:item="item" wx:key="index" wx:key="shopOrdertabsList">
+      <view class="tab-item {{currentTab == index? 'active':''}}" bindtap="changeTab" data-item="{{item}}"
+        data-index="{{index}}">
+        <text>{{ item.title }}</text>
+      </view>
+    </block>
+  </view>
+</view>
+<view class="orderlist">
+  <!-- 订单卡牌 height:calc(100% - 100rpx)-->
+  <scroll-view scroll-y scroll-with-animation lower-threshold="200" style="height:100%">
+    <view class="cardItmeBox" wx:for="{{orderList}}" wx:key="shopOrderList">
+      <view class="topTitle">
+        <view class="leftAddressName">订单号:{{item.ordersn}}</view>
+        <!-- <view class="rightState">{{item.orderStatus==1?"待确认":item.orderStatus==2?'待取货':''}}{{item.orderStatus==3?"已完成":item.orderStatus==4?'已退款':''}}</view> -->
+        <view class="rightState">{{item.orderStatus==1?"待确认":item.orderStatus==2?'待取货':item.orderStatus==3?'已完成':item.orderStatus==4?'已退款':item.orderStatus==5?'部分退款':''}}</view>
+      </view>
+      <view class="topTime">
+        {{getDate.getDate_New(item.createTime,'.')}}
+        {{getDate.getDateH_New(item.createTime,':')}}
+      </view>
+      <view class="line"></view>
+      <view class="cardItemInfo" wx:if="{{item.orderGoods.length > 1}}">
+        <view class="leftImg" wx:for="{{item.orderGoods}}" wx:key="shopOrderGoods">
+          <image src="{{item.goodsThumb}}"></image>
+        </view>
+      </view>
+      <view class="cardItemInfo" wx:else>
+        <view class="leftImg">
+          <image src="{{item.orderGoods[0].goodsThumb}}"></image>
+        </view>
+        <view class="middeText">{{item.orderGoods[0].title}}</view>
+      </view>
+      <view class="carItemBtm">
+        <view class="allMoney">共{{item.orderGoods[0].total}}件 ￥{{item.price}}</view>
+        <view class="yongjin">预计收入：¥{{item.orderStatus==4?0:item.commission}}</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+<!-- 订单卡牌结束 -->
+<view class='bottomLoadConplete' wx:if="{{bottomIsShow}}">
+  到底啦，没有其他订单啦~~
+</view>

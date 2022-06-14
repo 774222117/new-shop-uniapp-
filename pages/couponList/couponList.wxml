@@ -1,0 +1,23 @@
+<wxs module="getDate" src="../../utils/dataParse.wxs"></wxs>
+<view class="couponListStatus">
+    <!-- 优惠券列表 -->
+    <view class="couponListItemBox">
+      <view class="couponListBox" wx:for="{{currentData}}" wx:key="currentDataKey">
+          <image class="couponImg" src="{{item.pictures[0].url}}" data-infoData='{{item}}' bindtap="goToCouponDetail"></image>
+          <view class="couponDesc" data-infoData='{{item}}' bindtap="goToCouponDetail">
+            <view class="title">{{item.name}}</view>
+            <text style="font-size:28rpx;">￥</text>
+            <text style="font-size:40rpx;">{{item.productByMoney}}</text>
+            <text class='wovh' style="font-size:22rpx;margin-left:14rpx;margin-right:10rpx;">{{item.intro}}</text>
+            <view class="time"> 
+              {{getDate.getDateM(item.couponStartTime,'.')}}
+              ~
+              {{getDate.getDateM(item.couponEndTime,'.')}}
+            </view>
+          </view>
+          <view class="useBtn" data-infoData='{{item}}' bindtap='immediateGet'>
+            去领取
+          </view>
+      </view>
+    </view>       
+</view>

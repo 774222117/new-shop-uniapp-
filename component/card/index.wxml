@@ -1,0 +1,3 @@
+<view class="i-card">
+  <slot></slot>
+</view>

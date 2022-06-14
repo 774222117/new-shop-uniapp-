@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <block>
+      <image class="userinfo-avatar" src="{{userData.avatarUrl}}" mode="cover"></image>
+      <text class="notice" wx:if="{{unAuthorized}}"> 授权后，苏果优选就能认识你啦 </text>
+      <text class="notice" wx:if="{{unBindPhone}}"> 您还未绑定手机号，还差一步就可以开始领券 </text>
+      <text class="notice" wx:if="{{getPhontNumError}}"> 未能正确获取你的手机号,请返回继续绑定</text>
+    </block>
+  </view>
+  <view class="contractBox" catchtap="changeCheck">
+    <image wx:if="{{isShow}}" class="checkImg" src="/image/ischange.svg"></image>
+    <image wx:else class="checkImg" src="/image/unchange.svg"></image> 请阅读并同意<text class="textColor" catchtap="jumpPage" data-url="/pages/userAgreement/userAgreement">苏果优选用户协议</text> <text class="textColor" style="margin-left:28rpx;font-size:28rpx" catchtap="jumpPage" data-url="/pages/privacyAgreement/privacyAgreement"> 苏果优选隐私协议</text>
+  </view>
+  <view class="btn">
+    <block wx:if="{{unAuthorized}}">
+      <button type="warn" wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 立即授权 </button>
+      <button type="warn" wx:else disabled='{{disableds}}' open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 立即授权 </button>
+      <!-- <button type="warn" wx:if="{{unAuthorized}}" disabled='{{disableds}}' open-type="getUserInfo" bindgetuserinfo="getUserInfo"
+      >立即授权</button> -->
+    </block>
+    <button type="warn" wx:if="{{unBindPhone}}" disabled='{{disableds}}' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">手机号一键登录</button>
+    <button type="warn" wx:if="{{getPhontNumError}}" disabled='{{disableds}}' bindtap='getPhontNumErrors'>返回绑定</button>
+  </view>
+  <view class="refuseBtn" bindtap='refuseJurisdiction'>拒绝授权</view>
+</view>

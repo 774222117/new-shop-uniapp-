@@ -1,0 +1,9 @@
+.backIndex{
+  position: fixed;
+  bottom: 240rpx;
+  left: 0;
+}
+.backIndex>image{
+  width: 112rpx;
+  height: 80rpx;
+}

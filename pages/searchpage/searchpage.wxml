@@ -1,0 +1,26 @@
+
+<view class="headbar">
+  <view class="search-form">
+    <text class="cuIcon-search"></text>
+    <input type="text" placeholder="搜索商品/品牌" confirm-type="search" bindconfirm="searchGoods"  value="{{title}}"></input>
+  </view>
+  <text class="iconsaoyisao iconfont" style="font-size: 68rpx;" bindtap="getScancode"></text>
+</view>
+	<!-- 历史搜索 -->
+<view class="containerBox-noresult">
+	<view class="history">历史搜索</view>
+	<!-- 历史搜索记录 -->
+	<view class="historyResult">
+		<!-- 搜索结果 -->
+		<view class="historyItem" wx:key="history" wx:for="{{histories}}" data-title="{{item}}" bindtap="onUse">
+			{{item}}
+		</view>
+	</view>
+</view>
+<!-- 商品列表 -->
+<view class="goodslist">
+  <goods-card wx:for="{{goodsInfoList}}" wx:for-item="item" goodsinfo="{{item}}" shopId="{{shopId}}" bindedit="buyCountEdit"></goods-card>
+</view>
+<bottom-action cartTypeName = "OTO" sumPrice="{{cartShopTotal.sumPrice}}" sumProductPrice="{{cartShopTotal.sumProductPrice}}"
+  buyCount="{{cartShopTotal.buyCount}}" goodsInfoList="{{goodsInfoList}}" bottomVal="bt20" shopCart="{{shopCart}}"  deliveryWay="{{deliveryWay}}"  
+  bindcartmodyfiy="carModifyEvent"></bottom-action>

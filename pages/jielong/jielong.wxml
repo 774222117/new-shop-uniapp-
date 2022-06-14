@@ -1,0 +1,99 @@
+<wxs module="getDate" src="../../utils/dataParse.wxs"></wxs>
+<scroll-view scroll-y="{{true}}" bindscrolltolower="getSupplierActivityInfo" style="height:1400rpx;">
+<view class="jielong-head">
+  <image src="{{activityInfo.imgUrl}}"></image>
+  <view class="activity-date">
+    活动时间:{{getDate.getDateM_New(activityInfo.startTime,'-')}}~{{getDate.getDateM_New(activityInfo.endTime,'-')}}</view>
+  <view class="head-description">
+    <text class="description-title">{{activityInfo.title}}</text>
+    <text class="description-cantuaninfo">参与人数：{{activityInfo.groupByCount}}人成团，{{orderNumber}}人已参与</text>
+    <text class="description-content">{{activityInfo.description}}</text>
+  </view>
+  <view class="head-mask"></view>
+</view>
+<view class="page-body">
+  <view class="jielong-goodslist">
+    
+      <goods-card wx:for="{{goodsInfoList}}" wx:for-item="item" goodsinfo="{{item}}" deliveryWay="{{deliveryWay}}"
+        isDelivery="{{isDelivery}}" showRate="{{showRate}}" cartTypeName="{{cartTypeName}}" isCommunity="{{false}}"
+        activityId="{{activityInfo.id}}" parentId="{{parentId}}" shopId="{{shopId}}" isShowShare="{{isShowShare}}"
+        bindedit="buyCountEdit"></goods-card>
+  </view>
+</view>
+</scroll-view>
+  <view class="jielong-buylist">
+    <view class="jielong-buylist-title">
+      <view class="red-span"></view>
+      <text class="cantuan-title">参团人</text>
+    </view>
+    <view class="cantuan-info" wx:for="{{activityOrdersList}}" wx:for-index="idx">
+      <text class="cantua-num-radiu">{{orderNumber-idx}}</text>
+      <image src="{{item.icon}}"></image>
+      <view class="cantuan-right">
+        <view class="userinfo">
+          <text class="userinfo-nick">{{item.nickName}}</text>
+          <text>共团购了{{item.goodsCount}}件商品</text>
+        </view>
+        <text class="cantuan-date">{{getDate.getDate(item.payTime,'.')}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="nomore" wx:if="{{hasMore}}">已经没有更多啦~</view>
+  <view class="showMore" wx:else catchtap="getSupplierActivityOrders">点击查看更多>></view>
+
+<bottom-action cartTypeName="{{cartTypeName}}" sumPrice="{{cartShopTotal.sumPrice}}"
+  sumProductPrice="{{cartShopTotal.sumProductPrice}}" deliveryWay="{{deliveryWay}}" isDelivery="{{isDelivery}}"
+  buyCount="{{cartShopTotal.buyCount}}" goodsInfoList="{{goodsInfoList}}" bottomVal="bt20" shopCart="{{shopCart}}"
+  bindcartmodyfiy="carModifyEvent" supplierActivityId="{{supplierActivityId}}" roomId="{{roomId}}"
+  isShowShare="{{isShowShare}}" useShopCategory="{{useShopCategory}}" chooseShop="{{chooseShop}}"></bottom-action>
+<view class="fixed-aside">
+  <button class="fixed-service" bindtap='share_handler'>
+    <text class="iconfont iconshare"></text>
+    <view>分享</view>
+  </button>
+</view>
+<!-- 分享 -->
+<view class='ui-mask' bindtap='hide_share_handler' hidden='{{is_share_html}}'></view>
+<view class="model-services show" hidden='{{is_share_html}}'>
+  <view class="model-services-title">分享</view>
+  <view class="model-services-content">
+    <view class="service-list">
+      <view class="service-item">
+        <button open-type="share" class='none_btn' plain="true">
+          <text class="iconfont iconweixin service-icon"></text>
+          <view class="cube-text">
+            <text>好友</text>
+          </view>
+        </button>
+      </view>
+      <view class="service-item" catchtap="toPoster">
+        <text class="iconfont iconpengyouquan service-icon"></text>
+        <view class="cube-text">
+          <text>海报</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<back-index></back-index>
+
+
+<!-- yb 是否弹窗领取优惠券 isShowReceiveCoupon -->
+<view class="cu-modal bottom-modal {{modalName=='isShowReceiveCoupon'?'show':''}}" bindtap="hideModal"
+  style="position:fixed;">
+  <view class="isShowReceiveCouponModel" bindtap="receiveCouponFun">
+    <view class="titles">恭喜你被红包砸中啦</view>
+    <view class="prices">
+      <view class="left">
+        <view class="textTop"> <text class="textTop1">￥</text> <text
+            class="textTop2">{{couponInfo.productByMoney}}</text></view>
+        <view class="textBtm">限本商品使用</view>
+      </view>
+      <view class="right">
+        <view class="topTitle">{{couponInfo.name}}</view>
+        <view class="btmTimes">{{getDate.getDate( couponInfo.couponStartTime )}} -
+          {{getDate.getDate( couponInfo.couponEndTime )}}</view>
+      </view>
+    </view>
+  </view>
+</view>
